@@ -12,6 +12,8 @@
   <meta name="google" content="nositelinkssearchbox">
   <link rel="stylesheet" href="css/reset.min.css">
   <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="slick/slick.css"/>
+  <link rel="stylesheet" href="slick/slick-theme.css"/>
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
  
@@ -54,26 +56,36 @@
 </head>
 <body>
   <div class="page-main">
-    <div class="wrap">
-      <div class="header">
-        <div class="header-left">
-          <div class="header-left__img"></div>
-          <!-- <a href="#"><img src="" alt="" class="header-left__img"></a> -->
-        </div>
-        <div class="header-right">
-          <ul class="header-right-list">
-            <li class="header-right-list__item"><a href="#">Про нас</a></li>
-            <li class="header-right-list__item"><a href="#">Новини</a></li>
-            <li class="header-right-list__item"><a href="#">Інформація</a></li>
-            <li class="header-right-list__item"><a href="#">Документи</a></li>
-            <li class="header-right-list__item"><a href="#">Галерея</a></li>
-          </ul>
-        </div>
+    <header>
+      <div class="wrap">
+        <nav class="header">
+          <input type="checkbox" class="header__checkbox">
+          <label for="checkbox-menu">
+            <ul class="header-list">
+              <li class="header-list__item header-list__item_logo"><a href="#"><img src="img/logo.png" alt=""></a></li>
+              <li class="header-list__item"><a href="#">Про нас</a></li>
+              <li class="header-list__item"><a href="#">Новини</a></li>
+              <li class="header-list__item"><a href="#">Інформація</a></li>
+              <li class="header-list__item"><a href="#">Документи</a></li>
+              <li class="header-list__item"><a href="#">Галерея</a></li>
+            </ul>
+            <span class="header__button">☰</span>
+          </label>
+        </nav>
       </div>
-      <div class="slider"> <!-- https://kenwheeler.github.io/slick/ -->
-        <div class="slider-item"></div>
-        <div class="slider-item"></div>
-        <div class="slider-item"></div>
+    </header>
+    <div class="slider">
+      <div class="slider-item">
+        <img src="https://www.publicdomainpictures.net/pictures/270000/nahled/bright-red-background-1536690867Ypt.jpg" alt="" class="slider-item__img">
+        <h2 class="wrap">Test 1</h2>
+      </div>
+      <div class="slider-item">
+        <img src="https://mobile.photoprocenter.ru/files/201503021621525967_0.jpg" alt="" class="slider-item__img">
+        <h2 class="wrap">Test 2</h2>
+      </div>
+      <div class="slider-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUAAP+KeNJXAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC" alt="" class="slider-item__img">
+        <h2 class="wrap">Test 3</h2>
       </div>
     </div>
   </div>
@@ -144,7 +156,8 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="slick/slick.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>
 </html>

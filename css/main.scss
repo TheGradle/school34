@@ -6,8 +6,75 @@
 html,
 body {
   font-family: e-Ukraine;
+  overflow-x: hidden;
+}
+
+.wrap {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .page-main {
   
+}
+
+.page {
+  
+}
+
+header {
+  margin-top: 25px;
+}
+
+.header {
+  &-list {
+    display: flex;
+    height: 100px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &__item {
+      &_logo {
+        margin-right: 300px;
+        a {
+          &:hover {
+            background: unset;
+            color: unset;
+            border-radius: unset;
+          }
+          img {
+            width: auto;
+            height: 120px;
+          }
+        }
+      }
+      a {
+        color: #000;
+        text-decoration: none;
+        align-items: center;
+        padding: 10px 15px;
+        transition: background .2s linear;
+        &:hover {
+          background: #fd333b;
+          color: #fff;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+  &__checkbox,
+  &__button {
+    display: none;
+  }
+}
+
+.slider {
+  margin-top: 25px;
+  &-item {
+    img {
+      width: 100%;
+      height: 550px;
+    }
+  }
 }
