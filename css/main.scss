@@ -20,19 +20,21 @@ body {
 }
 
 .page {
+  padding-top: 50px;
   &__title {
-    font-size: 52px;
+    font-size: 56px;
+    padding-bottom: 30px;
   }
   &__button {
-    padding: 5px 10px;
+    padding: 10px 25px;
     border: 2px solid red;
-    border-radius: 3px;
+    border-radius: 15px;
     background: transparent;
     font-size: 18px;
     &:hover {
       background: black;
       color: #fff;
-      border: none;
+      border: 2px solid black;
     }
   }
 }
@@ -105,25 +107,51 @@ header {
   justify-content: space-between;
   &-item {
     width: 300px;
-    height: 420px;
-    border: 1px solid grey;
     border-radius: 10px;
+    &:hover {
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    }
     &-img {
       width: 100%;
       height: 200px;
-      background: red;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 25px;
+      img {
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+      } 
     }
     &-text {
       padding: 5px 10px;
       &__caption {
-        font-size: 32px;
+        font-size: 20px;
+        margin-bottom: 15px;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+      &__excerpt {
+        line-height: 18px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        color: #959595;
       }
     }
-    & > .page__button {
+    /*& > .page__button {
       margin-left: 10px;
-    }
+      margin-bottom: 25px;
+    }*/
   }
 }
 
