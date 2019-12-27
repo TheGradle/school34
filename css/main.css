@@ -20,16 +20,6 @@ body {
       position: relative;
       top: 7px;
       right: 10px; }
-  .page__button {
-    padding: 10px 25px;
-    border: 2px solid red;
-    border-radius: 15px;
-    background: transparent;
-    font-size: 18px; }
-    .page__button:hover {
-      background: black;
-      color: #fff;
-      border: 2px solid black; }
 
 header {
   margin-top: 25px; }
@@ -138,5 +128,31 @@ header {
       .news-item-text__date {
         position: absolute;
         bottom: 20px; }
+
+.about {
+  display: flex;
+  justify-content: space-between; }
+  .about-text {
+    width: 620px; }
+    .about-text__name {
+      color: #fd333b;
+      text-transform: uppercase;
+      margin-bottom: 20px; }
+    .about-text__description {
+      margin-bottom: 20px; }
+      .about-text__description span {
+        font-weight: bold; }
+  .about-image {
+    position: relative;
+    margin-top: 47px; }
+    .about-image__img {
+      width: 300px;
+      height: auto;
+      margin-top: -47px;
+      margin-right: 44px; }
+    .about-image__svg {
+      position: absolute;
+      right: 0;
+      z-index: -1; }
 
 /*# sourceMappingURL=main.css.map */
