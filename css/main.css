@@ -16,6 +16,10 @@ body {
   .page__title {
     font-size: 56px;
     padding-bottom: 30px; }
+    .page__title span {
+      position: relative;
+      top: 7px;
+      right: 10px; }
   .page__button {
     padding: 10px 25px;
     border: 2px solid red;
@@ -48,7 +52,8 @@ header {
   .header-list__item a {
     color: #000;
     text-decoration: none;
-    align-items: center; }
+    align-items: center;
+    font-size: 18px; }
     .header-list__item a:hover {
       color: #fd333b; }
 .header__checkbox, .header__button {
@@ -57,7 +62,8 @@ header {
 .slider {
   margin-top: 25px;
   width: 100%;
-  min-height: 550px; }
+  min-height: 550px;
+  cursor: e-resize; }
   .slider-item {
     display: flex;
     justify-content: space-between;
@@ -71,26 +77,33 @@ header {
       margin: 0 auto;
       margin-top: 50px; }
 
+@keyframes shadow {
+  from {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75); }
+  to {
+    -webkit-box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75); } }
 .news {
   display: flex;
   justify-content: space-between; }
   .news-item {
     width: 300px;
     border-radius: 10px;
-    /*-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);*/
     position: relative;
     /*& > .page__button {
       margin-left: 10px;
       margin-bottom: 25px;
     }*/ }
     .news-item:hover {
-      /*-webkit-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-      box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);*/
       bottom: 10px;
-      right: 15px; }
+      right: 15px;
+      animation: shadow 0.25s;
+      -webkit-box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75); }
       .news-item:hover:after {
         background: black; }
     .news-item-img {
