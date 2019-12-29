@@ -217,6 +217,9 @@ header {
     align-items: center;
     margin-bottom: 25px;
   }
+  &__map {
+    margin-bottom: -4px;
+  }
 }
 
 .footer {
@@ -224,4 +227,42 @@ header {
   padding-top: 50px;
   padding-bottom: 50px;
   background: #151111;
+  color: #fff;
+  & > .wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-about {
+    flex-basis: 31.8%;
+    &__logo {
+      img {
+        width: 120px;
+      }
+    }
+    &__copyright {
+      margin-top: 15px;
+    }
+  }
+  &-links,
+  &-contacts {
+    flex-basis: 23.1%;
+  }
+  &__caption {
+    font-size: 18px;
+    color: #fd333b;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  &-contacts-social {
+    margin-top: 25px;
+    display: flex;
+    width: 25px;
+    height: auto;
+    &__item {
+      margin-right: 13px;
+      & > a {
+        color: #fd333b;
+      }
+    }
+  }
 }

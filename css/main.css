@@ -157,11 +157,39 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px; }
+.contacts__map {
+  margin-bottom: -4px; }
 
 .footer {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
-  background: #151111; }
+  background: #151111;
+  color: #fff; }
+  .footer > .wrap {
+    display: flex;
+    justify-content: space-between; }
+  .footer-about {
+    flex-basis: 31.8%; }
+    .footer-about__logo img {
+      width: 120px; }
+    .footer-about__copyright {
+      margin-top: 15px; }
+  .footer-links, .footer-contacts {
+    flex-basis: 23.1%; }
+  .footer__caption {
+    font-size: 18px;
+    color: #fd333b;
+    text-transform: uppercase;
+    margin-bottom: 15px; }
+  .footer-contacts-social {
+    margin-top: 25px;
+    display: flex;
+    width: 25px;
+    height: auto; }
+    .footer-contacts-social__item {
+      margin-right: 13px; }
+      .footer-contacts-social__item > a {
+        color: #fd333b; }
 
 /*# sourceMappingURL=main.css.map */
