@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Миколаївський заклад загальної середньої освіти №34</title>
+  <title>Головна - Миколаївський заклад загальної середньої освіти №34</title>
   <meta name="description" content="описание не длиннее 155 символов">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
@@ -21,38 +21,23 @@
   <meta content="http://localhost.my/img/og_cover.jpg">
   <meta content="описание не длиннее 155 символов">
   <meta content="Facebook ID">
- 
-  <!-- Google authorship -->
-  <link rel="author" href="https://plus.google.com/[Google+_Profile]/posts" data-mce-href="https://plus.google.com/[Google+_Profile]/posts">
-  <link rel="publisher" href="https://plus.google.com/[Google+_Page_Profile]" data-mce-href="https://plus.google.com/[Google+_Page_Profile]">
- 
-  <!-- Фавиконы и иконки сайта --> 
-  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" data-mce-href="/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png" data-mce-href="/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" data-mce-href="/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" data-mce-href="/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" data-mce-href="/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" data-mce-href="/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" data-mce-href="/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" data-mce-href="/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" data-mce-href="/apple-touch-icon-180x180.png">
-  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" data-mce-href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192" data-mce-href="/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" data-mce-href="/favicon-96x96.png">
-  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" data-mce-href="/favicon-16x16.png">
+
+  <link rel="shortcut icon" href="img/icons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="img/icons/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="img/icons/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="img/icons/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="img/icons/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="img/icons/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="img/icons/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icons/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon-180x180.png" />
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-  <meta name="theme-color" content="#ffffff">
- 
-  <!-- Chrome, Firefox OS and Opera -->
-  <meta name="theme-color" content="#4285f4">
- 
-  <!-- Windows Phone -->
-  <meta name="msapplication-navbutton-color" content="#4285f4">
- 
-  <!-- iOS Safari -->
+  <meta name="msapplication-TileImage" content="img/icons/mstile-144x144.png">
+  <meta name="theme-color" content="#fd333b">
+  <meta name="msapplication-navbutton-color" content="#fff">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#fd333b">
 </head>
 <body>
   <div class="page-main">
@@ -63,10 +48,18 @@
           <label for="checkbox-menu">
             <ul class="header-list">
               <li class="header-list__item header-list__item_logo"><a href="#"><img src="img/logo.png" alt=""></a></li>
-              <li class="header-list__item"><a href="#">Про нас</a></li>
+              <li class="header-list__item"><a href="about.html">Про нас</a></li>
               <li class="header-list__item"><a href="#">Новини</a></li>
-              <li class="header-list__item"><a href="#">Інформація</a></li>
-              <li class="header-list__item"><a href="#">Документи</a></li>
+              <li class="header-list__item header-list-dropdown">
+                <a href="#">Інформація</a>
+                <ul class="header-list-dropdown-list">
+                  <li class="header-list-dropdown-list__item"><a href="#">Звіти</a></li>
+                  <li class="header-list-dropdown-list__item"><a href="#">Це цікаво</a></li>
+                  <li class="header-list-dropdown-list__item"><a href="#">Поради психолога</a></li>
+                  <li class="header-list-dropdown-list__item"><a href="#">ЗНО</a></li>
+                </ul>
+              </li>
+              <li class="header-list__item"><a href="documents.html">Документи</a></li>
               <li class="header-list__item"><a href="#">Галерея</a></li>
             </ul>
             <span class="header__button">☰</span>
@@ -180,11 +173,11 @@
       <div class="footer-links">
         <h2 class="footer__caption">Корисні посилання</h2>
         <ul class="footer-links-list">
-          <li class="footer-links-list__item"><a href=""></a>Про нас</li>
-          <li class="footer-links-list__item"><a href=""></a>Новини</li>
-          <li class="footer-links-list__item"><a href=""></a>Інформація</li>
-          <li class="footer-links-list__item"><a href=""></a>Документи</li>
-          <li class="footer-links-list__item"><a href=""></a>Галерея</li>
+          <li class="footer-links-list__item"><a href="about.html">Про нас</a></li>
+          <li class="footer-links-list__item"><a href="">Новини</a></li>
+          <li class="footer-links-list__item"><a href="">Інформація</a></li>
+          <li class="footer-links-list__item"><a href="documents.html">Документи</a></li>
+          <li class="footer-links-list__item"><a href="">Галерея</a></li>
         </ul>
       </div>
       <div class="footer-contacts">

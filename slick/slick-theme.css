@@ -186,3 +186,7 @@
 .slick-initialized .slick-slide {
     display: flex !important;
 }
+
+.slick-active button {
+    background: #151111 !important;
+}

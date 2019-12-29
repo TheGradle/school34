@@ -32,6 +32,29 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center; }
+  .header-list-dropdown {
+    position: relative;
+    display: inline-block; }
+    .header-list-dropdown a {
+      padding: 16px !important; }
+    .header-list-dropdown:hover .header-list-dropdown-list {
+      display: block; }
+    .header-list-dropdown:hover a {
+      background-color: #f9f9f9; }
+    .header-list-dropdown-list {
+      display: none;
+      position: absolute;
+      background: #f9f9f9;
+      width: 100%;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1; }
+      .header-list-dropdown-list__item a {
+        padding: 12px 16px !important;
+        display: block; }
+        .header-list-dropdown-list__item a:hover {
+          background-color: #f1f1f1; }
+  .header-list__item_active a {
+    color: #fd333b !important; }
   .header-list__item_logo {
     margin-right: 300px; }
     .header-list__item_logo a:hover {
@@ -42,7 +65,7 @@ header {
       width: auto;
       height: 120px; }
   .header-list__item a {
-    color: #000;
+    color: #151111;
     text-decoration: none;
     align-items: center;
     font-size: 18px; }
@@ -113,7 +136,7 @@ header {
         transform: translate(-50%, -50%);
         object-fit: cover; }
     .news-item-text {
-      padding: 5px 10px; }
+      padding: 5px 10px 15px 10px; }
       .news-item-text__caption {
         font-size: 20px;
         margin-bottom: 15px;
@@ -182,6 +205,11 @@ header {
     color: #fd333b;
     text-transform: uppercase;
     margin-bottom: 15px; }
+  .footer-links-list__item a {
+    text-decoration: none;
+    color: #fff; }
+    .footer-links-list__item a:hover {
+      text-decoration: underline; }
   .footer-contacts-social {
     margin-top: 25px;
     display: flex;
@@ -191,5 +219,16 @@ header {
       margin-right: 13px; }
       .footer-contacts-social__item > a {
         color: #fd333b; }
+
+.documents-list {
+  list-style-type: decimal; }
+  .documents-list__item a {
+    color: #fd333b;
+    text-decoration: none; }
+    .documents-list__item a:hover {
+      text-decoration: underline; }
+  .documents-list-sublist {
+    list-style-type: disc;
+    margin-left: 21px; }
 
 /*# sourceMappingURL=main.css.map */
