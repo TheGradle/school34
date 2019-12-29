@@ -173,10 +173,6 @@ header {
         
       }
     }
-    /*& > .page__button {
-      margin-left: 10px;
-      margin-bottom: 25px;
-    }*/
   }
 }
 
@@ -221,4 +217,11 @@ header {
     align-items: center;
     margin-bottom: 25px;
   }
+}
+
+.footer {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: #151111;
 }
