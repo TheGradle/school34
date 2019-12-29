@@ -4,7 +4,8 @@
 html,
 body {
   font-family: e-Ukraine;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  line-height: 19px; }
 
 .wrap {
   max-width: 1300px;
@@ -15,7 +16,8 @@ body {
   padding-top: 50px; }
   .page__title {
     font-size: 56px;
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+    line-height: 56px; }
     .page__title span {
       position: relative;
       top: 7px;
@@ -65,7 +67,8 @@ header {
       font-size: 72px;
       width: 650px;
       margin: 0 auto;
-      margin-top: 50px; }
+      margin-top: 50px;
+      line-height: 72px; }
 
 @keyframes shadow {
   from {
@@ -78,7 +81,8 @@ header {
     box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75); } }
 .news {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  flex-wrap: wrap; }
   .news-item {
     width: 300px;
     border-radius: 10px;
@@ -103,7 +107,7 @@ header {
       border-top-right-radius: 10px;
       overflow: hidden;
       position: relative;
-      margin-bottom: 25px; }
+      margin-bottom: 20px; }
       .news-item-img img {
         position: absolute;
         width: 100%;
@@ -116,18 +120,15 @@ header {
       padding: 5px 10px; }
       .news-item-text__caption {
         font-size: 20px;
-        margin-bottom: 15px; }
+        margin-bottom: 15px;
+        line-height: 24px; }
         .news-item-text__caption:hover {
           text-decoration: underline;
           cursor: pointer; }
       .news-item-text__excerpt {
-        line-height: 18px;
-        margin-bottom: 30px;
+        padding-bottom: 30px;
         font-size: 14px;
         color: #959595; }
-      .news-item-text__date {
-        position: absolute;
-        bottom: 20px; }
 
 .about {
   display: flex;
@@ -154,5 +155,11 @@ header {
       position: absolute;
       right: 0;
       z-index: -1; }
+
+.contacts-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px; }
 
 /*# sourceMappingURL=main.css.map */
