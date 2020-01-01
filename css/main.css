@@ -44,7 +44,7 @@ header {
     position: relative;
     display: inline-block; }
     .header-list-dropdown a {
-      padding: 16px !important; }
+      padding: 16px; }
     .header-list-dropdown:hover .header-list-dropdown-list {
       display: block; }
     .header-list-dropdown:hover a {

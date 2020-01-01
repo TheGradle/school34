@@ -57,7 +57,7 @@ header {
       position: relative;
       display: inline-block;
       a {
-        padding: 16px !important;
+        padding: 16px;
       }
       &:hover &-list {
         display: block;
