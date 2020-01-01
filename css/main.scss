@@ -67,6 +67,7 @@ header {
         width: 100%;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
+        margin-top: 16px;
         &__item a {
           padding: 12px 16px !important;
           display: block;
@@ -303,25 +304,6 @@ header {
       & > a {
         color: #fd333b;
       }
-    }
-  }
-}
-
-.documents {
-  &-list {
-    list-style-type: decimal;
-    &__item {
-      a {
-        color: #fd333b;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-    &-sublist {
-      list-style-type: disc;
-      margin-left: 21px;
     }
   }
 }

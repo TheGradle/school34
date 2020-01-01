@@ -1,0 +1,12 @@
+.documents-list {
+  list-style-type: decimal; }
+  .documents-list__item a {
+    color: #fd333b;
+    text-decoration: none; }
+    .documents-list__item a:hover {
+      text-decoration: underline; }
+  .documents-list-sublist {
+    list-style-type: disc;
+    margin-left: 21px; }
+
+/*# sourceMappingURL=documents.css.map */
