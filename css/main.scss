@@ -16,8 +16,13 @@ body {
   margin: 0 auto;
 }
 
-.page-main {
-  
+::selection {
+  background: #fd333b;
+  color: #fff;
+}
+::-moz-selection {
+  background: #fd333b;
+  color: #fff;
 }
 
 .page {
@@ -287,12 +292,18 @@ header {
     text-transform: uppercase;
     margin-bottom: 15px;
   }
-  &-links-list__item a {
-    text-decoration: none;
-    color: #fff;
-    &:hover {
-      text-decoration: underline;
+  &-links-list__item {
+    margin-bottom: 5px;
+    a {
+      text-decoration: none;
+      color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
+  &-contacts-list__item {
+    margin-bottom: 5px;
   }
   &-contacts-social {
     margin-top: 25px;

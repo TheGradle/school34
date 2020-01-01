@@ -12,6 +12,14 @@ body {
   width: 100%;
   margin: 0 auto; }
 
+::selection {
+  background: #fd333b;
+  color: #fff; }
+
+::-moz-selection {
+  background: #fd333b;
+  color: #fff; }
+
 .page {
   padding-top: 50px; }
   .page__title {
@@ -206,11 +214,15 @@ header {
     color: #fd333b;
     text-transform: uppercase;
     margin-bottom: 15px; }
-  .footer-links-list__item a {
-    text-decoration: none;
-    color: #fff; }
-    .footer-links-list__item a:hover {
-      text-decoration: underline; }
+  .footer-links-list__item {
+    margin-bottom: 5px; }
+    .footer-links-list__item a {
+      text-decoration: none;
+      color: #fff; }
+      .footer-links-list__item a:hover {
+        text-decoration: underline; }
+  .footer-contacts-list__item {
+    margin-bottom: 5px; }
   .footer-contacts-social {
     margin-top: 25px;
     display: flex;
