@@ -1,0 +1,26 @@
+.list-item {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e7e7e7;
+}
+.list-item:first-child {
+  padding-top: 0;
+}
+.list-item:last-child {
+  border-bottom: none;
+}
+.list-item__caption {
+  font-size: 20px;
+  margin-bottom: 15px;
+  line-height: 24px;
+}
+.list-item__caption:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.list-item__caption a {
+  color: #000;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=list.css.map */
