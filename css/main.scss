@@ -178,6 +178,7 @@ header {
 
   &__toggle {
     display: none;
+    padding-right: 20px;
     @media (max-width: 768px) {
       display: block;
       font-size: 72px;

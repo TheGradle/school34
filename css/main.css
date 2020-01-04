@@ -186,6 +186,7 @@ header {
 }
 .header__toggle {
   display: none;
+  padding-right: 20px;
 }
 @media (max-width: 768px) {
   .header__toggle {
