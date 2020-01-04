@@ -123,7 +123,7 @@ header {
       &_logo {
         margin-right: 300px;
         @media (max-width: 1101px) {
-          margin-right: 200px;
+          margin-right: 30px;
         }
         a {
           &:hover {
@@ -144,6 +144,9 @@ header {
         font-size: 18px;
         transition: color .1s linear;
         padding: 16px;
+        @media (max-width: 1101px) {
+          padding: 10px;
+        }
         &:hover {
           color: #fd333b;
         }
