@@ -7,4 +7,8 @@ $(document).ready(function(){
     autoplay: true,
     autoplaySpeed: 3000
   });
+
+  $( ".header__toggle" ).click(function() {
+    $( ".header-list_mobile" ).slideToggle( "slow", function() {});
+  });
 });
