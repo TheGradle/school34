@@ -142,6 +142,7 @@
         color: #fff;
         font-size: 18px;
         cursor: pointer;
+        transition: background .2s linear;
         &:hover {
           background: #fd333b;
         }

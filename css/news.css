@@ -159,6 +159,7 @@
   color: #fff;
   font-size: 18px;
   cursor: pointer;
+  transition: background .2s linear;
 }
 .news-help-subscribe__button:hover {
   background: #fd333b;
