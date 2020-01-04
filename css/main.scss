@@ -285,8 +285,12 @@ header {
 .about {
   display: flex;
   justify-content: space-between;
+  @media (max-width: 620px) {
+    flex-direction: column;
+  }
   &-text {
-    width: 620px;
+    max-width: 620px;
+    width: 100%;
     &__name {
       color: #fd333b;
       text-transform: uppercase;
@@ -302,16 +306,33 @@ header {
   &-image {
     position: relative;
     margin-top: 47px;
+    @media (max-width: 620px) {
+      order: -1;
+    }
     &__img {
       width: 300px;
       height: auto;
       margin-top: -47px;
       margin-right: 44px;
+      @media (max-width: 1024px) {
+        width: 200px;
+      }
+      @media (max-width: 620px) {
+        width: 300px;
+        margin-bottom: 15px;
+      }
     }
     &__svg {
       position: absolute;
       right: 0;
       z-index: -1;
+      @media (max-width: 1024px) {
+        width: 200px;
+        height: 302px;
+      }
+      @media (max-width: 620px) {
+        display: none;
+      }
     }
   }
 }
