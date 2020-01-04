@@ -94,6 +94,12 @@ header {
 .header-logo {
   padding-left: 10px;
 }
+@media (max-width: 425px) {
+  .header-logo a img {
+    width: 90px;
+    height: auto;
+  }
+}
 .header-list {
   display: flex;
   height: 123px;
@@ -186,6 +192,12 @@ header {
     display: block;
     font-size: 72px;
     margin-top: 40px;
+  }
+}
+@media (max-width: 425px) {
+  .header__toggle {
+    font-size: 61px;
+    margin-top: 32px;
   }
 }
 
