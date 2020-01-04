@@ -25,25 +25,60 @@ body {
   color: #fff;
 }
 
+@keyframes shadow {
+  from {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+  }
+  to {
+    -webkit-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
+    box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
+  }
+}
+
 .page {
-  padding-top: 50px;
+  padding: 50px 10px 0 10px;
+  @media (max-width: 965px) {
+    padding: 35px 10px 0 10px;
+  }
+  &_nop {
+    padding: 50px 0 0 0;
+  }
   &__title {
     font-size: 56px;
     padding-bottom: 30px;
     line-height: 56px;
+    @media (max-width: 1024px) {
+      font-size: 48px;
+    }
+    @media (max-width: 768px) {
+      font-size: 40px;
+      padding-bottom: 20px;
+    }
+    @media (max-width: 369px) {
+      font-size: 36px;
+    }
+    &_p {
+      padding: 0 10px 30px 10px;
+    }
     span {
       position: relative;
       top: 7px;
       right: 10px;
+      @media (max-width: 768px) {
+        img {
+          width: 42px;
+        }
+      }
     }
-  }
-  &__button {
-    
   }
 }
 
 header {
   margin-top: 25px;
+  padding: 0px 10px 0 10px;
 }
 
 .header {
@@ -56,9 +91,6 @@ header {
     &-dropdown {
       position: relative;
       display: inline-block;
-      a {
-        padding: 16px;
-      }
       &:hover &-list {
         display: block;
       }
@@ -90,6 +122,9 @@ header {
       }
       &_logo {
         margin-right: 300px;
+        @media (max-width: 1101px) {
+          margin-right: 200px;
+        }
         a {
           &:hover {
             background: unset;
@@ -107,6 +142,8 @@ header {
         text-decoration: none;
         align-items: center;
         font-size: 18px;
+        transition: color .1s linear;
+        padding: 16px;
         &:hover {
           color: #fd333b;
         }
@@ -124,34 +161,47 @@ header {
   width: 100%;
   min-height: 550px;
   cursor: e-resize;
+  @media (max-width: 965px) {
+    min-height: 0;
+  }
   &-item {
     display: flex;
     justify-content: space-between;
     outline: none;
-    img {
+    @media (max-width: 965px) {
+      flex-direction: column;
+    }
+    &-img {
       width: 50%;
       height: 550px;
+      overflow: hidden;
+      position: relative;
+      @media (max-width: 965px) {
+        display: none;
+      }
+      img {
+        width: 100%;
+        height: 550px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+      }
     }
     h2 {
       font-size: 72px;
-      width: 650px;
+      width: 40%;
       margin: 0 auto;
       margin-top: 50px;
       line-height: 72px;
+      padding-left: 10px;
+      @media (max-width: 965px) {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 75px;
+      }
     }
-  }
-}
-
-@keyframes shadow {
-  from {
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-  }
-  to {
-    -webkit-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-    box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
   }
 }
 
@@ -163,6 +213,17 @@ header {
     width: 300px;
     border-radius: 10px;
     position: relative;
+    @media (max-width: 1245px) {
+      width: 260px;
+    }
+    @media (max-width: 1075px) {
+      width: 48%;
+    }
+    @media (max-width: 620px) {
+      width: 100%;
+      flex-direction: column;
+      margin-bottom: 50px;
+    }
     &:hover {
       bottom: 10px;
       right: 15px;
@@ -182,6 +243,9 @@ header {
       overflow: hidden;
       position: relative;
       margin-bottom: 20px;
+      @media (max-width: 620px) {
+        height: 300px;
+      }
       img {
         position: absolute;
         width: 100%;
@@ -190,6 +254,9 @@ header {
         top: 50%;
         transform: translate(-50%, -50%);
         object-fit: cover;
+        @media (max-width: 620px) {
+          height: 300px;
+        }
       } 
     }
     &-text {
@@ -255,6 +322,14 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
+    padding: 0 10px 0 10px;
+    @media (max-width: 965px) {
+      flex-direction: column;
+      align-items: flex-start;
+      &__item {
+        margin-bottom: 25px;
+      }
+    }
   }
   &__map {
     margin-bottom: -4px;
@@ -262,17 +337,31 @@ header {
 }
 
 .footer {
+  padding: 50px 10px 50px 10px;
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
   background: #151111;
   color: #fff;
+  margin-top: 50px;
+  @media (max-width: 965px) {
+    padding: 50px 0 50px 0;
+  }
+  &_nom {
+    margin-top: 0;
+  }
   & > .wrap {
     display: flex;
     justify-content: space-between;
+    @media (max-width: 965px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &-about {
     flex-basis: 31.8%;
+    @media (max-width: 965px) {
+      text-align: center;
+      margin-bottom: 40px;
+    }
     &__logo {
       img {
         width: 120px;
@@ -280,11 +369,19 @@ header {
     }
     &__copyright {
       margin-top: 15px;
+      @media (max-width: 965px) {
+        width: 50%;
+        margin: 15px auto;
+      }
     }
   }
   &-links,
   &-contacts {
     flex-basis: 23.1%;
+    @media (max-width: 965px) {
+      margin-bottom: 40px;
+      text-align: center;
+    }
   }
   &__caption {
     font-size: 18px;
@@ -302,18 +399,25 @@ header {
       }
     }
   }
-  &-contacts-list__item {
-    margin-bottom: 5px;
-  }
-  &-contacts-social {
-    margin-top: 25px;
-    display: flex;
-    width: 25px;
-    height: auto;
-    &__item {
-      margin-right: 13px;
-      & > a {
-        color: #fd333b;
+  &-contacts {
+    margin-bottom: 0px;
+    &-list__item {
+      margin-bottom: 5px;
+    }
+    &-social {
+      margin-top: 25px;
+      display: flex;
+      width: 25px;
+      height: auto;
+      @media (max-width: 965px) {
+        justify-content: space-around;
+        width: 100%;
+      }
+      &__item {
+        margin-right: 13px;
+        & > a {
+          color: #fd333b;
+        }
       }
     }
   }

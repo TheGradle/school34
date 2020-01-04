@@ -44,41 +44,43 @@
     <header>
       <div class="wrap">
         <nav class="header">
-          <input type="checkbox" class="header__checkbox">
-          <label for="checkbox-menu">
-            <ul class="header-list">
-              <li class="header-list__item header-list__item_logo"><a href="#"><img src="img/logo.png" alt=""></a></li>
-              <li class="header-list__item"><a href="about.html">Про нас</a></li>
-              <li class="header-list__item"><a href="news/index.html">Новини</a></li>
-              <li class="header-list__item header-list-dropdown">
-                <a>Інформація</a>
-                <ul class="header-list-dropdown-list">
-                  <li class="header-list-dropdown-list__item"><a href="information/reports.html">Звіти</a></li>
-                  <li class="header-list-dropdown-list__item"><a href="information/interesting-things.html">Це цікаво</a></li>
-                  <li class="header-list-dropdown-list__item"><a href="information/advice-from-a-psychologist.html">Поради психолога</a></li>
-                  <li class="header-list-dropdown-list__item"><a href="information/zno.html">ЗНО</a></li>
-                </ul>
-              </li>
-              <li class="header-list__item"><a href="documents.html">Документи</a></li>
-              <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
-            </ul>
-            <span class="header__button">☰</span>
-          </label>
+          <ul class="header-list">
+            <li class="header-list__item header-list__item_logo"><a href="#"><img src="img/logo.png" alt=""></a></li>
+            <li class="header-list__item"><a href="about.html">Про нас</a></li>
+            <li class="header-list__item"><a href="news/index.html">Новини</a></li>
+            <li class="header-list__item header-list-dropdown">
+              <a>Інформація</a>
+              <ul class="header-list-dropdown-list">
+                <li class="header-list-dropdown-list__item"><a href="information/reports.html">Звіти</a></li>
+                <li class="header-list-dropdown-list__item"><a href="information/interesting-things.html">Це цікаво</a></li>
+                <li class="header-list-dropdown-list__item"><a href="information/advice-from-a-psychologist.html">Поради психолога</a></li>
+                <li class="header-list-dropdown-list__item"><a href="information/zno.html">ЗНО</a></li>
+              </ul>
+            </li>
+            <li class="header-list__item"><a href="documents.html">Документи</a></li>
+            <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
+          </ul>
         </nav>
       </div>
     </header>
     <div class="slider">
       <div class="slider-item">
         <h2>Дім,<br>в якому<br>добре всім</h2>
-        <img src="img/slider.jpg" alt="" class="slider-item__img">
+        <div class="slider-item-img">
+          <img src="img/slider.jpg" alt="">
+        </div>
       </div>
       <div class="slider-item">
         <h2>Test 2</h2>
-        <img src="https://mobile.photoprocenter.ru/files/201503021621525967_0.jpg" alt="" class="slider-item__img">
+        <div class="slider-item-img">
+          <img src="https://mobile.photoprocenter.ru/files/201503021621525967_0.jpg" alt="">
+        </div>
       </div>
       <div class="slider-item">
         <h2>Test 3</h2>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUAAP+KeNJXAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC" alt="" class="slider-item__img">
+        <div class="slider-item-img">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUAAP+KeNJXAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC" alt="">
+        </div>
       </div>
     </div>
   </div>
@@ -151,8 +153,8 @@
       </div>
     </div>
   </div>
-  <div class="page">
-    <h2 class="wrap page__title">Контакти</h2>
+  <div class="page page_nop">
+    <h2 class="wrap page__title page__title_p">Контакти</h2>
     <div class="contacts">
       <ul class="contacts-list wrap">
         <li class="contacts-list__item">(0512) 47-89-25 (директор, секретар)<br>(0512) 47-89-25 (заступники директора з навчально-виховної роботи)<br>(0512) 46-73-31 (заступник директора з виховної роботи)</li>
@@ -164,7 +166,7 @@
       </div>
     </div>
   </div>
-  <div class="footer">
+  <div class="footer footer_nom">
     <div class="wrap">
       <div class="footer-about">
         <a href="" class="footer-about__logo"><img src="img/logo-gray.png" alt=""></a>
