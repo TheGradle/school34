@@ -305,6 +305,10 @@ header {
           text-decoration: underline;
           cursor: pointer;
         }
+        a {
+          color: #000;
+          text-decoration: none;
+        }
       }
       &__excerpt {
         padding-bottom: 30px;

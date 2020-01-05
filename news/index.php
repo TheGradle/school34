@@ -1,10 +1,13 @@
+<?php 
+  require_once "../includes/config.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Міні-тренінг "Емоційний інтелект" - Миколаївський заклад загальної середньої освіти №34</title>
+  <title>Новини - Миколаївський заклад загальної середньої освіти №34</title>
   <meta name="description" content="описание не длиннее 155 символов">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
@@ -12,7 +15,7 @@
   <meta name="google" content="nositelinkssearchbox">
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
-  <link rel="stylesheet" href="../css/current-news.min.css">
+  <link rel="stylesheet" href="../css/news.min.css">
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
  
@@ -76,19 +79,52 @@
     </ul>
   </header>
   <div class="page">
-    <div class="wrap">  
+    <div class="wrap">
+      <h2 class="page__title">Новини</h2>
       <div class="news">
-        <h2 class="news__title">
-          Міні-тренінг "Емоційний інтелект"
-          <span>25 грудня 2019</span>
-        </h2>
-        <div class="news-img">
-          <img src="http://school34.ucoz.org/76935907_3171766019563936_2389710298731773952_n.jpg" alt="">
+        <?
+          $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC");
+        ?>
+        <div class="news-list">
+          <? while ($cat = mysqli_fetch_assoc($news))
+          { ?>
+            <div class="news-list-item">
+              <div class="news-list-item-img">
+                <img src="<?=$cat['img'] ?>" alt="">
+              </div>
+              <div class="news-list-item-text">
+                <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>
+                <p class="news-list-item-text__excerpt"><?=$cat['excerpt'] ?></p>
+                <p class="news-list-item-text__date"><?=$cat['date'] ?></p>
+              </div>
+            </div>
+          <? } ?>
         </div>
-        <div class="news-text">
-          <p class="news-text__excerpt">Сьогодні Президент школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування.</p>
-          <p class="news-text__excerpt">Сьогодні Президент школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування.</p>
-          <p class="news-text__excerpt">Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування.</p>
+        <div class="news-help">
+          <div class="news-help-search">
+            <form>
+              <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input">
+            </form>
+          </div>
+          <div class="news-help-subscribe">
+            <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
+            <form>
+              <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input">
+              <button type="sumbit" class="news-help-subscribe__button">Підписатись</button>
+            </form>
+            <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
+          </div>
+        </div>
+        <div class="news-help-subscribe_mobile news-help-subscribe">
+          <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
+          <form>
+            <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input">
+            <button type="sumbit" class="news-help-subscribe__button">Підписатись</button>
+          </form>
+          <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
+        </div>
+        <div class="news-pagination">
+          
         </div>
       </div>
     </div>

@@ -1,3 +1,6 @@
+<?php 
+  require_once "includes/config.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,61 +43,59 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#fd333b">
 </head>
 <body>
-  <div class="page-main">
-    <header>
-      <div class="wrap">
-        <nav class="header">
-          <div class="header-logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
-          </div>
-          <ul class="header-list">
-            <li class="header-list__item"><a href="about.html">Про нас</a></li>
-            <li class="header-list__item"><a href="news/index.html">Новини</a></li>
-            <li class="header-list__item header-list-dropdown">
-              <a>Інформація</a>
-              <ul class="header-list-dropdown-list">
-                <li class="header-list-dropdown-list__item"><a href="information/reports/index.html">Звіти</a></li>
-                <li class="header-list-dropdown-list__item"><a href="information/zno/index.html">ЗНО</a></li>
-              </ul>
-            </li>
-            <li class="header-list__item"><a href="documents.html">Документи</a></li>
-            <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
-          </ul>
-          <span class="header__toggle">☰</span>
-        </nav>
-      </div>
-      <ul class="header-list_mobile">
-        <li class="header-list__item"><a href="about.html">Про нас</a></li>
-        <li class="header-list__item"><a href="news/index.html">Новини</a></li>
-        <li class="header-list__item header-list-dropdown">
-          <a>Інформація</a>
-          <ul class="header-list-dropdown-list">
-            <li class="header-list-dropdown-list__item"><a href="information/reports/index.html">Звіти</a></li>
-            <li class="header-list-dropdown-list__item"><a href="information/zno/index.html">ЗНО</a></li>
-          </ul>
-        </li>
-        <li class="header-list__item"><a href="documents.html">Документи</a></li>
-        <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
-      </ul>
-    </header>
-    <div class="slider">
-      <div class="slider-item">
-        <h2>Дім,<br>в якому<br>добре всім</h2>
-        <div class="slider-item-img">
-          <img src="img/slider.jpg" alt="">
+  <header>
+    <div class="wrap">
+      <nav class="header">
+        <div class="header-logo">
+          <a href="#"><img src="img/logo.png" alt=""></a>
         </div>
+        <ul class="header-list">
+          <li class="header-list__item"><a href="about.html">Про нас</a></li>
+          <li class="header-list__item"><a href="news/index.html">Новини</a></li>
+          <li class="header-list__item header-list-dropdown">
+            <a>Інформація</a>
+            <ul class="header-list-dropdown-list">
+              <li class="header-list-dropdown-list__item"><a href="information/reports/index.html">Звіти</a></li>
+              <li class="header-list-dropdown-list__item"><a href="information/zno/index.html">ЗНО</a></li>
+            </ul>
+          </li>
+          <li class="header-list__item"><a href="documents.html">Документи</a></li>
+          <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
+        </ul>
+        <span class="header__toggle">☰</span>
+      </nav>
+    </div>
+    <ul class="header-list_mobile">
+      <li class="header-list__item"><a href="about.html">Про нас</a></li>
+      <li class="header-list__item"><a href="news/index.html">Новини</a></li>
+      <li class="header-list__item header-list-dropdown">
+        <a>Інформація</a>
+        <ul class="header-list-dropdown-list">
+          <li class="header-list-dropdown-list__item"><a href="information/reports/index.html">Звіти</a></li>
+          <li class="header-list-dropdown-list__item"><a href="information/zno/index.html">ЗНО</a></li>
+        </ul>
+      </li>
+      <li class="header-list__item"><a href="documents.html">Документи</a></li>
+      <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
+    </ul>
+  </header>
+  <div class="slider">
+    <div class="slider-item">
+      <h2>Дім,<br>в якому<br>добре всім</h2>
+      <div class="slider-item-img">
+        <img src="img/slider.jpg" alt="">
       </div>
-      <div class="slider-item">
-        <h2>Test 2</h2>
-        <div class="slider-item-img">
-          <img src="https://mobile.photoprocenter.ru/files/201503021621525967_0.jpg" alt="">
-        </div>
+    </div>
+    <div class="slider-item">
+      <h2>Test 2</h2>
+      <div class="slider-item-img">
+        <img src="https://mobile.photoprocenter.ru/files/201503021621525967_0.jpg" alt="">
       </div>
-      <div class="slider-item">
-        <h2>Test 3</h2>
-        <div class="slider-item-img">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUAAP+KeNJXAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC" alt="">
-        </div>
+    </div>
+    <div class="slider-item">
+      <h2>Test 3</h2>
+      <div class="slider-item-img">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUAAP+KeNJXAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC" alt="">
       </div>
     </div>
   </div>
@@ -104,47 +105,23 @@
         Свіжі новини
         <span><img src="img/fire.png" width="60"></span>
       </h2>
+      <?
+        $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT 4");
+      ?>
       <div class="news">
-        <div class="news-item">
-          <div class="news-item-img">
-            <img src="http://school34.ucoz.org/76935907_3171766019563936_2389710298731773952_n.jpg" alt="">
+        <? while ($cat = mysqli_fetch_assoc($news))
+        { ?>
+          <div class="news-item">
+            <div class="news-item-img">
+              <img src="<?=$cat['img'] ?>" alt="">
+            </div>
+            <div class="news-item-text">
+              <h3 class="news-item-text__caption"><a href="news/news.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>
+              <p class="news-item-text__excerpt"><?=mb_substr($cat['excerpt'], 0, 80, 'utf-8') . '...' ?></p>
+              <p class="news-item-text__date"><?=$cat['date'] ?></p>
+            </div>
           </div>
-          <div class="news-item-text">
-            <h3 class="news-item-text__caption">Міні-тренінг "Емоційний інтелект"</h3>
-            <p class="news-item-text__excerpt">Сьогодні Президент школи Катерина Ложенко провела міні-тренінг для лідерів учнівського самоврядування...
-            <p class="news-item-text__date">25 грудня 2019</p>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-item-img">
-            <img src="http://school34.ucoz.org/76693269_3163384250402113_3953317662808866816_n.jpg" alt="">
-          </div>
-          <div class="news-item-text">
-            <h3 class="news-item-text__caption">Участь у дитячому фестивалі "Її Величність Гра"</h3>
-            <p class="news-item-text__excerpt">Члени гуртка психології взяли участь у ІІ міському дитячому фестивалі "Її Величність Гра"...</p>
-            <p class="news-item-text__date">25 грудня 2019</p>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-item-img">
-            <img src="http://school34.ucoz.org/zobrazhennja_viber_2019-11-14_09-01-07.jpg" alt="">
-          </div>
-          <div class="news-item-text">
-            <h3 class="news-item-text__caption">Профорієнтаційна зустріч з представниками НУК...</h3>
-            <p class="news-item-text__excerpt">14.11.2019 відбулася профорієнтаційна зустріч представників НУК (факультет морського права)...</p>
-            <p class="news-item-text__date">25 грудня 2019</p>
-          </div>
-        </div>
-        <div class="news-item">
-          <div class="news-item-img">
-            <img src="http://school34.ucoz.org/zobrazhennja_viber_2019-11-15_09-27-29-collage.jpg" alt="">
-          </div>
-          <div class="news-item-text">
-            <h3 class="news-item-text__caption">Семінар щодо перспективного планування курсу...</h3>
-            <p class="news-item-text__excerpt">28.10.2019 в Академії педагогічних наук України відбувся семінар щодо перспективного планування курсу...
-              <p class="news-item-text__date">25 грудня 2019</p>
-          </div>
-        </div>
+        <? } ?>
       </div>
     </div>
   </div>
@@ -184,7 +161,7 @@
     <div class="wrap">
       <div class="footer-about">
         <a href="" class="footer-about__logo"><img src="img/logo-gray.png" alt=""></a>
-        <p class="footer-about__copyright">© 2019 "Миколаївський заклад загальної середньої освіти №34". Всі права захищені</p>
+        <p class="footer-about__copyright">© <?=date(Y) ?> "Миколаївський заклад загальної середньої освіти №34". Всі права захищені</p>
       </div>
       <div class="footer-links">
         <h2 class="footer__caption">Корисні посилання</h2>
