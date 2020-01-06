@@ -37,6 +37,12 @@ body {
     box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
   }
 }
+#disqus_thread {
+  max-width: 620px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .page {
   padding: 50px 10px 0 10px;
 }
@@ -52,6 +58,7 @@ body {
   font-size: 56px;
   padding-bottom: 30px;
   line-height: 56px;
+  position: relative;
 }
 @media (max-width: 1024px) {
   .page__title {
@@ -72,15 +79,22 @@ body {
 .page__title_p {
   padding: 0 10px 30px 10px;
 }
-.page__title span {
+.page__title_fire {
   position: relative;
   top: 7px;
   right: 10px;
 }
 @media (max-width: 768px) {
-  .page__title span img {
+  .page__title_fire img {
     width: 42px;
   }
+}
+.page__title_right {
+  position: absolute;
+  right: 0;
+}
+.page__title_right img {
+  width: 50px;
 }
 
 header {
@@ -133,7 +147,7 @@ header {
     color: #fff;
   }
   .header-list_mobile > .header-list__item a:hover {
-    color: red;
+    color: #fd333b;
   }
 }
 .header-list-dropdown {

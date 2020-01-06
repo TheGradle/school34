@@ -103,7 +103,8 @@
     <div class="wrap">
       <h2 class="page__title">
         Свіжі новини
-        <span><img src="img/fire.png" width="60"></span>
+        <span class="page__title_fire"><img src="img/fire.png"></span>
+        <span class="page__title_right"><a href="news/index.php"><img src="img/right-arrow.svg" alt=""></a></span>
       </h2>
       <?
         $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT 4");

@@ -1,5 +1,11 @@
 .news {
   display: block;
+  &-back {
+    img {
+      width: 50px;
+      transform: rotate(180deg);
+    }
+  }
   &__title {
     font-size: 48px;
     padding-bottom: 30px;

@@ -38,6 +38,12 @@ body {
   }
 }
 
+#disqus_thread {
+  max-width: 620px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .page {
   padding: 50px 10px 0 10px;
   @media (max-width: 965px) {
@@ -50,6 +56,7 @@ body {
     font-size: 56px;
     padding-bottom: 30px;
     line-height: 56px;
+    position: relative;
     @media (max-width: 1024px) {
       font-size: 48px;
     }
@@ -63,7 +70,7 @@ body {
     &_p {
       padding: 0 10px 30px 10px;
     }
-    span {
+    &_fire {
       position: relative;
       top: 7px;
       right: 10px;
@@ -71,6 +78,13 @@ body {
         img {
           width: 42px;
         }
+      }
+    }
+    &_right {
+      position: absolute;
+      right: 0;
+      img {
+        width: 50px;
       }
     }
   }
@@ -117,7 +131,7 @@ header {
             font-size: 32px;
             color: #fff;
             &:hover {
-              color: red;
+              color: #fd333b;
             }
           }
         }

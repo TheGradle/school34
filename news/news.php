@@ -92,6 +92,7 @@
         $this_news = mysqli_fetch_assoc($news);
       ?>
       <div class="news">
+        <div class="news-back"><a href="index.php"><img src="../img/right-arrow.svg" alt=""></a></div>
         <h2 class="news__title">
           <?=$this_news['caption'] ?>
           <span><?=$this_news['date'] ?></span>
@@ -103,6 +104,22 @@
           <p class="news-text__excerpt"><?=$this_news['excerpt'] ?></p>
         </div>
       </div>
+      <div class="page"><div id="disqus_thread"></div></div>
+      <script>
+
+      var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://school34-mk.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
     </div>
   </div>
   <div class="footer">
@@ -136,6 +153,10 @@
       </div>
     </div>
   </div>
+  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="../slick/slick.min.js"></script>
+  <script src="../js/main.min.js"></script>
+  <script id="dsq-count-scr" src="//school34-mk.disqus.com/count.js" async></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>
