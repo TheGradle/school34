@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
   <link rel="stylesheet" href="../css/news.min.css">
+  <link rel="stylesheet" href="../css/animate.min.css">
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
  
@@ -88,7 +89,7 @@
         <div class="news-list">
           <? while ($cat = mysqli_fetch_assoc($news))
           { ?>
-            <div class="news-list-item">
+            <div class="wow news-list-item fadeIn">
               <div class="news-list-item-img">
                 <img src="<?=$cat['img'] ?>" alt="">
               </div>
@@ -161,6 +162,10 @@
     </div>
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="../js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
   <script src="../slick/slick.min.js"></script>
   <script src="../js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>

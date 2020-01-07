@@ -1,10 +1,13 @@
+<?php 
+  require_once "../../includes/config.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>ЗНО - Інформація - Миколаївський заклад загальної середньої освіти №34</title>
+  <title>Звіти - Інформація - Миколаївський заклад загальної середньої освіти №34</title>
   <meta name="description" content="описание не длиннее 155 символов">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
@@ -13,6 +16,7 @@
   <link rel="stylesheet" href="../../css/reset.min.css">
   <link rel="stylesheet" href="../../css/main.min.css">
   <link rel="stylesheet" href="../../css/list.min.css">
+  <link rel="stylesheet" href="../../css/animate.min.css">
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
  
@@ -51,8 +55,8 @@
           <li class="header-list__item header-list-dropdown">
             <a>Інформація</a>
             <ul class="header-list-dropdown-list">
-              <li class="header-list-dropdown-list__item"><a href="../reports/index.html">Звіти</a></li>
-              <li class="header-list-dropdown-list__item header-list__item_active"><a href="index.html">ЗНО</a></li>
+              <li class="header-list-dropdown-list__item header-list__item_active"><a href="index.html">Звіти</a></li>
+              <li class="header-list-dropdown-list__item"><a href="../zno/index.html">ЗНО</a></li>
             </ul>
           </li>
           <li class="header-list__item"><a href="../../documents.html">Документи</a></li>
@@ -63,12 +67,12 @@
     </div>
     <ul class="header-list_mobile">
       <li class="header-list__item"><a href="../../about.html">Про нас</a></li>
-      <li class="header-list__item"><a href="../../news/index.html">Новини</a></li>
+      <li class="header-list__item"><a href="../index.html">Новини</a></li>
       <li class="header-list__item header-list-dropdown">
         <a>Інформація</a>
         <ul class="header-list-dropdown-list">
-          <li class="header-list-dropdown-list__item"><a href="../reports/index.html">Звіти</a></li>
-          <li class="header-list-dropdown-list__item"><a href="index.html">ЗНО</a></li>
+          <li class="header-list-dropdown-list__item"><a href="reports.html">Звіти</a></li>
+          <li class="header-list-dropdown-list__item"><a href="../zno/index.html">ЗНО</a></li>
         </ul>
       </li>
       <li class="header-list__item"><a href="../../documents.html">Документи</a></li>
@@ -77,36 +81,18 @@
   </header>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title">Зовнішнє Незалежне Оцінювання</h2>
+      <h2 class="page__title">Звіти</h2>
+      <?
+        $reports = mysqli_query($connection, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC");
+      ?>
       <div class="list">
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="news.html">ЗНО-2020: до чого готуватися випускникам</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="news.html">ЗНО-2019 Важлива інформація</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="news.html">Пробне ЗНО</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="news.html">Інформаційні листи</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="news.html">Календар ЗНО-2018</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="news.html">Визначено терміни проведення ЗНО-2018</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="news.html">Особливості ЗНО-2018</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
+        <? while ($cat = mysqli_fetch_assoc($reports))
+          { ?>
+          <div class="list-item wow fadeIn">
+            <h3 class="list-item__caption"><a href="<?=$cat['link'] ?>" target="_blank"><?=$cat['caption'] ?></a></h3>
+            <p class="list-item__date"><?=$cat['date'] ?></p>
+          </div>
+        <? } ?>
       </div>
     </div>
   </div>
@@ -142,6 +128,10 @@
     </div>
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="../../js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
   <script src="../../slick/slick.min.js"></script>
   <script src="../../js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>

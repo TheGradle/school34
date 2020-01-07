@@ -1,10 +1,13 @@
+<?php 
+  require_once "../../includes/config.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Звіти - Інформація - Миколаївський заклад загальної середньої освіти №34</title>
+  <title>Міні-тренінг "Емоційний інтелект" - Миколаївський заклад загальної середньої освіти №34</title>
   <meta name="description" content="описание не длиннее 155 символов">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
@@ -12,7 +15,7 @@
   <meta name="google" content="nositelinkssearchbox">
   <link rel="stylesheet" href="../../css/reset.min.css">
   <link rel="stylesheet" href="../../css/main.min.css">
-  <link rel="stylesheet" href="../../css/list.min.css">
+  <link rel="stylesheet" href="../../css/zno.min.css">
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
  
@@ -47,63 +50,89 @@
         </div>
         <ul class="header-list">
           <li class="header-list__item"><a href="../../about.html">Про нас</a></li>
-          <li class="header-list__item"><a href="../../news/index.html">Новини</a></li>
+          <li class="header-list__item"><a href="index.html">Новини</a></li>
           <li class="header-list__item header-list-dropdown">
             <a>Інформація</a>
             <ul class="header-list-dropdown-list">
-              <li class="header-list-dropdown-list__item header-list__item_active"><a href="index.html">Звіти</a></li>
-              <li class="header-list-dropdown-list__item"><a href="../zno/index.html">ЗНО</a></li>
+              <li class="header-list-dropdown-list__item"><a href="../information/reports/index.html">Звіти</a></li>
+              <li class="header-list-dropdown-list__item header-list__item_active"><a href="../information/zno/index.html">ЗНО</a></li>
             </ul>
           </li>
-          <li class="header-list__item"><a href="../../documents.html">Документи</a></li>
-          <li class="header-list__item"><a href="../../gallery.html">Галерея</a></li>
+          <li class="header-list__item"><a href="../documents.html">Документи</a></li>
+          <li class="header-list__item"><a href="../gallery.html">Галерея</a></li>
         </ul>
         <span class="header__toggle">☰</span>
       </nav>
     </div>
     <ul class="header-list_mobile">
-      <li class="header-list__item"><a href="../../about.html">Про нас</a></li>
-      <li class="header-list__item"><a href="../index.html">Новини</a></li>
+      <li class="header-list__item"><a href="../about.html">Про нас</a></li>
+      <li class="header-list__item"><a href="index.html">Новини</a></li>
       <li class="header-list__item header-list-dropdown">
         <a>Інформація</a>
         <ul class="header-list-dropdown-list">
-          <li class="header-list-dropdown-list__item"><a href="reports.html">Звіти</a></li>
-          <li class="header-list-dropdown-list__item"><a href="../zno/index.html">ЗНО</a></li>
+          <li class="header-list-dropdown-list__item"><a href="../information/reports/index.html">Звіти</a></li>
+          <li class="header-list-dropdown-list__item"><a href="../information/zno/index.html">ЗНО</a></li>
         </ul>
       </li>
-      <li class="header-list__item"><a href="../../documents.html">Документи</a></li>
-      <li class="header-list__item"><a href="../../gallery.html">Галерея</a></li>
+      <li class="header-list__item"><a href="../documents.html">Документи</a></li>
+      <li class="header-list__item"><a href="../gallery.html">Галерея</a></li>
     </ul>
   </header>
   <div class="page">
-    <div class="wrap">
-      <h2 class="page__title">Звіти</h2>
-      <div class="list">
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="report.html">Проект "Нова українська школа"</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="report.html">Дефектні акти 2019-2021</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="report.html">Бюджетний запит на придбання на 2019 рік</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="report.html">Поповнення матеріально-технічної бази школи за вересень-жовтень 2018 р.</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="report.html">Поповнення матеріально-технічної бази школи за вересень 2018 р.</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
-        </div>
-        <div class="list-item">
-          <h3 class="list-item__caption"><a href="report.html">Кошторис ЗОШ № 34 на 2017 рік</a></h3>
-          <p class="list-item__date">25 грудня 2019</p>
+    <div class="wrap">  
+      <? 
+        $zno = mysqli_query($connection, "SELECT * FROM `zno` WHERE `id` = " . (int) $_GET['id']);
+
+        if (mysqli_num_rows($zno) <= 0) {
+          ?>
+            <!-- html ошибки -->
+          <?
+        }
+
+        $this_zno = mysqli_fetch_assoc($zno);
+      ?>
+      <div class="zno">
+        <div class="zno-back"><a href="index.php"><img src="../../img/right-arrow.svg" alt=""></a></div>
+        <h2 class="zno__title">
+          <?=$this_zno['caption'] ?>
+          <span><?=$this_zno['date'] ?></span>
+        </h2>
+        <? if (!$this_zno['img'] == null)
+        { ?>
+          <div class="zno-img wow fadeInUp">
+            <img src="../img/<?=$this_zno['img'] ?>" alt="">
+          </div>
+        <? } ?>
+        <div class="zno-text">
+          <p class="zno-text__excerpt"><?=$this_zno['excerpt'] ?></p>
         </div>
       </div>
+      <div class="page">
+        <div class="share">
+          <h3 class="share__title">Поширити</h3>
+          <ul class="share-list">
+            <li><a href="#"><img src="" alt="" title="Telegram"></a></li>
+            <li><a href="#"><img src="" alt="" title="Facebook"></a></li>
+            <li><a href="#"><img src="" alt="" title="VK"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="page"><div id="disqus_thread"></div></div>
+      <script>
+
+      var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://school34-mk.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
     </div>
   </div>
   <div class="footer">
@@ -138,8 +167,9 @@
     </div>
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="../../slick/slick.min.js"></script>
-  <script src="../../js/main.min.js"></script>
+  <script src="../slick/slick.min.js"></script>
+  <script src="../js/main.min.js"></script>
+  <script id="dsq-count-scr" src="//school34-mk.disqus.com/count.js" async></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>

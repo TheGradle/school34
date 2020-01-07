@@ -5,14 +5,28 @@
 html,
 body {
   font-family: e-Ukraine;
-  overflow-x: hidden;
   line-height: 19px;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .wrap {
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
+}
+
+.page {
+  flex: 1 0 auto;
 }
 
 ::selection {
@@ -25,6 +39,18 @@ body {
   color: #fff;
 }
 
+@-webkit-keyframes shadow {
+  from {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
+  }
+  to {
+    -webkit-box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.75);
+  }
+}
 @keyframes shadow {
   from {
     -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
@@ -95,6 +121,9 @@ body {
 }
 .page__title_right img {
   width: 50px;
+  position: relative;
+  top: 7px;
+  right: 10px;
 }
 
 header {
@@ -455,6 +484,7 @@ header {
   background: #151111;
   color: #fff;
   margin-top: 50px;
+  flex-shrink: 0;
 }
 @media (max-width: 965px) {
   .footer {

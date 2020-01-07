@@ -97,7 +97,7 @@
           <?=$this_news['caption'] ?>
           <span><?=$this_news['date'] ?></span>
         </h2>
-        <div class="news-img">
+        <div class="news-img wow fadeInUp">
           <img src="../img/<?=$this_news['img'] ?>" alt="">
         </div>
         <div class="news-text">

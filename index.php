@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/main.min.css">
   <link rel="stylesheet" href="slick/slick.css"/>
   <link rel="stylesheet" href="slick/slick-theme.css"/>
+  <link rel="stylesheet" href="css/animate.min.css">
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
  
@@ -112,7 +113,7 @@
       <div class="news">
         <? while ($cat = mysqli_fetch_assoc($news))
         { ?>
-          <div class="news-item">
+          <div class="news-item wow fadeIn">
             <div class="news-item-img">
               <img src="<?=$cat['img'] ?>" alt="">
             </div>
@@ -131,12 +132,12 @@
       <h2 class="page__title">Про нас</h2>
       <div class="about">
         <div class="about-text">
-          <p class="about-text__name">- Лесіна Тетяна Анатоліївна, директор закладу</p>
-          <p class="about-text__description"><span>Миколаївський заклад загальної середньої освіти № 34</span> – дім, в якому добре всім. Уже з порогу відчувається особлива атмосфера домашнього затишку та тепла: охайні класи, нові меблі, іграшки, багато квітів у кабінетах, на подвір’ї. Тому школу називають «сімейною»: учителі, батьки (переважна частина яких також навчалася в даному закладі) і учні - одна велика родина.</p>
-          <p class="about-text__description"><span>Головна мета освітньої діяльності ЗЗСО № 34</span> – створити оптимальні умови для розвитку духовно багатої, фізично здорової, вільної, творчо мислячої особистості, шляхом створення освітнього середовища, в якому учасники навчально-виховного процесу мали б змогу реалізувати себе як суб’єкти свого життя, діяльності і спілкування.</p>
-          <p class="about-text__description">В навчальному закладі створено умови для розвитку та підтримки творчих здібностей учнів, адже педагоги переконані, що кожна дитина - талановита.</p>
+          <p class="about-text__name wow fadeIn">- Лесіна Тетяна Анатоліївна, директор закладу</p>
+          <p class="about-text__description wow fadeIn"><span>Миколаївський заклад загальної середньої освіти № 34</span> – дім, в якому добре всім. Уже з порогу відчувається особлива атмосфера домашнього затишку та тепла: охайні класи, нові меблі, іграшки, багато квітів у кабінетах, на подвір’ї. Тому школу називають «сімейною»: учителі, батьки (переважна частина яких також навчалася в даному закладі) і учні - одна велика родина.</p>
+          <p class="about-text__description wow fadeIn"><span>Головна мета освітньої діяльності ЗЗСО № 34</span> – створити оптимальні умови для розвитку духовно багатої, фізично здорової, вільної, творчо мислячої особистості, шляхом створення освітнього середовища, в якому учасники навчально-виховного процесу мали б змогу реалізувати себе як суб’єкти свого життя, діяльності і спілкування.</p>
+          <p class="about-text__description wow fadeIn">В навчальному закладі створено умови для розвитку та підтримки творчих здібностей учнів, адже педагоги переконані, що кожна дитина - талановита.</p>
         </div>
-        <div class="about-image">
+        <div class="about-image wow fadeIn">
           <svg width="300" height="451" class="about-image__svg">
             <rect width="300" height="451" x="0" y="0" fill="#fd333b"></rect>
           </svg>
@@ -148,7 +149,7 @@
   <div class="page page_nop">
     <h2 class="wrap page__title page__title_p">Контакти</h2>
     <div class="contacts">
-      <ul class="contacts-list wrap">
+      <ul class="contacts-list wrap wow fadeIn">
         <li class="contacts-list__item">(0512) 47-89-25 (директор, секретар)<br>(0512) 47-89-25 (заступники директора з навчально-виховної роботи)<br>(0512) 46-73-31 (заступник директора з виховної роботи)</li>
         <li class="contacts-list__item">54017  м. Миколаїв, вул. Лягіна, 28</li>
         <li class="contacts-list__item">adamchukFront@gmail.com</li>
@@ -191,6 +192,10 @@
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="slick/slick.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
   <script src="js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
