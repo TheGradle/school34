@@ -84,7 +84,7 @@
       <h2 class="page__title">Новини</h2>
       <div class="news">
         <?
-          $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC");
+          $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT 0, 20");
         ?>
         <div class="news-list">
           <? while ($cat = mysqli_fetch_assoc($news))

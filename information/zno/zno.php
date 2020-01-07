@@ -112,7 +112,6 @@
           <h3 class="share__title">Поширити</h3>
           <ul class="share-list">
             <li><a href="#"><img src="" alt="" title="Telegram"></a></li>
-            <li><a href="#"><img src="" alt="" title="Facebook"></a></li>
             <li><a href="#"><img src="" alt="" title="VK"></a></li>
           </ul>
         </div>
