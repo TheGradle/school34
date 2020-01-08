@@ -105,15 +105,13 @@
         <?php } ?>
         <div class="zno-text">
           <p class="zno-text__excerpt"><?=$this_zno['excerpt'] ?></p>
-        </div>
-      </div>
-      <div class="page">
-        <div class="share">
-          <h3 class="share__title">Поширити</h3>
-          <ul class="share-list">
-            <li><a href="#"><img src="" alt="" title="Telegram"></a></li>
-            <li><a href="#"><img src="" alt="" title="VK"></a></li>
-          </ul>
+          <div class="share">
+            <h3 class="share__title">Поширити:</h3>
+            <ul class="share-list">
+              <li class="share-list-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+              <li class="share-list-item"><a href="#"><i class="fab fa-vk"></i></li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="page"><div id="disqus_thread"></div></div>

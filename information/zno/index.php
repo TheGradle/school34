@@ -1,5 +1,6 @@
 <?php 
   require_once "../../includes/config.php";
+  require_once "../../includes/pagination.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -83,16 +84,16 @@
     <div class="wrap">
       <h2 class="page__title">Зовнішнє Незалежне Оцінювання</h2>
       <?php
-        $zno = mysqli_query($connection, "SELECT * FROM `zno` ORDER BY `zno`.`id` DESC");
+        $result = mysql_query("SELECT * FROM `zno` ORDER BY `zno`.`id` DESC LIMIT $start, $count", $db);
+        $pagination = mysql_fetch_array($result);
       ?>
       <div class="list">
-        <?php while ($cat = mysqli_fetch_assoc($zno))
-          { ?>
+        <?php do { ?>
           <div class="list-item wow fadeIn">
-            <h3 class="list-item__caption"><a href="zno.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>
-            <p class="list-item__date"><?=$cat['date'] ?></p>
+            <h3 class="list-item__caption"><a href="zno.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>
+            <p class="list-item__date"><?=$pagination['date'] ?></p>
           </div>
-        <?php } ?>
+        <?php } while ($pagination = mysql_fetch_array($result)); ?>
       </div>
     </div>
   </div>

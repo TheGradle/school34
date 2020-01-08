@@ -1,27 +1,6 @@
 <?php 
   require_once "../includes/config.php";
-
-  $db = mysql_connect("localhost","mysql","mysql");
-  mysql_select_db("school34",$db);
-  mysql_query("SET NAMES 'utf8'",$db);
-
-  if (isset($_GET['page'])){
-    $page = $_GET['page'];
-  } else {
-    $page = 1;
-  }
-
-  $kol = 20;
-  $art = ($page * $kol) - $kol;
-
-  $res = mysql_query("SELECT COUNT(*) FROM `news`");
-  $row = mysql_fetch_row($res);
-  $total = $row[0];
-
-  $str_pag = ceil($total / $kol);
-
-  $result = mysql_query("SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $art, $kol",$db);
-  $myrow = mysql_fetch_array($result);
+  require_once "../includes/pagination.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -106,23 +85,26 @@
       <h2 class="page__title">Новини</h2>
       <div class="news">
         <div class="news-list">
-          <?php do { ?>
+          <?php 
+            $result = mysql_query("SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count", $db);
+            $pagination = mysql_fetch_array($result);
+            do { ?>
             <div class="wow news-list-item fadeIn">
               <div class="news-list-item-img">
-                <img src="<?=$myrow['img'] ?>" alt="">
+                <img src="../img/news/<?=$pagination['img'] ?>" alt="">
               </div>
               <div class="news-list-item-text">
-                <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$myrow['id'] ?>"><?=$myrow['caption'] ?></a></h3>
-                <p class="news-list-item-text__excerpt"><?=$myrow['excerpt'] ?></p>
-                <p class="news-list-item-text__date"><?=$myrow['date'] ?></p>
+                <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>
+                <p class="news-list-item-text__excerpt"><?=$pagination['excerpt'] ?></p>
+                <p class="news-list-item-text__date"><?=$pagination['date'] ?></p>
               </div>
             </div>
-          <?php } while ($myrow = mysql_fetch_array($result)); ?>
+          <?php } while ($pagination = mysql_fetch_array($result)); ?>
         </div>
         <div class="news-help">
           <div class="news-help-search">
             <form>
-              <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input">
+              <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input" placeholder="Пошук">
             </form>
           </div>
           <div class="news-help-subscribe">
@@ -144,7 +126,7 @@
         <div class="news-help-subscribe_mobile news-help-subscribe">
           <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
           <form>
-            <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input">
+            <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input" placeholder="Пошук">
             <button type="sumbit" class="news-help-subscribe__button">Підписатись</button>
           </form>
           <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>

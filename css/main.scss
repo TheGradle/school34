@@ -30,6 +30,24 @@ body {
   flex: 1 0 auto;
 }
 
+.share {
+  display: flex;
+  &__title {
+    margin-right: 10px;
+    align-items: center;
+  }
+  &-list {
+    display: flex;
+    &-item {
+      margin-right: 10px;
+      a i {
+        color: #151111;
+        font-size: 25px;
+      }
+    }
+  }
+}
+
 ::selection {
   background: #fd333b;
   color: #fff;

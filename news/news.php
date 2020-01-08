@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
   <link rel="stylesheet" href="../css/current-news.min.css">
+  <link rel="stylesheet" href="../css/animate.min.css">
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
  
@@ -97,11 +98,18 @@
           <?=$this_news['caption'] ?>
           <span><?=$this_news['date'] ?></span>
         </h2>
-        <div class="news-img wow fadeInUp">
+        <div class="news-img wow fadeInUp" style="background: #cecece;">
           <img src="../img/<?=$this_news['img'] ?>" alt="">
         </div>
         <div class="news-text">
           <p class="news-text__excerpt"><?=$this_news['excerpt'] ?></p>
+          <div class="share">
+            <h3 class="share__title">Поширити:</h3>
+            <ul class="share-list">
+              <li class="share-list-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+              <li class="share-list-item"><a href="#"><i class="fab fa-vk"></i></li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="page"><div id="disqus_thread"></div></div>
@@ -154,6 +162,10 @@
     </div>
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="../js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
   <script src="../slick/slick.min.js"></script>
   <script src="../js/main.min.js"></script>
   <script id="dsq-count-scr" src="//school34-mk.disqus.com/count.js" async></script>
