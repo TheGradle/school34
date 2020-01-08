@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Звіти - Інформація - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="описание не длиннее 155 символов">
+  <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
@@ -82,17 +82,17 @@
   <div class="page">
     <div class="wrap">
       <h2 class="page__title">Звіти</h2>
-      <?
+      <?php
         $reports = mysqli_query($connection, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC");
       ?>
       <div class="list">
-        <? while ($cat = mysqli_fetch_assoc($reports))
+        <?php while ($cat = mysqli_fetch_assoc($reports))
           { ?>
           <div class="list-item wow fadeIn">
             <h3 class="list-item__caption"><a href="<?=$cat['link'] ?>" target="_blank"><?=$cat['caption'] ?></a></h3>
             <p class="list-item__date"><?=$cat['date'] ?></p>
           </div>
-        <? } ?>
+        <?php } ?>
       </div>
     </div>
   </div>

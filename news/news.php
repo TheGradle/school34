@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Міні-тренінг "Емоційний інтелект" - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="описание не длиннее 155 символов">
+  <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
@@ -80,13 +80,13 @@
   </header>
   <div class="page">
     <div class="wrap">  
-      <? 
+      <?php
         $news = mysqli_query($connection, "SELECT * FROM `news` WHERE `id` = " . (int) $_GET['id']);
 
         if (mysqli_num_rows($news) <= 0) {
           ?>
             <!-- html ошибки -->
-          <?
+          <?php
         }
 
         $this_news = mysqli_fetch_assoc($news);

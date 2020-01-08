@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Головна - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="описание не длиннее 155 символов">
+  <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
@@ -52,12 +52,12 @@
         </div>
         <ul class="header-list">
           <li class="header-list__item"><a href="about.html">Про нас</a></li>
-          <li class="header-list__item"><a href="news/index.html">Новини</a></li>
+          <li class="header-list__item"><a href="news/index.php">Новини</a></li>
           <li class="header-list__item header-list-dropdown">
             <a>Інформація</a>
             <ul class="header-list-dropdown-list">
-              <li class="header-list-dropdown-list__item"><a href="information/reports/index.html">Звіти</a></li>
-              <li class="header-list-dropdown-list__item"><a href="information/zno/index.html">ЗНО</a></li>
+              <li class="header-list-dropdown-list__item"><a href="information/reports/index.php">Звіти</a></li>
+              <li class="header-list-dropdown-list__item"><a href="information/zno/index.php">ЗНО</a></li>
             </ul>
           </li>
           <li class="header-list__item"><a href="documents.html">Документи</a></li>
@@ -68,7 +68,7 @@
     </div>
     <ul class="header-list_mobile">
       <li class="header-list__item"><a href="about.html">Про нас</a></li>
-      <li class="header-list__item"><a href="news/index.html">Новини</a></li>
+      <li class="header-list__item"><a href="news/index.php">Новини</a></li>
       <li class="header-list__item header-list-dropdown">
         <a>Інформація</a>
         <ul class="header-list-dropdown-list">
@@ -107,11 +107,11 @@
         <span class="page__title_fire"><img src="img/fire.png"></span>
         <span class="page__title_right"><a href="news/index.php"><img src="img/right-arrow.svg" alt=""></a></span>
       </h2>
-      <?
+      <?php
         $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT 4");
       ?>
       <div class="news">
-        <? while ($cat = mysqli_fetch_assoc($news))
+        <?php while ($cat = mysqli_fetch_assoc($news))
         { ?>
           <div class="news-item wow fadeIn">
             <div class="news-item-img">
@@ -123,7 +123,7 @@
               <p class="news-item-text__date"><?=$cat['date'] ?></p>
             </div>
           </div>
-        <? } ?>
+        <?php } ?>
       </div>
     </div>
   </div>

@@ -1,5 +1,27 @@
 <?php 
   require_once "../includes/config.php";
+
+  $db = mysql_connect("localhost","mysql","mysql");
+  mysql_select_db("school34",$db);
+  mysql_query("SET NAMES 'utf8'",$db);
+
+  if (isset($_GET['page'])){
+    $page = $_GET['page'];
+  } else {
+    $page = 1;
+  }
+
+  $kol = 20;
+  $art = ($page * $kol) - $kol;
+
+  $res = mysql_query("SELECT COUNT(*) FROM `news`");
+  $row = mysql_fetch_row($res);
+  $total = $row[0];
+
+  $str_pag = ceil($total / $kol);
+
+  $result = mysql_query("SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $art, $kol",$db);
+  $myrow = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Новини - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="описание не длиннее 155 символов">
+  <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
@@ -83,23 +105,19 @@
     <div class="wrap">
       <h2 class="page__title">Новини</h2>
       <div class="news">
-        <?
-          $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT 0, 20");
-        ?>
         <div class="news-list">
-          <? while ($cat = mysqli_fetch_assoc($news))
-          { ?>
+          <?php do { ?>
             <div class="wow news-list-item fadeIn">
               <div class="news-list-item-img">
-                <img src="<?=$cat['img'] ?>" alt="">
+                <img src="<?=$myrow['img'] ?>" alt="">
               </div>
               <div class="news-list-item-text">
-                <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>
-                <p class="news-list-item-text__excerpt"><?=$cat['excerpt'] ?></p>
-                <p class="news-list-item-text__date"><?=$cat['date'] ?></p>
+                <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$myrow['id'] ?>"><?=$myrow['caption'] ?></a></h3>
+                <p class="news-list-item-text__excerpt"><?=$myrow['excerpt'] ?></p>
+                <p class="news-list-item-text__date"><?=$myrow['date'] ?></p>
               </div>
             </div>
-          <? } ?>
+          <?php } while ($myrow = mysql_fetch_array($result)); ?>
         </div>
         <div class="news-help">
           <div class="news-help-search">
@@ -116,6 +134,13 @@
             <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
           </div>
         </div>
+        <div class="news-pagination news-pagination_mobile">
+          <?php 
+            for ($i = 1; $i <= $str_pag; $i++){
+              echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+            }
+          ?>
+        </div>
         <div class="news-help-subscribe_mobile news-help-subscribe">
           <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
           <form>
@@ -124,9 +149,22 @@
           </form>
           <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
         </div>
-        <div class="news-pagination">
-          
-        </div>
+      </div>
+      <div class="news-pagination">
+        <?php 
+          for ($i = 1; $i <= $str_pag; $i++){
+            /*if ($str_pag >= 5) {
+              if ($i >= 3 && $i < $str_pag) {
+                echo "<div class='news-pagination__item'>...</div>";
+                continue;
+              }
+              echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+            } else {
+              echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+            }*/
+            echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+          }
+        ?>
       </div>
     </div>
   </div>

@@ -366,6 +366,26 @@ header {
       }
     }
   }
+
+  &-pagination {
+    display: flex;
+    justify-content: center;
+    &__item {
+      margin-right: 20px;
+      font-size: 22px;
+      a {
+        color: #151111;
+        text-decoration: none;
+        transition: color .1s linear;
+        &:hover {
+          color: #fd333b;
+        }
+      }
+    }
+    &_mobile {
+      display: none;
+    }
+  }
 }
 
 .about {

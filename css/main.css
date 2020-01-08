@@ -390,6 +390,25 @@ header {
   font-size: 14px;
   color: #959595;
 }
+.news-pagination {
+  display: flex;
+  justify-content: center;
+}
+.news-pagination__item {
+  margin-right: 20px;
+  font-size: 22px;
+}
+.news-pagination__item a {
+  color: #151111;
+  text-decoration: none;
+  transition: color .1s linear;
+}
+.news-pagination__item a:hover {
+  color: #fd333b;
+}
+.news-pagination_mobile {
+  display: none;
+}
 
 .about {
   display: flex;

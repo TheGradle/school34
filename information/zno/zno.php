@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Міні-тренінг "Емоційний інтелект" - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="описание не длиннее 155 символов">
+  <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
@@ -80,13 +80,13 @@
   </header>
   <div class="page">
     <div class="wrap">  
-      <? 
+      <?php
         $zno = mysqli_query($connection, "SELECT * FROM `zno` WHERE `id` = " . (int) $_GET['id']);
 
         if (mysqli_num_rows($zno) <= 0) {
           ?>
             <!-- html ошибки -->
-          <?
+          <?php
         }
 
         $this_zno = mysqli_fetch_assoc($zno);
@@ -97,12 +97,12 @@
           <?=$this_zno['caption'] ?>
           <span><?=$this_zno['date'] ?></span>
         </h2>
-        <? if (!$this_zno['img'] == null)
+        <?php if (!$this_zno['img'] == null)
         { ?>
           <div class="zno-img wow fadeInUp">
             <img src="../img/<?=$this_zno['img'] ?>" alt="">
           </div>
-        <? } ?>
+        <?php } ?>
         <div class="zno-text">
           <p class="zno-text__excerpt"><?=$this_zno['excerpt'] ?></p>
         </div>
