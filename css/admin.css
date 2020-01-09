@@ -1,0 +1,28 @@
+.page {
+  padding-top: 20px;
+}
+
+.admin {
+  margin-top: 25px;
+}
+
+.nav-link {
+  color: #151111;
+}
+.nav-link:hover {
+  color: #fd333b;
+}
+
+.nav-link.active {
+  color: #151111 !important;
+}
+
+.btn-primary {
+  background-color: #151111 !important;
+  border: none !important;
+}
+.btn-primary:hover {
+  background-color: #fd333b !important;
+}
+
+/*# sourceMappingURL=admin.css.map */
