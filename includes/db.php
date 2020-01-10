@@ -1,10 +1,10 @@
 <?php
 
 $connection = mysqli_connect(
-  $config['server'],
-  $config['username'],
-  $config['password'],
-  $config['name']
+  HOST,
+  USER,
+  PASS,
+  DB
 );
 
 if (!$connection) {

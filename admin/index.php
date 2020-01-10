@@ -1,13 +1,15 @@
 <?php 
   require_once "../includes/config.php";
 
+
+  /* addNews */
+
   $errors = [];
 
-  $caption = htmlentities(mysqli_real_escape_string($connection, $_POST['caption']));
-  $subtitle = htmlentities(mysqli_real_escape_string($connection, $_POST['subtitle']));
-  $excerpt = htmlentities(mysqli_real_escape_string($connection, $_POST['excerpt']));
-
-  $img = $_POST['img'];
+  $caption = $_POST['caption'];
+  $subtitle = $_POST['subtitle'];
+  $excerpt = $_POST['excerpt'];
+  
   $img_name = false;
   $img = $_FILES['img'];
 
@@ -31,21 +33,103 @@
         'image/png' => '.png'
       ];
       if (isset($expansions[$img['type']])) {
-        $img_name = IMG_DIR . md5_file($img['tmp_name']) . $expansions[$img['type']];
+        $img_name = md5_file($img['tmp_name']) . $expansions[$img['type']];
       } else {
         $errors[] = 'Неверное разширение изображения!';
       }
     }
 
     if(empty($errors)) {
-      $request = mysqli_query($connection, "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$img_name')");
+      $request = addNews($caption, $subtitle, $excerpt, $img_name);
       if ($request) {
         if ($img_name) {
-          move_uploaded_file($img['tmp_name'], 'img/news/' . $img_name);
+          move_uploaded_file($img['tmp_name'], '../img/news/' . $img_name);
         }
       }
     } else {
       echo array_shift($errors);
+    }
+  }
+
+  
+  /* editNews */
+
+  $errors_edit = [];
+
+  $id_edit = $_POST['id_edit'];
+  $caption_edit = $_POST['caption_edit'];
+  $subtitle_edit = $_POST['subtitle_edit'];
+  $excerpt_edit = $_POST['excerpt_edit'];
+  
+  $img_name_edit = false;
+  $img_edit = $_FILES['img_edit'];
+
+  //echo "<script>alert('$img_edit')</script>";
+  //var_dump($img_edit);
+
+  if(isset($_POST['submit_edit'])){
+    if(trim($id_edit) == '') {
+      $errors_edit[] = 'Введіть id!';
+    }
+
+    if(trim($caption_edit) == '') {
+      $errors_edit[] = 'Введіть назву новини!';
+    }
+
+    if(trim($subtitle_edit) == '') {
+      $errors_edit[] = 'Опишіть коротку про новину!';
+    }
+
+    if(trim($excerpt_edit) == '') {
+      $errors_edit[] = 'Напишіть текст новини!';
+    }
+
+    if ($img_edit && !$img_edit['error']) {
+      $expansions = [
+        'image/jpeg' => '.jpg',
+        'image/gif' => '.gif',
+        'image/png' => '.png'
+      ];
+      if (isset($expansions[$img_edit['type']])) {
+        $img_name_edit = md5_file($img_edit['tmp_name']) . $expansions[$img_edit['type']];
+      } else {
+        $errors_edit[] = 'Неверное разширение изображения!';
+      }
+    }
+
+    if(empty($errors_edit)) {
+      $request_edit = editNews($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $img_name_edit);
+      if ($request_edit) {
+        echo "<script>alert('NESYKA')</script>";
+      } else {
+        echo "<script>alert('SYKA')</script>";
+      }
+      if ($request_edit) {
+        if ($img_name_edit) {
+          move_uploaded_file($img_edit['tmp_name'], '../img/news/' . $img_name_edit);
+        }
+      }
+    } else {
+      echo array_shift($errors_edit);
+    }
+  }
+
+  
+  /* delNews */
+
+  $errors_del = [];
+
+  $id_del = $_POST['id_del'];
+
+  if(isset($_POST['submit_del'])){
+    if(trim($id_del) == '') {
+      $errors_edit[] = 'Введіть id!';
+    }
+
+    if(empty($errors_del)) {
+      $request_del = delNews($id_del);
+    } else {
+      echo array_shift($errors_del);
     }
   }
 ?>
@@ -106,7 +190,7 @@
     </ul>
     <div class="admin">
       <h3>Додати новину</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="caption">Назва новини</label>
           <input type="text" class="form-control" id="caption" name="caption">
@@ -128,41 +212,41 @@
     </div>
     <div class="admin">
       <h3>Редагувати новину</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="id">ID новини, яку треба редагувати</label>
-          <input type="text" class="form-control" id="id" name="id">
+          <input type="text" class="form-control" id="id" name="id_edit">
         </div>
         <div class="form-group">
           <label for="caption">Назва новини</label>
-          <input type="text" class="form-control" id="caption" name="caption">
+          <input type="text" class="form-control" id="caption" name="caption_edit">
         </div>
         <div class="form-group">
           <label for="subtitle">Коротко про новину</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle">
+          <input type="text" class="form-control" id="subtitle" name="subtitle_edit">
         </div>
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
-          <textarea class="form-control" id="excerpt" rows="3" name="excerpt"></textarea>
+          <textarea class="form-control" id="excerpt" rows="3" name="excerpt_edit"></textarea>
         </div>
         <div class="form-group">
           <label for="img">Завантажте зображення</label>
-          <input type="file" class="form-control-file" id="img">
+          <input type="file" class="form-control-file" id="img" name="img_edit">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Редагувати</button>
+          <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
         </div>
       </form>
     </div>
     <div class="admin">
       <h3>Видалити новину</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="id">ID новини, яку треба видалити</label>
-          <input type="text" class="form-control" id="id" name="id">
+          <input type="text" class="form-control" id="id" name="id_del">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Видалити</button>
+          <button type="submit" class="btn btn-primary btn-lg" name="submit_del">Видалити</button>
         </div>
       </form>
     </div>
