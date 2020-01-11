@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title><?=$this_zno['caption'] ?> - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
+  <meta name="description" content="<?=$this_zno['subtitle'] ?>">
   <meta name="keywords" content="мета-теги, шаблон, html, css">
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
