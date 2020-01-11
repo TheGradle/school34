@@ -64,13 +64,8 @@
     <ul class="header-list_mobile">
       <li class="header-list__item"><a href="about.php">Про нас</a></li>
       <li class="header-list__item"><a href="news/index.php">Новини</a></li>
-      <li class="header-list__item header-list-dropdown">
-        <a>Інформація</a>
-        <ul class="header-list-dropdown-list">
-          <li class="header-list-dropdown-list__item"><a href="information/reports/index.php">Звіти</a></li>
-          <li class="header-list-dropdown-list__item"><a href="information/zno/index.php">ЗНО</a></li>
-        </ul>
-      </li>
+      <li class="header-list__item"><a href="information/reports/index.php">Звіти</a></li>
+      <li class="header-list__item"><a href="information/zno/index.php">ЗНО</a></li>
       <li class="header-list__item"><a href="documents.php">Документи</a></li>
       <li class="header-list__item"><a href="gallery.php">Галерея</a></li>
     </ul>
