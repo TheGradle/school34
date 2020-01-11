@@ -1,8 +1,8 @@
 <?php
 
-$db = mysql_connect("localhost","mysql","mysql");
-mysql_select_db("school34",$db);
-mysql_query("SET NAMES 'utf8'",$db);
+$db = mysqli_connect("localhost","mysql","mysql");
+mysqli_select_db($db, "school34");
+mysqli_query($db, "SET NAMES 'utf8'");
 
 if (isset($_GET['page'])){
   $page = $_GET['page'];
@@ -13,8 +13,8 @@ if (isset($_GET['page'])){
 $count = 20;
 $start = ($page * $count) - $count;
 
-$res = mysql_query("SELECT COUNT(*) FROM `news`");
-$row = mysql_fetch_row($res);
+$res = mysqli_query($db, "SELECT COUNT(*) FROM `news`");
+$row = mysqli_fetch_row($res);
 $total = $row[0];
 
 $str_pag = ceil($total / $count);

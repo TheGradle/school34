@@ -84,8 +84,8 @@
     <div class="wrap">
       <h2 class="page__title">Зовнішнє Незалежне Оцінювання</h2>
       <?php
-        $result = mysql_query("SELECT * FROM `zno` ORDER BY `zno`.`id` DESC LIMIT $start, $count", $db);
-        $pagination = mysql_fetch_array($result);
+        $result = mysqli_query($db, "SELECT * FROM `zno` ORDER BY `zno`.`id` DESC LIMIT $start, $count");
+        $pagination = mysqli_fetch_array($result);
       ?>
       <div class="list">
         <?php do { ?>
@@ -93,7 +93,7 @@
             <h3 class="list-item__caption"><a href="zno.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>
             <p class="list-item__date"><?=$pagination['date'] ?></p>
           </div>
-        <?php } while ($pagination = mysql_fetch_array($result)); ?>
+        <?php } while ($pagination = mysqli_fetch_array($result)); ?>
       </div>
     </div>
   </div>

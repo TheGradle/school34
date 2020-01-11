@@ -84,8 +84,8 @@
     <div class="wrap">
       <h2 class="page__title">Звіти</h2>
       <?php
-        $result = mysql_query("SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count", $db);
-        $pagination = mysql_fetch_array($result);
+        $result = mysqli_query($db, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count" );
+        $pagination = mysqli_fetch_array($result);
       ?>
       <div class="list">
         <?php do { ?>
@@ -93,7 +93,7 @@
             <h3 class="list-item__caption"><a href="<?=$pagination['link'] ?>" target="_blank"><?=$pagination['caption'] ?></a></h3>
             <p class="list-item__date"><?=$pagination['date'] ?></p>
           </div>
-        <?php } while ($pagination = mysql_fetch_array($result)); ?>
+        <?php } while ($pagination = mysqli_fetch_array($result)); ?>
       </div>
     </div>
   </div>

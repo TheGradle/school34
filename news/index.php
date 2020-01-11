@@ -86,8 +86,8 @@
       <div class="news">
         <div class="news-list">
           <?php 
-            $result = mysql_query("SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count", $db);
-            $pagination = mysql_fetch_array($result);
+            $result = mysqli_query($db, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
+            $pagination = mysqli_fetch_array($result);
             do { ?>
             <div class="wow news-list-item fadeIn">
               <div class="news-list-item-img">
@@ -99,7 +99,7 @@
                 <p class="news-list-item-text__date"><?=$pagination['date'] ?></p>
               </div>
             </div>
-          <?php } while ($pagination = mysql_fetch_array($result)); ?>
+          <?php } while ($pagination = mysqli_fetch_array($result)); ?>
         </div>
         <div class="news-help">
           <div class="news-help-search">
