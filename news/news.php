@@ -47,16 +47,16 @@
     <div class="wrap">
       <nav class="header">
         <div class="header-logo">
-          <a href="../index.html"><img src="../img/logo.png" alt=""></a>
+          <a href="../index.php"><img src="../img/logo.png" alt=""></a>
         </div>
         <ul class="header-list">
           <li class="header-list__item"><a href="../about.html">Про нас</a></li>
-          <li class="header-list__item header-list__item_active"><a href="index.html">Новини</a></li>
+          <li class="header-list__item header-list__item_active"><a href="index.php">Новини</a></li>
           <li class="header-list__item header-list-dropdown">
             <a>Інформація</a>
             <ul class="header-list-dropdown-list">
-              <li class="header-list-dropdown-list__item"><a href="../information/reports/index.html">Звіти</a></li>
-              <li class="header-list-dropdown-list__item"><a href="../information/zno/index.html">ЗНО</a></li>
+              <li class="header-list-dropdown-list__item"><a href="../information/reports/index.php">Звіти</a></li>
+              <li class="header-list-dropdown-list__item"><a href="../information/zno/index.php">ЗНО</a></li>
             </ul>
           </li>
           <li class="header-list__item"><a href="../documents.html">Документи</a></li>
@@ -67,12 +67,12 @@
     </div>
     <ul class="header-list_mobile">
       <li class="header-list__item"><a href="../about.html">Про нас</a></li>
-      <li class="header-list__item"><a href="index.html">Новини</a></li>
+      <li class="header-list__item"><a href="index.php">Новини</a></li>
       <li class="header-list__item header-list-dropdown">
         <a>Інформація</a>
         <ul class="header-list-dropdown-list">
-          <li class="header-list-dropdown-list__item"><a href="../information/reports/index.html">Звіти</a></li>
-          <li class="header-list-dropdown-list__item"><a href="../information/zno/index.html">ЗНО</a></li>
+          <li class="header-list-dropdown-list__item"><a href="../information/reports/index.php">Звіти</a></li>
+          <li class="header-list-dropdown-list__item"><a href="../information/zno/index.php">ЗНО</a></li>
         </ul>
       </li>
       <li class="header-list__item"><a href="../documents.html">Документи</a></li>
@@ -139,9 +139,9 @@
       <div class="footer-links">
         <h2 class="footer__caption">Корисні посилання</h2>
         <ul class="footer-links-list">
+          <li class="footer-links-list__item"><a href="../index.php">Головна</a></li>
           <li class="footer-links-list__item"><a href="../about.html">Про нас</a></li>
-          <li class="footer-links-list__item"><a href="index.html">Новини</a></li>
-          <li class="footer-links-list__item"><a href="#">Інформація</a></li>
+          <li class="footer-links-list__item"><a href="index.php">Новини</a></li>
           <li class="footer-links-list__item"><a href="../documents.html">Документи</a></li>
           <li class="footer-links-list__item"><a href="../gallery.html">Галерея</a></li>
         </ul>
