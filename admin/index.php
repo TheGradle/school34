@@ -64,9 +64,6 @@
   $img_name_edit = false;
   $img_edit = $_FILES['img_edit'];
 
-  //echo "<script>alert('$img_edit')</script>";
-  //var_dump($img_edit);
-
   if(isset($_POST['submit_edit'])){
     if(trim($id_edit) == '') {
       $errors_edit[] = 'Введіть id!';
@@ -99,11 +96,6 @@
 
     if(empty($errors_edit)) {
       $request_edit = editNews($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $img_name_edit);
-      if ($request_edit) {
-        echo "<script>alert('NESYKA')</script>";
-      } else {
-        echo "<script>alert('SYKA')</script>";
-      }
       if ($request_edit) {
         if ($img_name_edit) {
           move_uploaded_file($img_edit['tmp_name'], '../img/news/' . $img_name_edit);

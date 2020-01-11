@@ -1,11 +1,17 @@
 <?php 
   require_once "../includes/config.php";
 
+
+  /* addZno */
+
   $errors = [];
 
-  $caption = htmlentities(mysqli_real_escape_string($connection, $_POST['caption']));
-  $subtitle = htmlentities(mysqli_real_escape_string($connection, $_POST['subtitle']));
-  $excerpt = htmlentities(mysqli_real_escape_string($connection, $_POST['excerpt']));
+  $caption = $_POST['caption'];
+  $subtitle = $_POST['subtitle'];
+  $excerpt = $_POST['excerpt'];
+  
+  $img_name = false;
+  $img = $_FILES['img'];
 
   if(isset($_POST['submit'])){
     if(trim($caption) == '') {
@@ -17,13 +23,105 @@
     }
 
     if(trim($excerpt) == '') {
-      $errors[] = 'Напишіть текст ноивини!';
+      $errors[] = 'Напишіть текст новини!';
+    }
+
+    if ($img && !$img['error']) {
+      $expansions = [
+        'image/jpeg' => '.jpg',
+        'image/gif' => '.gif',
+        'image/png' => '.png'
+      ];
+      if (isset($expansions[$img['type']])) {
+        $img_name = md5_file($img['tmp_name']) . $expansions[$img['type']];
+      } else {
+        $errors[] = 'Неверное разширение изображения!';
+      }
     }
 
     if(empty($errors)) {
-      $request = mysqli_query($connection, "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`) VALUES ('$caption', '$subtitle', '$excerpt')");
+      $request = addZno($caption, $subtitle, $excerpt, $img_name);
+      if ($request) {
+        if ($img_name) {
+          move_uploaded_file($img['tmp_name'], '../img/zno/' . $img_name);
+        }
+      }
     } else {
       echo array_shift($errors);
+    }
+  }
+
+  
+  /* editZno */
+
+  $errors_edit = [];
+
+  $id_edit = $_POST['id_edit'];
+  $caption_edit = $_POST['caption_edit'];
+  $subtitle_edit = $_POST['subtitle_edit'];
+  $excerpt_edit = $_POST['excerpt_edit'];
+  
+  $img_name_edit = false;
+  $img_edit = $_FILES['img_edit'];
+
+  if(isset($_POST['submit_edit'])){
+    if(trim($id_edit) == '') {
+      $errors_edit[] = 'Введіть id!';
+    }
+
+    if(trim($caption_edit) == '') {
+      $errors_edit[] = 'Введіть назву новини!';
+    }
+
+    if(trim($subtitle_edit) == '') {
+      $errors_edit[] = 'Опишіть коротку про новину!';
+    }
+
+    if(trim($excerpt_edit) == '') {
+      $errors_edit[] = 'Напишіть текст новини!';
+    }
+
+    if ($img_edit && !$img_edit['error']) {
+      $expansions = [
+        'image/jpeg' => '.jpg',
+        'image/gif' => '.gif',
+        'image/png' => '.png'
+      ];
+      if (isset($expansions[$img_edit['type']])) {
+        $img_name_edit = md5_file($img_edit['tmp_name']) . $expansions[$img_edit['type']];
+      } else {
+        $errors_edit[] = 'Неверное разширение изображения!';
+      }
+    }
+
+    if(empty($errors_edit)) {
+      $request_edit = editZno($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $img_name_edit);
+      if ($request_edit) {
+        if ($img_name_edit) {
+          move_uploaded_file($img_edit['tmp_name'], '../img/zno/' . $img_name_edit);
+        }
+      }
+    } else {
+      echo array_shift($errors_edit);
+    }
+  }
+
+  
+  /* delZno */
+
+  $errors_del = [];
+
+  $id_del = $_POST['id_del'];
+
+  if(isset($_POST['submit_del'])){
+    if(trim($id_del) == '') {
+      $errors_edit[] = 'Введіть id!';
+    }
+
+    if(empty($errors_del)) {
+      $request_del = delZno($id_del);
+    } else {
+      echo array_shift($errors_del);
     }
   }
 ?>
@@ -84,7 +182,7 @@
     </ul>
     <div class="admin">
       <h3>Додати статтю ЗНО</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="caption">Назва статті</label>
           <input type="text" class="form-control" id="caption" name="caption">
@@ -99,48 +197,48 @@
         </div>
         <div class="form-group">
           <label for="img">Завантажте зображення</label>
-          <input type="file" class="form-control-file" id="img">
+          <input type="file" class="form-control-file" id="img" name="img">
         </div>
         <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
       </form>
     </div>
     <div class="admin">
       <h3>Редагувати статтю ЗНО</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="id">ID статті, якю треба редагувати</label>
-          <input type="text" class="form-control" id="id" name="id">
+          <input type="text" class="form-control" id="id" name="id_edit">
         </div>
         <div class="form-group">
           <label for="caption">Назва статті</label>
-          <input type="text" class="form-control" id="caption" name="caption">
+          <input type="text" class="form-control" id="caption" name="caption_edit">
         </div>
         <div class="form-group">
           <label for="subtitle">Коротко про статтю</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle">
+          <input type="text" class="form-control" id="subtitle" name="subtitle_edit">
         </div>
         <div class="form-group">
           <label for="excerpt">Текст статті</label>
-          <textarea class="form-control" id="excerpt" rows="3" name="excerpt"></textarea>
+          <textarea class="form-control" id="excerpt" rows="3" name="excerpt_edit"></textarea>
         </div>
         <div class="form-group">
           <label for="img">Завантажте зображення</label>
-          <input type="file" class="form-control-file" id="img">
+          <input type="file" class="form-control-file" id="img" name="img_edit">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Редагувати</button>
+          <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
         </div>
       </form>
     </div>
     <div class="admin">
       <h3>Видалити статтю ЗНО</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="id">ID статті, якю треба видалити</label>
-          <input type="text" class="form-control" id="id" name="id">
+          <input type="text" class="form-control" id="id" name="id_del">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Видалити</button>
+          <button type="submit" class="btn btn-primary btn-lg" name="submit_del">Видалити</button>
         </div>
       </form>
     </div>

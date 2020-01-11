@@ -1,29 +1,86 @@
 <?php 
   require_once "../includes/config.php";
 
+
+  /* addReport */
+
   $errors = [];
 
-  $caption = htmlentities(mysqli_real_escape_string($connection, $_POST['caption']));
-  $subtitle = htmlentities(mysqli_real_escape_string($connection, $_POST['subtitle']));
-  $excerpt = htmlentities(mysqli_real_escape_string($connection, $_POST['excerpt']));
+  $caption = $_POST['caption'];
+  $subtitle = $_POST['subtitle'];
+  $link = $_POST['link'];
+  
 
   if(isset($_POST['submit'])){
     if(trim($caption) == '') {
-      $errors[] = 'Введіть назву новини!';
+      $errors[] = 'Введіть назву звіту!';
     }
 
     if(trim($subtitle) == '') {
-      $errors[] = 'Опишіть коротку про новину!';
+      $errors[] = 'Опишіть коротко про звіт!';
     }
 
-    if(trim($excerpt) == '') {
-      $errors[] = 'Напишіть текст ноивини!';
+    if(trim($link) == '') {
+      $errors[] = 'Вставте посилання на звіт!';
     }
 
     if(empty($errors)) {
-      $request = mysqli_query($connection, "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`) VALUES ('$caption', '$subtitle', '$excerpt')");
+      $request = addReport($caption, $subtitle, $link);
     } else {
       echo array_shift($errors);
+    }
+  }
+
+  
+  /* editReport */
+
+  $errors_edit = [];
+
+  $id_edit = $_POST['id_edit'];
+  $caption_edit = $_POST['caption_edit'];
+  $subtitle_edit = $_POST['subtitle_edit'];
+  $link_edit = $_POST['link_edit'];
+
+  if(isset($_POST['submit_edit'])){
+    if(trim($id_edit) == '') {
+      $errors_edit[] = 'Введіть id!';
+    }
+
+    if(trim($caption_edit) == '') {
+      $errors_edit[] = 'Введіть назву звіту!';
+    }
+
+    if(trim($subtitle_edit) == '') {
+      $errors_edit[] = 'Опишіть коротко про звіт!';
+    }
+
+    if(trim($link_edit) == '') {
+      $errors_edit[] = 'Вставте посилання на звіт!';
+    }
+
+    if(empty($errors_edit)) {
+      $request_edit = editReport($id_edit, $caption_edit, $subtitle_edit, $link_edit);
+    } else {
+      echo array_shift($errors_edit);
+    }
+  }
+
+  
+  /* delReport */
+
+  $errors_del = [];
+
+  $id_del = $_POST['id_del'];
+
+  if(isset($_POST['submit_del'])){
+    if(trim($id_del) == '') {
+      $errors_edit[] = 'Введіть id!';
+    }
+
+    if(empty($errors_del)) {
+      $request_del = delReport($id_del);
+    } else {
+      echo array_shift($errors_del);
     }
   }
 ?>
@@ -84,7 +141,7 @@
     </ul>
     <div class="admin">
       <h3>Додати звіт</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="caption">Назва звіту</label>
           <input type="text" class="form-control" id="caption" name="caption">
@@ -102,37 +159,37 @@
     </div>
     <div class="admin">
       <h3>Редагувати звіт</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="id">ID звіту, якого треба редагувати</label>
-          <input type="text" class="form-control" id="id" name="id">
+          <input type="text" class="form-control" id="id" name="id_edit">
         </div>
         <div class="form-group">
           <label for="caption">Назва звіту</label>
-          <input type="text" class="form-control" id="caption" name="caption">
+          <input type="text" class="form-control" id="caption" name="caption_edit">
         </div>
         <div class="form-group">
           <label for="subtitle">Коротко про звіт</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle">
+          <input type="text" class="form-control" id="subtitle" name="subtitle_edit">
         </div>
         <div class="form-group">
           <label for="link">Посилання на звіт</label>
-          <input type="text" class="form-control" id="link" name="link">
+          <input type="text" class="form-control" id="link" name="link_edit">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Редагувати</button>
+          <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
         </div>
       </form>
     </div>
     <div class="admin">
       <h3>Видалити звіт</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="id">ID звіту, якого треба видалити</label>
-          <input type="text" class="form-control" id="id" name="id">
+          <input type="text" class="form-control" id="id" name="id_del">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Видалити</button>
+          <button type="submit" class="btn btn-primary btn-lg" name="submit_del">Видалити</button>
         </div>
       </form>
     </div>

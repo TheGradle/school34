@@ -87,3 +87,87 @@ function delNews($id) {
     
     return $result;
 }
+
+function addReport($caption, $subtitle, $siteLink) {
+    $link = getConnection();
+   
+    $caption = prepareSqlString($link, $caption);
+    $subtitle = prepareSqlString($link, $subtitle);
+    $siteLink = prepareSqlString($link, $siteLink);
+
+    $sql = "INSERT INTO `reports` (`caption`, `subtitle`, `link`) VALUES ('$caption', '$subtitle', '$siteLink')";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
+function editReport($id, $caption, $subtitle, $siteLink) {
+    $link = getConnection();
+   
+    $id = prepareSqlString($link, $id);
+    $caption = prepareSqlString($link, $caption);
+    $subtitle = prepareSqlString($link, $subtitle);
+    $siteLink = prepareSqlString($link, $siteLink);
+
+    $sql = "UPDATE `reports` SET `caption` = '$caption', `subtitle` = '$subtitle', `link` = '$siteLink' WHERE `id` = '$id'";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
+function delReport($id) {
+    $link = getConnection();
+   
+    $id = prepareSqlString($link, $id);
+
+    $sql = "DELETE FROM `reports` WHERE `id` = $id";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
+function addZno($caption, $subtitle, $excerpt, $img_name) {
+    $link = getConnection();
+   
+    $caption = prepareSqlString($link, $caption);
+    $subtitle = prepareSqlString($link, $subtitle);
+    $excerpt = prepareSqlString($link, $excerpt);
+    $img_name = prepareSqlString($link, $img_name);
+
+    $sql = "INSERT INTO `zno` (`caption`, `subtitle`, `excerpt`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$img_name')";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
+function editZno($id, $caption, $subtitle, $excerpt, $img_name) {
+    $link = getConnection();
+   
+    $id = prepareSqlString($link, $id);
+    $caption = prepareSqlString($link, $caption);
+    $subtitle = prepareSqlString($link, $subtitle);
+    $excerpt = prepareSqlString($link, $excerpt);
+    $img_name = prepareSqlString($link, $img_name);
+
+    $sql = "UPDATE `zno` SET `img` = '$img_name', `caption` = '$caption', `subtitle` = '$subtitle', `excerpt` = '$excerpt' WHERE `id` = '$id'";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
+function delZno($id) {
+    $link = getConnection();
+   
+    $id = prepareSqlString($link, $id);
+
+    $sql = "DELETE FROM `zno` WHERE `id` = $id";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
