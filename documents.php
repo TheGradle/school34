@@ -46,7 +46,7 @@
           <a href="index.php"><img src="img/logo.png" alt=""></a>
         </div>
         <ul class="header-list">
-          <li class="header-list__item"><a href="about.html">Про нас</a></li>
+          <li class="header-list__item"><a href="about.php">Про нас</a></li>
           <li class="header-list__item"><a href="news/index.php">Новини</a></li>
           <li class="header-list__item header-list-dropdown">
             <a>Інформація</a>
@@ -55,14 +55,14 @@
               <li class="header-list-dropdown-list__item"><a href="information/zno/index.php">ЗНО</a></li>
             </ul>
           </li>
-          <li class="header-list__item"><a href="documents.html">Документи</a></li>
-          <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
+          <li class="header-list__item"><a href="documents.php">Документи</a></li>
+          <li class="header-list__item"><a href="gallery.php">Галерея</a></li>
         </ul>
         <span class="header__toggle">☰</span>
       </nav>
     </div>
     <ul class="header-list_mobile">
-      <li class="header-list__item"><a href="about.html">Про нас</a></li>
+      <li class="header-list__item"><a href="about.php">Про нас</a></li>
       <li class="header-list__item"><a href="news/index.php">Новини</a></li>
       <li class="header-list__item header-list-dropdown">
         <a>Інформація</a>
@@ -71,8 +71,8 @@
           <li class="header-list-dropdown-list__item"><a href="information/zno/index.php">ЗНО</a></li>
         </ul>
       </li>
-      <li class="header-list__item"><a href="documents.html">Документи</a></li>
-      <li class="header-list__item"><a href="gallery.html">Галерея</a></li>
+      <li class="header-list__item"><a href="documents.php">Документи</a></li>
+      <li class="header-list__item"><a href="gallery.php">Галерея</a></li>
     </ul>
   </header>
   <div class="page">
@@ -109,16 +109,16 @@
     <div class="wrap">
       <div class="footer-about">
         <a href="" class="footer-about__logo"><img src="img/logo-gray.png" alt=""></a>
-        <p class="footer-about__copyright">© 2019 "Миколаївський заклад загальної середньої освіти №34". Всі права захищені</p>
+        <p class="footer-about__copyright">© <?=date('Y') ?> "Миколаївський заклад загальної середньої освіти №34". Всі права захищені</p>
       </div>
       <div class="footer-links">
         <h2 class="footer__caption">Корисні посилання</h2>
         <ul class="footer-links-list">
           <li class="footer-links-list__item"><a href="index.php">Головна</a></li>
-          <li class="footer-links-list__item"><a href="about.html">Про нас</a></li>
+          <li class="footer-links-list__item"><a href="about.php">Про нас</a></li>
           <li class="footer-links-list__item"><a href="news/index.php">Новини</a></li>
-          <li class="footer-links-list__item"><a href="documents.html">Документи</a></li>
-          <li class="footer-links-list__item"><a href="gallery.html">Галерея</a></li>
+          <li class="footer-links-list__item"><a href="documents.php">Документи</a></li>
+          <li class="footer-links-list__item"><a href="gallery.php">Галерея</a></li>
         </ul>
       </div>
       <div class="footer-contacts">
@@ -129,9 +129,9 @@
           <li class="footer-contacts-list__item"><a href=""></a>adamchukFront@gmail.com</li>
         </ul>
         <ul class="footer-contacts-social">
-          <li class="footer-contacts-social__item"><a href=""><i class="fab fa-facebook"></i></a></li> 
-          <li class="footer-contacts-social__item"><a href=""><i class="fab fa-telegram"></i></a></li>
-          <li class="footer-contacts-social__item"><a href=""><i class="fab fa-youtube"></i></a></li>
+          <li class="footer-contacts-social__item"><a href="https://www.facebook.com/groups/34school/" target="_blank"><i class="fab fa-facebook"></i></a></li> 
+          <li class="footer-contacts-social__item"><a href="https://t.me/school34_mk" target="_blank"><i class="fab fa-telegram"></i></a></li>
+          <li class="footer-contacts-social__item"><a href="https://www.youtube.com/channel/UCxGG71By0J_gkssfmVjyepQ" target="_blank"><i class="fab fa-youtube"></i></a></li>
         </ul>
       </div>
     </div>

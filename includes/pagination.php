@@ -1,8 +1,6 @@
 <?php
 
-$db = mysqli_connect("localhost","mysql","mysql");
-mysqli_select_db($db, "school34");
-mysqli_query($db, "SET NAMES 'utf8'");
+$db = $connection;
 
 if (isset($_GET['page'])){
   $page = $_GET['page'];
