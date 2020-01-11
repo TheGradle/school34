@@ -114,7 +114,7 @@
             </div>
             <div class="news-item-text">
               <h3 class="news-item-text__caption"><a href="news/news.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>
-              <p class="news-item-text__excerpt"><?=mb_substr($cat['excerpt'], 0, 80, 'utf-8') . '...' ?></p>
+              <p class="news-item-text__excerpt"><?=$cat['subtitle'] ?></p>
               <p class="news-item-text__date"><?=$cat['date'] ?></p>
             </div>
           </div>

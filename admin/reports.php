@@ -6,12 +6,11 @@
 
   $errors = [];
 
-  $caption = $_POST['caption'];
-  $subtitle = $_POST['subtitle'];
-  $link = $_POST['link'];
-  
-
   if(isset($_POST['submit'])){
+    $caption = $_POST['caption'];
+    $subtitle = $_POST['subtitle'];
+    $link = $_POST['link'];
+
     if(trim($caption) == '') {
       $errors[] = 'Введіть назву звіту!';
     }
@@ -36,12 +35,12 @@
 
   $errors_edit = [];
 
-  $id_edit = $_POST['id_edit'];
-  $caption_edit = $_POST['caption_edit'];
-  $subtitle_edit = $_POST['subtitle_edit'];
-  $link_edit = $_POST['link_edit'];
-
   if(isset($_POST['submit_edit'])){
+    $id_edit = $_POST['id_edit'];
+    $caption_edit = $_POST['caption_edit'];
+    $subtitle_edit = $_POST['subtitle_edit'];
+    $link_edit = $_POST['link_edit'];
+
     if(trim($id_edit) == '') {
       $errors_edit[] = 'Введіть id!';
     }
@@ -70,9 +69,9 @@
 
   $errors_del = [];
 
-  $id_del = $_POST['id_del'];
-
   if(isset($_POST['submit_del'])){
+    $id_del = $_POST['id_del'];
+
     if(trim($id_del) == '') {
       $errors_edit[] = 'Введіть id!';
     }

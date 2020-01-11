@@ -90,7 +90,7 @@
               </div>
               <div class="news-list-item-text">
                 <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>
-                <p class="news-list-item-text__excerpt"><?=$pagination['excerpt'] ?></p>
+                <p class="news-list-item-text__excerpt"><?=$pagination['subtitle'] ?></p>
                 <p class="news-list-item-text__date"><?=$pagination['date'] ?></p>
               </div>
             </div>

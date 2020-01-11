@@ -6,14 +6,14 @@
 
   $errors = [];
 
-  $caption = $_POST['caption'];
-  $subtitle = $_POST['subtitle'];
-  $excerpt = $_POST['excerpt'];
-  
-  $img_name = false;
-  $img = $_FILES['img'];
-
   if(isset($_POST['submit'])){
+    $caption = $_POST['caption'];
+    $subtitle = $_POST['subtitle'];
+    $excerpt = $_POST['excerpt'];
+    
+    $img_name = false;
+    $img = $_FILES['img'];
+
     if(trim($caption) == '') {
       $errors[] = 'Введіть назву новини!';
     }
@@ -56,15 +56,15 @@
 
   $errors_edit = [];
 
-  $id_edit = $_POST['id_edit'];
-  $caption_edit = $_POST['caption_edit'];
-  $subtitle_edit = $_POST['subtitle_edit'];
-  $excerpt_edit = $_POST['excerpt_edit'];
-  
-  $img_name_edit = false;
-  $img_edit = $_FILES['img_edit'];
-
   if(isset($_POST['submit_edit'])){
+    $id_edit = $_POST['id_edit'];
+    $caption_edit = $_POST['caption_edit'];
+    $subtitle_edit = $_POST['subtitle_edit'];
+    $excerpt_edit = $_POST['excerpt_edit'];
+    
+    $img_name_edit = false;
+    $img_edit = $_FILES['img_edit'];
+
     if(trim($id_edit) == '') {
       $errors_edit[] = 'Введіть id!';
     }
@@ -111,9 +111,9 @@
 
   $errors_del = [];
 
-  $id_del = $_POST['id_del'];
-
   if(isset($_POST['submit_del'])){
+    $id_del = $_POST['id_del'];
+
     if(trim($id_del) == '') {
       $errors_edit[] = 'Введіть id!';
     }
