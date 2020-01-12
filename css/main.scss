@@ -260,6 +260,7 @@ header {
   width: 100%;
   min-height: 550px;
   cursor: e-resize;
+  flex: 1 0 auto;
   @media (max-width: 965px) {
     min-height: 0;
   }
