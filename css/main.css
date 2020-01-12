@@ -424,6 +424,11 @@ header {
   display: flex;
   justify-content: center;
 }
+@media (max-width: 1024px) {
+  .news-pagination {
+    display: none;
+  }
+}
 .news-pagination__item {
   margin-right: 20px;
   font-size: 22px;
@@ -438,6 +443,12 @@ header {
 }
 .news-pagination_mobile {
   display: none;
+  margin-bottom: 20px;
+}
+@media (max-width: 1024px) {
+  .news-pagination_mobile {
+    display: flex;
+  }
 }
 
 .about {

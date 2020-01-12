@@ -396,6 +396,9 @@ header {
   &-pagination {
     display: flex;
     justify-content: center;
+    @media (max-width: 1024px) {
+      display: none;
+    }
     &__item {
       margin-right: 20px;
       font-size: 22px;
@@ -410,6 +413,10 @@ header {
     }
     &_mobile {
       display: none;
+      margin-bottom: 20px;
+      @media (max-width: 1024px) {
+        display: flex;
+      }
     }
   }
 }
