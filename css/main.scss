@@ -333,6 +333,14 @@ header {
       box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
       &:after {
         background: black;
+        @media (max-width: 768px) {
+          background: unset;
+        }
+      }
+      @media (max-width: 768px) {
+        bottom: unset;
+        right: unset;
+        box-shadow: unset;
       }
     }
     &-img {

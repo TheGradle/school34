@@ -359,6 +359,18 @@ header {
 .news-item:hover:after {
   background: black;
 }
+@media (max-width: 768px) {
+  .news-item:hover:after {
+    background: unset;
+  }
+}
+@media (max-width: 768px) {
+  .news-item:hover {
+    bottom: unset;
+    right: unset;
+    box-shadow: unset;
+  }
+}
 .news-item-img {
   width: 100%;
   height: 200px;
