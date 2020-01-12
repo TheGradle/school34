@@ -86,7 +86,7 @@
             do { ?>
             <div class="wow news-list-item fadeIn">
               <div class="news-list-item-img">
-                <img src="../img/news/<?=$pagination['img'] ?>" alt="">
+                <a href="news.php?id=<?=$pagination['id'] ?>"><img src="../img/news/<?=$pagination['img'] ?>" alt=""></a>
               </div>
               <div class="news-list-item-text">
                 <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>

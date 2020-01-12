@@ -110,7 +110,7 @@
         { ?>
           <div class="news-item wow fadeIn">
             <div class="news-item-img">
-              <img src="img/news/<?=$cat['img'] ?>" alt="">
+              <a href="news/news.php?id=<?=$cat['id'] ?>"><img src="img/news/<?=$cat['img'] ?>" alt=""></a>
             </div>
             <div class="news-item-text">
               <h3 class="news-item-text__caption"><a href="news/news.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>
