@@ -90,7 +90,10 @@
         
       ?>
       <div class="zno">
-        <div class="zno-back"><a href="index.php"><img src="../../img/right-arrow.svg" alt=""></a></div>
+        <div class="zno-back">
+          <a href="index.php"><img src="../../img/right-arrow.svg" alt=""></a>
+          <p><a href="index.php">Назад</a></p>
+        </div>
         <h2 class="zno__title">
           <?=$this_zno['caption'] ?>
           <span><?=$this_zno['date'] ?></span>

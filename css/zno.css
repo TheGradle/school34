@@ -1,9 +1,42 @@
 .zno {
   display: block;
 }
+.zno-back {
+  display: flex;
+  align-items: center;
+}
 .zno-back img {
   width: 50px;
   transform: rotate(180deg);
+}
+@media (max-width: 1024px) {
+  .zno-back img {
+    width: 40px;
+  }
+}
+@media (max-width: 369px) {
+  .zno-back img {
+    width: 35px;
+  }
+}
+.zno-back p {
+  margin-left: 20px;
+  font-size: 23px;
+}
+@media (max-width: 1024px) {
+  .zno-back p {
+    font-size: 20px;
+    margin-left: 15px;
+  }
+}
+@media (max-width: 369px) {
+  .zno-back p {
+    font-size: 18px;
+  }
+}
+.zno-back p a {
+  color: #000;
+  text-decoration: none;
 }
 .zno__title {
   font-size: 48px;

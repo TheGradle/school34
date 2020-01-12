@@ -1,9 +1,42 @@
 .news {
   display: block;
 }
+.news-back {
+  display: flex;
+  align-items: center;
+}
 .news-back img {
   width: 50px;
   transform: rotate(180deg);
+}
+@media (max-width: 1024px) {
+  .news-back img {
+    width: 40px;
+  }
+}
+@media (max-width: 369px) {
+  .news-back img {
+    width: 35px;
+  }
+}
+.news-back p {
+  margin-left: 20px;
+  font-size: 23px;
+}
+@media (max-width: 1024px) {
+  .news-back p {
+    font-size: 20px;
+    margin-left: 15px;
+  }
+}
+@media (max-width: 369px) {
+  .news-back p {
+    font-size: 18px;
+  }
+}
+.news-back p a {
+  color: #000;
+  text-decoration: none;
 }
 .news__title {
   font-size: 48px;

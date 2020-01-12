@@ -87,7 +87,10 @@
   <div class="page">
     <div class="wrap">  
       <div class="news">
-        <div class="news-back"><a href="index.php"><img src="../img/right-arrow.svg" alt=""></a></div>
+        <div class="news-back">
+          <a href="index.php"><img src="../img/right-arrow.svg" alt=""></a>
+          <p><a href="index.php">Назад</a></p>
+        </div>
         <h2 class="news__title">
           <?=$this_news['caption'] ?>
           <span><?=$this_news['date'] ?></span>

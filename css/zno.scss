@@ -1,9 +1,32 @@
 .zno {
   display: block;
   &-back {
+    display: flex;
+    align-items: center;
     img {
       width: 50px;
       transform: rotate(180deg);
+      @media (max-width: 1024px) {
+        width: 40px;
+      }
+      @media (max-width: 369px) {
+        width: 35px;
+      }
+    }
+    p {
+      margin-left: 20px;
+      font-size: 23px;
+      @media (max-width: 1024px) {
+        font-size: 20px;
+        margin-left: 15px;
+      }
+      @media (max-width: 369px) {
+        font-size: 18px;
+      }
+      a {
+        color: #000;
+        text-decoration: none;
+      }
     }
   }
   &__title {
