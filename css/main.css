@@ -620,6 +620,11 @@ header {
 .footer-contacts-social__item {
   margin-right: 13px;
 }
+@media (max-width: 965px) {
+  .footer-contacts-social__item {
+    margin-right: 0;
+  }
+}
 .footer-contacts-social__item > a {
   color: #fd333b;
 }

@@ -569,6 +569,9 @@ header {
       }
       &__item {
         margin-right: 13px;
+        @media (max-width: 965px) {
+          margin-right: 0;
+        }
         & > a {
           color: #fd333b;
         }
