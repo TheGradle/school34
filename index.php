@@ -75,7 +75,7 @@
       <li class="header-list__item"><a href="gallery.php">Галерея</a></li>
     </ul>
   </header>
-  <div class="slider">
+  <div class="page slider">
     <div class="slider-item">
       <h2>Дім,<br>в якому<br>добре всім</h2>
       <div class="slider-item-img">
