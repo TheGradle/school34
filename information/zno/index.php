@@ -86,6 +86,7 @@
         <?php do { ?>
           <div class="list-item wow fadeIn">
             <h3 class="list-item__caption"><a href="zno.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>
+            <p class="list-item__subtitle"><?=$pagination['subtitle'] ?></p>
             <p class="list-item__date"><?=$pagination['date'] ?></p>
           </div>
         <?php } while ($pagination = mysqli_fetch_array($result)); ?>

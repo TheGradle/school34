@@ -50,7 +50,6 @@ function addNews($caption, $subtitle, $excerpt, $img_name) {
    
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
-    $excerpt = prepareSqlString($link, $excerpt);
     $img_name = prepareSqlString($link, $img_name);
 
     $sql = "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$img_name')";
@@ -66,7 +65,6 @@ function editNews($id, $caption, $subtitle, $excerpt, $img_name) {
     $id = prepareSqlString($link, $id);
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
-    $excerpt = prepareSqlString($link, $excerpt);
     $img_name = prepareSqlString($link, $img_name);
 
     $sql = "UPDATE `news` SET `img` = '$img_name', `caption` = '$caption', `subtitle` = '$subtitle', `excerpt` = '$excerpt' WHERE `id` = '$id'";
@@ -134,7 +132,6 @@ function addZno($caption, $subtitle, $excerpt, $img_name) {
    
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
-    $excerpt = prepareSqlString($link, $excerpt);
     $img_name = prepareSqlString($link, $img_name);
 
     $sql = "INSERT INTO `zno` (`caption`, `subtitle`, `excerpt`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$img_name')";
@@ -150,7 +147,6 @@ function editZno($id, $caption, $subtitle, $excerpt, $img_name) {
     $id = prepareSqlString($link, $id);
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
-    $excerpt = prepareSqlString($link, $excerpt);
     $img_name = prepareSqlString($link, $img_name);
 
     $sql = "UPDATE `zno` SET `img` = '$img_name', `caption` = '$caption', `subtitle` = '$subtitle', `excerpt` = '$excerpt' WHERE `id` = '$id'";
