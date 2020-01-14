@@ -194,6 +194,7 @@
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
           <textarea class="form-control" id="excerpt" rows="3" name="excerpt"></textarea>
+          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту.</small>
         </div>
         <div class="form-group">
           <label for="img">Завантажте зображення</label>
@@ -220,6 +221,7 @@
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
           <textarea class="form-control" id="excerpt" rows="3" name="excerpt_edit"></textarea>
+          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту.</small>
         </div>
         <div class="form-group">
           <label for="img">Завантажте зображення</label>
