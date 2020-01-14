@@ -45,18 +45,6 @@
       $errors_edit[] = 'Введіть id!';
     }
 
-    if(trim($caption_edit) == '') {
-      $errors_edit[] = 'Введіть назву звіту!';
-    }
-
-    if(trim($subtitle_edit) == '') {
-      $errors_edit[] = 'Опишіть коротко про звіт!';
-    }
-
-    if(trim($link_edit) == '') {
-      $errors_edit[] = 'Вставте посилання на звіт!';
-    }
-
     if(empty($errors_edit)) {
       $request_edit = editReport($id_edit, $caption_edit, $subtitle_edit, $link_edit);
     } else {
@@ -165,15 +153,15 @@
         </div>
         <div class="form-group">
           <label for="caption">Назва звіту</label>
-          <input type="text" class="form-control" id="caption" name="caption_edit">
+          <input type="text" class="form-control" id="caption" name="caption_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
         </div>
         <div class="form-group">
           <label for="subtitle">Коротко про звіт</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle_edit">
+          <input type="text" class="form-control" id="subtitle" name="subtitle_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
         </div>
         <div class="form-group">
           <label for="link">Посилання на звіт</label>
-          <input type="text" class="form-control" id="link" name="link_edit">
+          <input type="text" class="form-control" id="link" name="link_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>

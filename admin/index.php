@@ -69,18 +69,6 @@
       $errors_edit[] = 'Введіть id!';
     }
 
-    if(trim($caption_edit) == '') {
-      $errors_edit[] = 'Введіть назву новини!';
-    }
-
-    if(trim($subtitle_edit) == '') {
-      $errors_edit[] = 'Опишіть коротку про новину!';
-    }
-
-    if(trim($excerpt_edit) == '') {
-      $errors_edit[] = 'Напишіть текст новини!';
-    }
-
     if ($img_edit && !$img_edit['error']) {
       $expansions = [
         'image/jpeg' => '.jpg',
@@ -212,19 +200,19 @@
         </div>
         <div class="form-group">
           <label for="caption">Назва новини</label>
-          <input type="text" class="form-control" id="caption" name="caption_edit">
+          <input type="text" class="form-control" id="caption" name="caption_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
         </div>
         <div class="form-group">
           <label for="subtitle">Коротко про новину</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle_edit">
+          <input type="text" class="form-control" id="subtitle" name="subtitle_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
         </div>
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
-          <textarea class="form-control" id="excerpt" rows="3" name="excerpt_edit"></textarea>
+          <textarea class="form-control" id="excerpt" rows="3" name="excerpt_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати"></textarea>
           <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту.</small>
         </div>
         <div class="form-group">
-          <label for="img">Завантажте зображення</label>
+          <label for="img">Завантажте зображення, якщо хочете змінити його</label>
           <input type="file" class="form-control-file" id="img" name="img_edit">
         </div>
         <div class="form-group">

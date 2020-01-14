@@ -67,7 +67,34 @@ function editNews($id, $caption, $subtitle, $excerpt, $img_name) {
     $subtitle = prepareSqlString($link, $subtitle);
     $img_name = prepareSqlString($link, $img_name);
 
-    $sql = "UPDATE `news` SET `img` = '$img_name', `caption` = '$caption', `subtitle` = '$subtitle', `excerpt` = '$excerpt' WHERE `id` = '$id'";
+    $sql = "UPDATE `news` SET ";
+
+    if ($caption) {
+        $sql .= "`caption` = '$caption'";
+        if ($subtitle) {
+            $sql .= ", ";
+        }
+    }
+    if ($subtitle) {
+        $sql .= "`subtitle` = '$subtitle'";
+        if ($img_name) {
+            $sql .= ", ";
+        }
+    }
+    if ($img_name) {
+        $sql .= "`img` = '$img_name'";
+        if ($excerpt) {
+            $sql .= ", ";
+        }
+    }
+    if ($excerpt) {
+        if ($img_name || $subtitle || $caption) {
+            $sql .= ", ";
+        }
+        $sql .= "`excerpt` = '$excerpt'";
+    }
+
+    $sql .= " WHERE `id` = '$id'";
 
     $result = execQuery($sql, $link);
     
@@ -108,7 +135,28 @@ function editReport($id, $caption, $subtitle, $siteLink) {
     $subtitle = prepareSqlString($link, $subtitle);
     $siteLink = prepareSqlString($link, $siteLink);
 
-    $sql = "UPDATE `reports` SET `caption` = '$caption', `subtitle` = '$subtitle', `link` = '$siteLink' WHERE `id` = '$id'";
+    $sql = "UPDATE `reports` SET ";
+
+    if ($caption) {
+        $sql .= "`caption` = '$caption'";
+        if ($subtitle) {
+            $sql .= ", ";
+        }
+    }
+    if ($subtitle) {
+        $sql .= "`subtitle` = '$subtitle'";
+        if ($siteLink) {
+            $sql .= ", ";
+        }
+    }
+    if ($siteLink) {
+        if ($subtitle || $caption) {
+            $sql .= ", ";
+        }
+        $sql .= "`link` = '$siteLink'";
+    }
+
+    $sql .= " WHERE `id` = '$id'";
 
     $result = execQuery($sql, $link);
     
@@ -149,7 +197,34 @@ function editZno($id, $caption, $subtitle, $excerpt, $img_name) {
     $subtitle = prepareSqlString($link, $subtitle);
     $img_name = prepareSqlString($link, $img_name);
 
-    $sql = "UPDATE `zno` SET `img` = '$img_name', `caption` = '$caption', `subtitle` = '$subtitle', `excerpt` = '$excerpt' WHERE `id` = '$id'";
+    $sql = "UPDATE `zno` SET ";
+
+    if ($caption) {
+        $sql .= "`caption` = '$caption'";
+        if ($subtitle) {
+            $sql .= ", ";
+        }
+    }
+    if ($subtitle) {
+        $sql .= "`subtitle` = '$subtitle'";
+        if ($img_name) {
+            $sql .= ", ";
+        }
+    }
+    if ($img_name) {
+        $sql .= "`img` = '$img_name'";
+        if ($excerpt) {
+            $sql .= ", ";
+        }
+    }
+    if ($excerpt) {
+        if ($img_name || $subtitle || $caption) {
+            $sql .= ", ";
+        }
+        $sql .= "`excerpt` = '$excerpt'";
+    }
+
+    $sql .= " WHERE `id` = '$id'";
 
     $result = execQuery($sql, $link);
     
