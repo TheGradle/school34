@@ -11,7 +11,7 @@
 }
 .list-item__caption {
   font-size: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   line-height: 24px;
 }
 .list-item__caption:hover {
@@ -21,6 +21,10 @@
 .list-item__caption a {
   color: #000;
   text-decoration: none;
+}
+.list-item__subtitle {
+  margin-bottom: 10px;
+  color: #959595;
 }
 
 /*# sourceMappingURL=list.css.map */
