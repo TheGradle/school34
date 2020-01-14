@@ -23,17 +23,15 @@
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
   <meta name="google" content="nositelinkssearchbox">
+  <meta property="og:title" content="<?=$this_news['caption'] ?>">
+  <meta property="og:url" content="<?=$current_url ?>">
+  <meta property="og:image" content="../img/news/<?=$this_news['img'] ?>">
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
   <link rel="stylesheet" href="../css/current-news.min.css">
   <link rel="stylesheet" href="../css/animate.min.css">
   
   <meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
- 
-  <!-- не меньше 600х315, не более 8Мб -->
-  <meta content="http://localhost.my/img/og_cover.jpg">
-  <meta content="описание не длиннее 155 символов">
-  <meta content="Facebook ID">
 
   <link rel="shortcut icon" href="../img/icons/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/icons/apple-touch-icon.png" />

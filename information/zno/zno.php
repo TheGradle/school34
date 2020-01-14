@@ -23,6 +23,9 @@
   <meta name="robots" content="index,follow,noodp">
   <meta name="googlebot" content="index,follow">
   <meta name="google" content="nositelinkssearchbox">
+  <meta property="og:title" content="<?=$this_zno['caption'] ?>">
+  <meta property="og:url" content="<?=$current_url ?>">
+  <meta property="og:image" content="../img/news/<?=$this_zno['img'] ?>">
   <link rel="stylesheet" href="../../css/reset.min.css">
   <link rel="stylesheet" href="../../css/main.min.css">
   <link rel="stylesheet" href="../../css/zno.min.css">
