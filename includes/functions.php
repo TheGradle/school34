@@ -242,3 +242,27 @@ function delZno($id) {
     
     return $result;
 }
+
+function addEmail($address) {
+    $link = getConnection();
+   
+    $address = prepareSqlString($link, $address);
+
+    $sql = "INSERT INTO `emails` (`address`) VALUES ('$address')";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
+function firstEmail($address) {
+    $link = getConnection();
+   
+    $address = prepareSqlString($link, $address);
+
+    $sql = "INSERT INTO `emails` (`address`) VALUES ('$address')";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
