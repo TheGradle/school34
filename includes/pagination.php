@@ -11,7 +11,7 @@ if (isset($_GET['page'])){
 $count = 20;
 $start = ($page * $count) - $count;
 
-$res = mysqli_query($db, "SELECT COUNT(*) FROM `news`");
+$res = mysqli_query($db, "SELECT COUNT(*) FROM `$target`");
 $row = mysqli_fetch_row($res);
 $total = $row[0];
 

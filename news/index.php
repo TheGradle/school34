@@ -1,5 +1,7 @@
 <?php 
   require_once "../includes/config.php";
+  
+  $target = "news";
   require_once "../includes/pagination.php";
 ?>
 <!DOCTYPE html>
@@ -56,10 +58,16 @@
             <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
           </div>
         </div>
-        <div class="news-pagination news-pagination_mobile">
+        <div class="pagination pagination_mobile">
           <?php 
             for ($i = 1; $i <= $str_pag; $i++){
-              echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+              if ($str_pag != 1) {
+                if ($page == $i) {
+                  echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+                } else {
+                  echo "<div class='pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+                }
+              }
             }
           ?>
         </div>
@@ -72,19 +80,25 @@
           <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
         </div>
       </div>
-      <div class="news-pagination">
+      <div class="pagination">
         <?php 
           for ($i = 1; $i <= $str_pag; $i++){
             /*if ($str_pag >= 5) {
               if ($i >= 3 && $i < $str_pag) {
-                echo "<div class='news-pagination__item'>...</div>";
+                echo "<div class='pagination__item'>...</div>";
                 continue;
               }
-              echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+              echo "<div class='pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
             } else {
-              echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+              echo "<div class='pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
             }*/
-            echo "<div class='news-pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+            if ($str_pag != 1) {
+              if ($page == $i) {
+                echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+              } else {
+                echo "<div class='pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+              }
+            }
           }
         ?>
       </div>
@@ -95,13 +109,10 @@
       require_once "../templates/footer.php";
     ?>
   </div>
-  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="../js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
-  <script src="../slick/slick.min.js"></script>
-  <script src="../js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
         <div class="gallery-block">
           <h3 class="gallery-block-date">20 жовтня 2019</h3>
           <div class="gallery-block-img">
-            <img src="https://lh3.googleusercontent.com/qeDQ0z-7ztl3ZX3LP5rdOraNrbbje-CQB5Lh5BCPJYr14SPzcWYL4t8UCyCQwrj6odsaln1nYamySB_k3B7S3OumhDCG0ZEup0hT4ArFHpAmqb_SCf5-m8rZGE3sQkYAbQeKhF9811tEq6gJvxnjR7cscOCrEP1HFjyg8XRTe3U-221k6BgZ10blUtsIEC4Dcw154XjaD9C0tAFN24UEsiepct1R2e-_CldqYOEkQd-lOjHXOYQHkjCfdrGYan6USOolK2TUCZF0Jg88OWgDyZ8-ZWC3WojQWXvs1FG7-sepW7jr2IJzOqk0y1Uj_vMGVFo0FbuN_yONF4t6OgoeoPAN7mMsVY5MnJer_6YOcja8LJsJU36BHfhZyHrlCBhoDKazfyJIwonEmGKQmmjMQkGoOKEFPAnxKfSBnDutq3OLMVl2-ttOAPaF3cLBtTzxu6fzJzvB5gao4vUaIOSpyHzWDDz68jzjNgWjv8bOv2ta_ytk1ELyfXMzGLF-g9Y1Unm9uR9YkYHW0L28ofRoqcRICeUuThB5_2pSrApJZAiK090TaJhdwZgtOglvm-FPUWMQiFR4FKUehtnbPdXvTvsUifl4268uxQ_EHybhNcbWn-_wzjJvaxqCk0pUZla0ubdIcuKUTJgNJ3TSQI7Zwzkaooe8ZHyIr9CI8B-jVZni0j0Mvpo1Pbw=w1346-h757-no" alt="" class="gallery-block-img__item">
+            <img src="https://avatars0.githubusercontent.com/u/33810054?s=460&v=4" alt="" class="gallery-block-img__item">
             <img src="https://lh3.googleusercontent.com/BE06UzhDZlXLYUBQnWursNWHnJAjlwko1qusTh427gHJ8YK-UdD_2qUftGpNlgJ8ppok690XTz4EZLX5XMU-hZs80KhzvX5p_2capmPFCpRkpOtv21cqX5XcXgHrjqGLWo7sWQTk0gQ3kD9gQtLZkLQSZV4DOBldmdKatBy2nYctBTe8IulhXz8R5KGW2F1LNeLHcExZTDYCaWJWyxvWqxMMbdteXeiFIg0JESNuWLLD2dv2AnJfDnE_NrMUBKe4LXaODmAUiNgZbco8t8mBXXtXJIn_tSMTdx_c0mAPq4fTdnWy9wyV0eNjHzoI0CbnwjNomE-DcZiUfkc-RlW1XTVoQxehPNlGcge7SXAWQcVRasLMoa_t260bw-h1S4mYwjI32SXPpPCJk5yscjClcYKCJwucCg2X-EZ6WuQ7Rd_9aKczdkA-GkgR-Tw6syNNpki4U5k0qpGPV8S6B9VK0-H9yT9Du373qxy27PyHTYqcnZFSPyxQ1pGPJfZW7Ze-r-0DSzIw1P6KsmJk_xEnEY8L-YE30W7E477CZJq0YpLZhPhZOj5ghDi5ED20UfVVQdnSNx2ycXkMjjyMm3st5ymxstz06MzumVtp3cjoMieawCVJuVjWCohICGFt6GpyKma084lw-pjMbbO4LjkiNmRx_9lHlDFoaE0N7zV9Wsg0tjgzgiKPN7Y=w1346-h757-no" alt="" class="gallery-block-img__item">
           </div>
         </div>
@@ -48,9 +48,6 @@
       require_once "templates/footer.php";
     ?>
   </div>
-  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="slick/slick.min.js"></script>
-  <script src="js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -9,17 +9,17 @@
     <?php
   }
 
-  $this_news = mysqli_fetch_assoc($news);
+  $article = mysqli_fetch_assoc($news);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title><?=$this_news['caption'] ?> - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="<?=$this_news['subtitle'] ?>">
-  <meta property="og:title" content="<?=$this_news['caption'] ?>">
+  <title><?=$article['caption'] ?> - Миколаївський заклад загальної середньої освіти №34</title>
+  <meta name="description" content="<?=$article['subtitle'] ?>">
+  <meta property="og:title" content="<?=$article['caption'] ?>">
   <meta property="og:url" content="<?=$current_url ?>">
-  <meta property="og:image" content="../img/news/<?=$this_news['img'] ?>">
+  <meta property="og:image" content="../img/news/<?=$article['img'] ?>">
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
   <link rel="stylesheet" href="../css/current-news.min.css">
@@ -40,14 +40,14 @@
           <p><a href="index.php">Назад</a></p>
         </div>
         <h2 class="news__title">
-          <?=$this_news['caption'] ?>
-          <span><?=$this_news['date'] ?></span>
+          <?=$article['caption'] ?>
+          <span><?=$article['date'] ?></span>
         </h2>
         <div class="news-img wow fadeInUp" style="background: #cecece;">
-          <img src="../img/news/<?=$this_news['img'] ?>" alt="">
+          <img src="../img/news/<?=$article['img'] ?>" alt="">
         </div>
         <div class="news-text">
-          <p class="news-text__excerpt"><?=$this_news['excerpt'] ?></p>
+          <p class="news-text__excerpt"><?=$article['excerpt'] ?></p>
           <div class="share">
             <h3 class="share__title">Поширити:</h3>
             <ul class="share-list">
@@ -80,13 +80,10 @@
       require_once "../templates/footer.php";
     ?>
   </div>
-  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="../js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
-  <script src="../slick/slick.min.js"></script>
-  <script src="../js/main.min.js"></script>
   <script id="dsq-count-scr" src="//school34-mk.disqus.com/count.js" async></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>

@@ -151,13 +151,10 @@
       require_once "templates/footer.php";
     ?>
   </div>
-  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
-  <script src="slick/slick.min.js"></script>
-  <script src="js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>
