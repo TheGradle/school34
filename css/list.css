@@ -27,6 +27,7 @@
   font-size: 20px;
   margin-bottom: 10px;
   line-height: 24px;
+  font-family: 'e-Ukraine Regular';
 }
 .list-item__caption:hover {
   text-decoration: underline;

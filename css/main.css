@@ -185,6 +185,7 @@ header {
 }
 .header-list_mobile {
   display: none;
+  font-family: 'e-Ukraine Regular';
 }
 @media (max-width: 768px) {
   .header-list_mobile {
@@ -417,6 +418,7 @@ header {
   font-size: 20px;
   margin-bottom: 15px;
   line-height: 24px;
+  font-family: 'e-Ukraine Regular';
 }
 .news-item-text__caption:hover {
   text-decoration: underline;

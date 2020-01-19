@@ -179,6 +179,7 @@ header {
     }
     &_mobile {
       display: none;
+      font-family: 'e-Ukraine Regular';
       @media (max-width: 768px) {
         padding: 50px 0 50px 0;
         background: #151111;
@@ -386,6 +387,7 @@ header {
         font-size: 20px;
         margin-bottom: 15px;
         line-height: 24px;
+        font-family: 'e-Ukraine Regular';
         &:hover {
           text-decoration: underline;
           cursor: pointer;
