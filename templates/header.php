@@ -2,7 +2,8 @@
   <div class="wrap">
     <nav class="header">
       <div class="header-logo">
-        <a href="<?=$site_url ?>"><img src="<?=$site_url ?>/img/logo.png" alt=""></a>
+        <a href="<?=$site_url ?>"><img src="<?=$site_url ?>/img/logo.png" alt="" class="header-logo__img"></a>
+        <p class="header-logo__title">Заклад загальної<br>середньої освіти № 34</p>
       </div>
       <ul class="header-list">
         <li class="header-list__item"><a href="<?=$site_url ?>/about.php">Про нас</a></li>

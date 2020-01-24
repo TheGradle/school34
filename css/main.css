@@ -10,6 +10,10 @@
   font-family: 'e-Ukraine Regular';
   src: url("../fonts/e-UkraineHead-Light.ttf") format("truetype");
 }
+@font-face {
+  font-family: 'e-Ukraine NAME';
+  src: url("../fonts/e-UkraineHead-LOGO.ttf") format("truetype");
+}
 html,
 body {
   font-family: e-Ukraine;
@@ -163,11 +167,42 @@ header {
 }
 .header-logo {
   padding-left: 10px;
+  display: flex;
 }
 @media (max-width: 425px) {
-  .header-logo a img {
+  .header-logo__img {
     width: 90px;
     height: auto;
+  }
+}
+.header-logo__title {
+  margin-top: 10px;
+  margin-left: 25px;
+  font-size: 26px;
+  line-height: 32px;
+  font-family: 'e-Ukraine NAME';
+}
+@media (max-width: 1155px) {
+  .header-logo__title {
+    font-size: 19px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 1000px) {
+  .header-logo__title {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .header-logo__title {
+    display: block;
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+@media (max-width: 585px) {
+  .header-logo__title {
+    display: none;
   }
 }
 .header-list {

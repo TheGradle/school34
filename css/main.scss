@@ -13,6 +13,11 @@
   src: url('../fonts/e-UkraineHead-Light.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'e-Ukraine NAME';
+  src: url('../fonts/e-UkraineHead-LOGO.ttf') format('truetype');
+}
+
 html,
 body {
   font-family: e-Ukraine;
@@ -160,10 +165,33 @@ header {
   justify-content: space-between;
   &-logo {
     padding-left: 10px;
-    a img {
+    display: flex;
+    &__img {
       @media (max-width: 425px) {
         width: 90px;
         height: auto;
+      }
+    }
+    &__title {
+      margin-top: 10px;
+      margin-left: 25px;
+      font-size: 26px;
+      line-height: 32px;
+      font-family: 'e-Ukraine NAME';
+      @media (max-width: 1155px) {
+        font-size: 19px;
+        line-height: 24px;
+      }
+      @media (max-width: 1000px) {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        display: block;
+        font-size: 26px;
+        line-height: 32px;
+      }
+      @media (max-width: 585px) {
+        display: none;
       }
     }
   }
