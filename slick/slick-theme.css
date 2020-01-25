@@ -183,6 +183,12 @@
     display: flex !important;
 }
 
+@media (max-width: 965px) {
+    .slick-initialized .slick-slide {
+        display: block !important;
+    }
+}
+
 .slick-active button {
     background: #151111 !important;
 }

@@ -22,13 +22,13 @@
   ?>
   <div class="slider">
     <div class="slider-item">
-      <h2>Дім,<br>в якому<br>добре всім</h2>
+      <h2>Дім, <br>в якому <br>добре&nbsp; всім</h2>
       <div class="slider-item-img">
         <img src="img/slider.jpg" alt="">
       </div>
     </div>
     <div class="slider-item">
-      <h2>Test 2</h2>
+      <h2>Lorem ipsum dolor sit amet</h2>
       <div class="slider-item-img">
         <img src="https://mobile.photoprocenter.ru/files/201503021621525967_0.jpg" alt="">
       </div>

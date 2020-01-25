@@ -246,6 +246,7 @@ header {
 .header-list-dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 .header-list-dropdown:hover .header-list-dropdown-list {
   display: block;
@@ -325,6 +326,7 @@ header {
   display: flex;
   justify-content: space-between;
   outline: none;
+  position: relative;
 }
 @media (max-width: 965px) {
   .slider-item {
@@ -362,9 +364,17 @@ header {
 @media (max-width: 965px) {
   .slider-item h2 {
     width: 100%;
-    text-align: center;
-    margin-bottom: 75px;
-    margin-top: 0;
+    text-align: left;
+    margin-top: 70px;
+    padding-right: 40px;
+    position: absolute;
+    z-index: 11;
+    color: #fff;
+  }
+}
+@media (max-width: 965px) {
+  .slider-item h2 br {
+    display: none;
   }
 }
 
@@ -577,7 +587,7 @@ header {
   margin-bottom: 25px;
   padding: 0 10px 0 10px;
 }
-@media (max-width: 965px) {
+@media (max-width: 1315px) {
   .contacts-list {
     flex-direction: column;
     align-items: flex-start;
