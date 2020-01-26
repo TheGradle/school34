@@ -90,6 +90,8 @@
   <script>
     new WOW().init();
   </script>
+  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="../../js/main.min.js"></script>
   <script id="dsq-count-scr" src="//school34-mk.disqus.com/count.js" async></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>

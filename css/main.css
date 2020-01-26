@@ -156,6 +156,11 @@ body {
   top: 7px;
   right: 10px;
 }
+@media (max-width: 420px) {
+  .page__title_right img {
+    display: none;
+  }
+}
 
 header {
   margin-top: 25px;

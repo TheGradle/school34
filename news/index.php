@@ -53,7 +53,7 @@
             <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
             <form action="" method="POST" enctype="multipart/form-data">
               <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input">
-              <button type="sumbit" class="news-help-subscribe__button">Підписатись</button>
+              <button type="sumbit" class="news-help-subscribe__button" name="submit">Підписатись</button>
             </form>
             <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
           </div>
@@ -74,8 +74,8 @@
         <div class="news-help-subscribe_mobile news-help-subscribe">
           <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
           <form action="" method="POST" enctype="multipart/form-data">
-            <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input" placeholder="Пошук">
-            <button type="sumbit" class="news-help-subscribe__button">Підписатись</button>
+            <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input">
+            <button type="sumbit" class="news-help-subscribe__button" name="submit">Підписатись</button>
           </form>
           <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
         </div>
@@ -113,6 +113,8 @@
   <script>
     new WOW().init();
   </script>
+  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="../js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>

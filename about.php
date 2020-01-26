@@ -147,6 +147,13 @@
           <img src="img/lesina.jpg" alt="" class="about-image__img">
         </div>
       </div>
+      <div class="contacts">
+        <ul class="contacts-list wrap wow fadeIn" style="padding: 0">
+          <li class="contacts-list__item">(0512) 47-89-25 (директор, секретар)<br>(0512) 47-89-25 (заступники директора з навчально-виховної роботи)<br>(0512) 46-73-31 (заступник директора з виховної роботи)</li>
+          <li class="contacts-list__item">54017  м. Миколаїв, вул. Лягіна, 28</li>
+          <li class="contacts-list__item">adamchukFront@gmail.com</li>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="footer">
@@ -158,6 +165,8 @@
   <script>
     new WOW().init();
   </script>
+  <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>

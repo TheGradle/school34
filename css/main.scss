@@ -151,6 +151,9 @@ body {
         position: relative;
         top: 7px;
         right: 10px;
+        @media (max-width: 420px) {
+          display: none;
+        }
       }
     }
   }
