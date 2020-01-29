@@ -210,6 +210,10 @@ header {
     display: none;
   }
 }
+.header-logo__title a {
+  text-decoration: none;
+  color: #000;
+}
 .header-list {
   display: flex;
   height: 123px;

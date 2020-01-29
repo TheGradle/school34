@@ -1,8 +1,24 @@
 <?php 
   require_once "../includes/config.php";
+
+  ini_set("display_errors", 1);
+  error_reporting(E_ERROR | E_WARNING | E_PARSE);
   
   $target = "news";
   require_once "../includes/pagination.php";
+
+  if(isset($_POST['submit'])) {
+    $errors = [];
+
+    $address = $_POST['address'];
+
+    if(trim($address) == '') {
+      $errors[] = '#1';
+    }
+    if (!filter_var($address, FILTER_VALIDATE_EMAIL)) {
+      $errors[] = "#2";
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +68,7 @@
           <div class="news-help-subscribe">
             <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
             <form action="" method="POST" enctype="multipart/form-data">
-              <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input">
+              <input type="email" name="address" placeholder="Ваш email" class="news-help-subscribe__input" value="<?=$address?>">
               <button type="sumbit" class="news-help-subscribe__button" name="submit">Підписатись</button>
             </form>
             <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
@@ -74,7 +90,7 @@
         <div class="news-help-subscribe_mobile news-help-subscribe">
           <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
           <form action="" method="POST" enctype="multipart/form-data">
-            <input type="email" name="email" placeholder="Ваш email" class="news-help-subscribe__input">
+            <input type="email" name="address" placeholder="Ваш email" class="news-help-subscribe__input" value="<?=$address?>">
             <button type="sumbit" class="news-help-subscribe__button" name="submit">Підписатись</button>
           </form>
           <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
@@ -118,3 +134,10 @@
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+
+if(empty($errors)) {
+  addEmail($address);
+} else {
+  echo "<script>$(\".news-help-subscribe__input\").addClass(\"news-help-subscribe__input_error\")</script>";
+}

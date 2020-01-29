@@ -150,6 +150,22 @@
   border: none;
   border-bottom: 2px solid #000;
 }
+.news-help-subscribe__input_error {
+  border-bottom: 2px solid #fd333b;
+  color: #fd333b;
+}
+.news-help-subscribe__input_error::-moz-placeholder {
+  color: #fd333b;
+}
+.news-help-subscribe__input_error::-webkit-input-placeholder {
+  color: #fd333b;
+}
+.news-help-subscribe__input_error::-ms-input-placeholder {
+  color: #fd333b;
+}
+.news-help-subscribe__input_error::placeholder {
+  color: #fd333b;
+}
 .news-help-subscribe__button {
   width: 100%;
   height: 50px;

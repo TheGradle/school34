@@ -132,6 +132,14 @@
         font-size: 20px;
         border: none;
         border-bottom: 2px solid #000;
+        &_error {
+          border-bottom: 2px solid #fd333b;
+          color: #fd333b;
+          &::-moz-placeholder {color: #fd333b;}
+          &::-webkit-input-placeholder { color: #fd333b; }
+          &::-ms-input-placeholder { color: #fd333b; }
+          &::placeholder { color: #fd333b; } 
+        }
       }
       &__button {
         width: 100%;
