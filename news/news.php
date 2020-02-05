@@ -44,7 +44,7 @@
           <span><?=$article['date'] ?></span>
         </h2>
         <div class="news-img wow fadeInUp animation" style="background: #cecece;">
-          <img src="../img/news/<?=$article['img'] ?>" alt="">
+          <img src="../img/news/<?=$article['caption-img'] ?>" alt="">
         </div>
         <div class="news-text wow fadeIn animation">
           <p class="news-text__excerpt"><?=$article['excerpt'] ?></p>

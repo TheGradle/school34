@@ -55,7 +55,7 @@
         { ?>
           <div class="news-item">
             <div class="news-item-img">
-              <a href="news/news.php?id=<?=$cat['id'] ?>"><img src="img/news/<?=$cat['img'] ?>" alt=""></a>
+              <a href="news/news.php?id=<?=$cat['id'] ?>"><img src="img/news/<?=$cat['caption-img'] ?>" alt=""></a>
             </div>
             <div class="news-item-text">
               <h3 class="news-item-text__caption"><a href="news/news.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>

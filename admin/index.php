@@ -11,8 +11,17 @@
     $subtitle = $_POST['subtitle'];
     $excerpt = $_POST['excerpt'];
     
+    $caption_img_name = false;
+    $caption_img = $_FILES['caption-img'];
+
     $img_name = false;
     $img = $_FILES['img'];
+
+    $expansions = [
+      'image/jpeg' => '.jpg',
+      'image/gif' => '.gif',
+      'image/png' => '.png'
+    ];
 
     if(trim($caption) == '') {
       $errors[] = 'Введіть назву новини!';
@@ -27,30 +36,36 @@
     }
 
     if ($img && !$img['error']) {
-      $expansions = [
-        'image/jpeg' => '.jpg',
-        'image/gif' => '.gif',
-        'image/png' => '.png'
-      ];
       if (isset($expansions[$img['type']])) {
-        $img_name = md5_file($img['tmp_name']) . $expansions[$img['type']];
+        $img_name = $img['name'];
+      } else {
+        $errors[] = 'Неверное разширение изображения!';
+      }
+    }
+
+    if ($caption_img && !$caption_img['error']) {
+      if (isset($expansions[$caption_img['type']])) {
+        $caption_img_name = $caption_img['name'];
       } else {
         $errors[] = 'Неверное разширение изображения!';
       }
     }
 
     if(empty($errors)) {
-      $request = addNews($caption, $subtitle, $excerpt, $img_name);
+      $request = addNews($caption, $subtitle, $excerpt, $caption_img_name, $img_name);
       if ($request) {
         if ($img_name) {
           move_uploaded_file($img['tmp_name'], '../img/news/' . $img_name);
+        }
+
+        if ($caption_img_name) {
+          move_uploaded_file($caption_img['tmp_name'], '../img/news/' . $caption_img_name);
         }
       }
     } else {
       echo array_shift($errors);
     }
   }
-
   
   /* editNews */
 
@@ -182,10 +197,14 @@
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
           <textarea class="form-control" id="excerpt" rows="3" name="excerpt"></textarea>
-          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту.</small>
+          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
         <div class="form-group">
-          <label for="img">Завантажте зображення</label>
+          <label for="img">Завантажте головне зображення</label>
+          <input type="file" class="form-control-file" id="caption-img" name="caption-img">
+        </div>
+        <div class="form-group">
+          <label for="img">Завантажте інші зображення за потребою</label>
           <input type="file" class="form-control-file" id="img" name="img">
         </div>
         <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
@@ -209,10 +228,14 @@
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
           <textarea class="form-control" id="excerpt" rows="3" name="excerpt_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати"></textarea>
-          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту.</small>
+          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
         <div class="form-group">
-          <label for="img">Завантажте зображення, якщо хочете змінити його</label>
+          <label for="img">Завантажте головне зображення, якщо хочете змінити його</label>
+          <input type="file" class="form-control-file" id="caption-img" name="caption-img_edit">
+        </div>
+        <div class="form-group">
+          <label for="img">Завантажте додаткові зображення, якщо хочете змінити їх</label>
           <input type="file" class="form-control-file" id="img" name="img_edit">
         </div>
         <div class="form-group">

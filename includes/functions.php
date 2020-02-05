@@ -45,14 +45,14 @@ function execQuery($sql) {
     return $result;
 }
 
-function addNews($caption, $subtitle, $excerpt, $img_name) {
+function addNews($caption, $subtitle, $excerpt, $caption_img_name, $img_name) {
     $link = getConnection();
    
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
     $img_name = prepareSqlString($link, $img_name);
 
-    $sql = "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$img_name')";
+    $sql = "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`, `caption-img`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$caption_img_name', '$img_name')";
 
     $result = execQuery($sql, $link);
     
