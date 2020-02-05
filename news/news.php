@@ -39,14 +39,14 @@
           <a href="index.php"><img src="../img/right-arrow.svg" alt=""></a>
           <p><a href="index.php">Назад</a></p>
         </div>
-        <h2 class="news__title">
+        <h2 class="news__title wow fadeIn">
           <?=$article['caption'] ?>
           <span><?=$article['date'] ?></span>
         </h2>
         <div class="news-img wow fadeInUp" style="background: #cecece;">
           <img src="../img/news/<?=$article['img'] ?>" alt="">
         </div>
-        <div class="news-text">
+        <div class="news-text wow fadeInUp">
           <p class="news-text__excerpt"><?=$article['excerpt'] ?></p>
           <div class="share">
             <h3 class="share__title">Поширити:</h3>

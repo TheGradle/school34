@@ -19,7 +19,7 @@
   <meta name="description" content="<?=$article['subtitle'] ?>">
   <meta property="og:title" content="<?=$article['caption'] ?>">
   <meta property="og:url" content="<?=$current_url ?>">
-  <meta property="og:image" content="../img/news/<?=$article['img'] ?>">
+  <meta property="og:image" content="../../img/zno/<?=$article['img'] ?>">
   <link rel="stylesheet" href="../../css/reset.min.css">
   <link rel="stylesheet" href="../../css/main.min.css">
   <link rel="stylesheet" href="../../css/zno.min.css">

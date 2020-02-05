@@ -40,9 +40,9 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title">Новини</h2>
+      <h2 class="page__title wow fadeInUp">Новини</h2>
       <div class="news">
-        <div class="news-list">
+        <div class="news-list wow fadeIn" data-wow-delay=".7s">
           <?php 
             $result = mysqli_query($db, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
             $pagination = mysqli_fetch_array($result);
@@ -59,7 +59,7 @@
             </div>
           <?php } while ($pagination = mysqli_fetch_array($result)); ?>
         </div>
-        <div class="news-help">
+        <div class="news-help wow fadeInRight">
           <div class="news-help-search">
             <form>
               <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input" placeholder="Пошук">
@@ -87,7 +87,7 @@
             }
           ?>
         </div>
-        <div class="news-help-subscribe_mobile news-help-subscribe">
+        <div class="news-help-subscribe_mobile news-help-subscribe wow fadeInUp">
           <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
           <form action="" method="POST" enctype="multipart/form-data">
             <input type="email" name="address" placeholder="Ваш email" class="news-help-subscribe__input" value="<?=$address?>">

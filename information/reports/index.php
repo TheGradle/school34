@@ -24,13 +24,13 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title">Звіти</h2>
+      <h2 class="page__title wow fadeInUp">Звіти</h2>
       <?php
         $result = mysqli_query($db, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count" );
         $pagination = mysqli_fetch_array($result);
       ?>
       <div class="list-box">
-        <div class="list">
+        <div class="list wow fadeIn" data-wow-delay=".7s">
           <?php do { ?>
             <div class="list-item wow fadeIn">
               <h3 class="list-item__caption"><a href="<?=$pagination['link'] ?>" target="_blank"><?=$pagination['caption'] ?></a></h3>
@@ -39,7 +39,7 @@
             </div>
           <?php } while ($pagination = mysqli_fetch_array($result)); ?>
         </div>
-        <div class="help">
+        <div class="help wow fadeInRight">
           <div class="help-search">
             <form>
               <span class="help-search__icon"><img src="../../img/search.svg" alt=""></span><input type="text" name="search" class="help-search__input" placeholder="Пошук">
@@ -67,7 +67,7 @@
             }
           ?>
         </div>
-        <div class="help-subscribe_mobile help-subscribe">
+        <div class="help-subscribe_mobile help-subscribe wow fadeInUp">
           <h3 class="help-subscribe__title">Свіжі новини на Ваш email</h3>
           <form action="" method="POST" enctype="multipart/form-data">
             <input type="email" name="email" placeholder="Ваш email" class="help-subscribe__input" placeholder="Пошук">
