@@ -7,10 +7,10 @@
   <meta charset="utf-8">
   <title>Документи - Миколаївський заклад загальної середньої освіти №34</title>
   <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
+  <link rel="stylesheet" href="css/animate.min.css">
   <link rel="stylesheet" href="css/reset.min.css">
   <link rel="stylesheet" href="css/main.min.css">
   <link rel="stylesheet" href="css/documents.min.css">
-  <link rel="stylesheet" href="css/animate.min.css">
   <?php
     require_once "templates/head.php";
   ?>
@@ -21,9 +21,9 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title wow fadeInUp">Документи</h2>
+      <h2 class="page__title wow fadeInUp animation">Документи</h2>
       <div class="documents">
-        <ul class="documents-list wow fadeIn" data-wow-delay=".7s">
+        <ul class="documents-list wow fadeIn animation" data-wow-delay=".7s">
           <li class="documents-list__item"><a href="https://drive.google.com/open?id=1yXiLD5p8S4oCYnpunNHkS9rR6ED3MGah" target="_blank">Статут закладу освіти</a></li>
           <li class="documents-list__item">
             Ліцензія на провадження освітньої діяльності:
@@ -55,11 +55,11 @@
     ?>
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/main.min.js"></script>
   <script src="js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
-  <script src="js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -31,6 +31,10 @@ body {
   height: 100vh;
 }
 
+.animation {
+  visibility: hidden;
+}
+
 .wrap {
   max-width: 1300px;
   width: 100%;
@@ -370,6 +374,12 @@ header {
   line-height: 62px;
   padding-left: 25px;
 }
+@media (max-width: 1810px) {
+  .slider-item h2 {
+    font-size: 52px;
+    line-height: 52px;
+  }
+}
 @media (max-width: 965px) {
   .slider-item h2 {
     width: 100%;
@@ -381,9 +391,16 @@ header {
     color: #fff;
   }
 }
-@media (max-width: 965px) {
-  .slider-item h2 br {
-    display: none;
+@media (max-width: 615px) {
+  .slider-item h2 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+@media (max-width: 500px) {
+  .slider-item h2 {
+    font-size: 38px;
+    line-height: 38px;
   }
 }
 

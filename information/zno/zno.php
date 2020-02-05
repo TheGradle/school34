@@ -42,17 +42,17 @@
           <a href="index.php"><img src="../../img/right-arrow.svg" alt=""></a>
           <p><a href="index.php">Назад</a></p>
         </div>
-        <h2 class="zno__title">
+        <h2 class="zno__title wow fadeIn animation">
           <?=$article['caption'] ?>
           <span><?=$article['date'] ?></span>
         </h2>
         <?php if (!$article['img'] == null)
         { ?>
-          <div class="zno-img wow fadeInUp">
+          <div class="zno-img wow fadeInUp animation">
             <img src="../../img/zno/<?=$article['img'] ?>" alt="">
           </div>
         <?php } ?>
-        <div class="zno-text">
+        <div class="zno-text wow fadeIn animation">
           <p class="zno-text__excerpt"><?=$article['excerpt'] ?></p>
           <div class="share">
             <h3 class="share__title">Поширити:</h3>
