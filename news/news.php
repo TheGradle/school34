@@ -5,8 +5,9 @@
 
   if (mysqli_num_rows($news) <= 0) {
     ?>
-      <!-- html ошибки -->
+      404
     <?php
+    exit();
   }
 
   $article = mysqli_fetch_assoc($news);

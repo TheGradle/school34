@@ -129,6 +129,17 @@
     margin: 20px auto 0;
   }
 }
+.news-text h2 {
+  font-size: 26px;
+  line-height: 26px;
+}
+.news-text img {
+  width: 100%;
+  margin: 15px 0 15px 0;
+}
+.news-text iframe {
+  margin: 15px 0 15px 0;
+}
 .news-text__excerpt {
   margin-bottom: 25px;
 }
