@@ -20,8 +20,9 @@
     $caption_img_name = false;
     $caption_img = $_FILES['caption-img'];
 
-    $img_name = false;
+    //$img_name = false;
     $img = $_FILES['img'];
+    $img_desc = reArrayFiles($img);
 
     if(trim($caption) == '') {
       $errors[] = 'Введіть назву новини!';
@@ -35,13 +36,13 @@
       $errors[] = 'Напишіть текст новини!';
     }
 
-    if ($img && !$img['error']) {
+    /*if ($img && !$img['error']) {
       if (isset($expansions[$img['type']])) {
         $img_name = $img['name'];
       } else {
         $errors[] = 'Неверное разширение изображения!';
       }
-    }
+    }*/
 
     if ($caption_img && !$caption_img['error']) {
       if (isset($expansions[$caption_img['type']])) {
@@ -52,11 +53,13 @@
     }
 
     if(empty($errors)) {
-      $request = addNews($caption, $subtitle, $excerpt, $caption_img_name, $img_name);
+      $request = addNews($caption, $subtitle, $excerpt, $caption_img_name);
       if ($request) {
-        if ($img_name) {
-          move_uploaded_file($img['tmp_name'], '../img/news/' . $img_name);
-        }
+        //if ($img_name) {
+          foreach($img_desc as $item) {
+            move_uploaded_file($item['tmp_name'], '../img/news/' . $item['name']);
+          }
+        //}
 
         if ($caption_img_name) {
           move_uploaded_file($caption_img['tmp_name'], '../img/news/' . $caption_img_name);
@@ -104,7 +107,7 @@
     }
 
     if(empty($errors_edit)) {
-      $request_edit = editNews($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $caption_img_name_edt, $img_name_edit);
+      $request_edit = editNews($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $caption_img_name_edit);
       if ($request_edit) {
         if ($img_name_edit) {
           move_uploaded_file($img_edit['tmp_name'], '../img/news/' . $img_name_edit);
@@ -196,7 +199,7 @@
     </ul>
     <div class="admin">
       <h3>Додати новину</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data" multipart="">
         <div class="form-group">
           <label for="caption">Назва новини</label>
           <input type="text" class="form-control" id="caption" name="caption">
@@ -219,7 +222,7 @@
         </div>
         <div class="form-group">
           <label for="img">Завантажте інші зображення за потребою</label>
-          <input type="file" class="form-control-file" id="img" name="img">
+          <input type="file" class="form-control-file" id="img" name="img[]" multiple>
         </div>
         <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
       </form>
@@ -270,7 +273,7 @@
     </div>
     <div class="admin">
       <h3>Редагувати новину</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data" multipart="">
         <div class="form-group">
           <label for="id">ID новини, яку треба редагувати</label>
           <input type="text" class="form-control" id="id" name="id_edit">
@@ -297,7 +300,7 @@
         </div>
         <div class="form-group">
           <label for="img">Завантажте додаткові зображення, якщо хочете змінити їх</label>
-          <input type="file" class="form-control-file" id="img" name="img_edit">
+          <input type="file" class="form-control-file" id="img" name="img_edit[]" multiple>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>

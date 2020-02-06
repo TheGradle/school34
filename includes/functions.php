@@ -45,27 +45,40 @@ function execQuery($sql) {
     return $result;
 }
 
-function addNews($caption, $subtitle, $excerpt, $caption_img_name, $img_name) {
+function reArrayFiles($file) {
+    $file_ary = array();
+    $file_count = count($file['name']);
+    $file_key = array_keys($file);
+   
+    for($i=0;$i<$file_count;$i++) {
+        foreach($file_key as $val) {
+            $file_ary[$i][$val] = $file[$val][$i];
+        }
+    }
+    return $file_ary;
+}
+
+function addNews($caption, $subtitle, $excerpt, $caption_img_name) {
     $link = getConnection();
    
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
     $img_name = prepareSqlString($link, $img_name);
 
-    $sql = "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`, `caption-img`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$caption_img_name', '$img_name')";
+    $sql = "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`, `caption-img`) VALUES ('$caption', '$subtitle', '$excerpt', '$caption_img_name')";
 
     $result = execQuery($sql, $link);
     
     return $result;
 }
 
-function editNews($id, $caption, $subtitle, $excerpt, $img_name) {
+function editNews($id, $caption, $subtitle, $excerpt, $caption_img_name) {
     $link = getConnection();
    
     $id = prepareSqlString($link, $id);
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
-    $img_name = prepareSqlString($link, $img_name);
+    $caption_img_name = prepareSqlString($link, $caption_img_name);
 
     $sql = "UPDATE `news` SET ";
 
@@ -77,18 +90,18 @@ function editNews($id, $caption, $subtitle, $excerpt, $img_name) {
     }
     if ($subtitle) {
         $sql .= "`subtitle` = '$subtitle'";
-        if ($img_name) {
+        if ($caption_img_name) {
             $sql .= ", ";
         }
     }
-    if ($img_name) {
-        $sql .= "`img` = '$img_name'";
+    if ($caption_img_name) {
+        $sql .= "`caption-img` = '$caption_img_name'";
         if ($excerpt) {
             $sql .= ", ";
         }
     }
     if ($excerpt) {
-        if ($img_name || $subtitle || $caption) {
+        if ($caption_img_name || $subtitle || $caption) {
             $sql .= ", ";
         }
         $sql .= "`excerpt` = '$excerpt'";
