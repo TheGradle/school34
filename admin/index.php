@@ -15,7 +15,7 @@
   if(isset($_POST['submit'])){
     $caption = $_POST['caption'];
     $subtitle = $_POST['subtitle'];
-    $excerpt = nl2br($_POST['excerpt']);
+    $excerpt = str_ireplace("'", "\'", nl2br($_POST['excerpt']));
     
     $caption_img_name = false;
     $caption_img = $_FILES['caption-img'];

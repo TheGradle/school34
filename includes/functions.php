@@ -63,7 +63,7 @@ function addNews($caption, $subtitle, $excerpt, $caption_img_name) {
    
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
-    $img_name = prepareSqlString($link, $img_name);
+    $caption_img_name = prepareSqlString($link, $caption_img_name);
 
     $sql = "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`, `caption-img`) VALUES ('$caption', '$subtitle', '$excerpt', '$caption_img_name')";
 
