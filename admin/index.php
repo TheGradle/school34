@@ -80,23 +80,24 @@
     $subtitle_edit = $_POST['subtitle_edit'];
     $excerpt_edit = $_POST['excerpt_edit'];
 
-    $caption_img_name_edit = false;
+    //$caption_img_name_edit = false;
     $caption_img_edit = $_FILES['caption-img_edit'];
     
     $img_name_edit = false;
     $img_edit = $_FILES['img_edit'];
+    $img_desc_edit = reArrayFiles($img_edit);
 
     if(trim($id_edit) == '') {
       $errors_edit[] = 'Введіть id!';
     }
 
-    if ($img_edit && !$img_edit['error']) {
+    /*if ($img_edit && !$img_edit['error']) {
       if (isset($expansions[$img_edit['type']])) {
         $img_name_edit = $img_edit['name'];
       } else {
         $errors_edit[] = 'Неверное разширение изображения!';
       }
-    }
+    }*/
 
     if ($caption_img_edit && !$caption_img_edit['error']) {
       if (isset($expansions[$caption_img_edit['type']])) {
@@ -109,9 +110,11 @@
     if(empty($errors_edit)) {
       $request_edit = editNews($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $caption_img_name_edit);
       if ($request_edit) {
-        if ($img_name_edit) {
-          move_uploaded_file($img_edit['tmp_name'], '../img/news/' . $img_name_edit);
-        }
+        //if ($img_name_edit) {
+          foreach($img_desc_desc as $item) {
+            move_uploaded_file($item['tmp_name'], '../img/news/' . $item['name']);
+          }
+        //}
 
         if ($caption_img_name_edit) {
           move_uploaded_file($caption_img_edit['tmp_name'], '../img/news/' . $caption_img_name_edit);
