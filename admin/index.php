@@ -215,7 +215,7 @@
           <label for="excerpt">Текст новини</label>
           <textarea class="form-control" id="excerpt" rows="3" name="excerpt" style="margin-bottom: 10px;"></textarea>
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#youtube">Додати відео YouTube</button>
-          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture">Додати зображення</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture">Додати URL-зображення</button>
           <button type="button" class="btn btn-secondary btn-sm" id="addH2">Додати підзаголовок</button>
           <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
@@ -262,7 +262,7 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Посилання або ім'я файлу:</label>
+                <label for="recipient-name" class="col-form-label">Посилання:</label>
                 <input type="text" class="form-control" id="pictureLink">
               </div>
             </div>
@@ -293,7 +293,7 @@
           <label for="excerpt">Текст новини</label>
           <textarea class="form-control" id="excerpt_edit" rows="3" name="excerpt_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати" style="margin-bottom: 10px;"></textarea>
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#youtube_edit">Додати відео YouTube</button>
-          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture_edit">Додати зображення</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture_edit">Додати URL-зображення</button>
           <button type="button" class="btn btn-secondary btn-sm" id="addH2_edit">Додати підзаголовок</button>
           <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
@@ -303,7 +303,7 @@
         </div>
         <div class="form-group">
           <label for="img">Завантажте додаткові зображення, якщо хочете змінити їх</label>
-          <input type="file" class="form-control-file" id="img" name="img_edit[]" multiple>
+          <input type="file" class="form-control-file" id="img_edit" name="img_edit[]" multiple>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
@@ -342,7 +342,7 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Посилання або ім'я файлу:</label>
+                <label for="recipient-name" class="col-form-label">Посилання:</label>
                 <input type="text" class="form-control" id="pictureLink_edit">
               </div>
             </div>
@@ -410,6 +410,28 @@
       $("#addH2_edit").click(function() {
         var text = "<h2>Підзаголовок</h2>";
         $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + text));
+      });
+
+      /* ADD PICTURE */
+
+      $("#img").change(function(e){
+        var fileLength = e.target.files.length;
+
+        for (var i = 0; i < fileLength; i++) {
+          var fileName = e.target.files[i].name;
+          var fileLink = "<img src=\"../img/news/" + fileName + "\" alt=\"\">";
+          $('#excerpt').val($.trim($('#excerpt').val() + '\n' + fileLink));
+        }
+      });
+
+      $("#img_edit").change(function(e){
+        var fileLength = e.target.files.length;
+
+        for (var i = 0; i < fileLength; i++) {
+          var fileName = e.target.files[i].name;
+          var fileLink = "<img src=\"../img/news/" + fileName + "\" alt=\"\">";
+          $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + fileLink));
+        }
       });
     });
   </script>
