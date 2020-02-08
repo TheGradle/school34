@@ -133,11 +133,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>ЗНО - Адмін панель - Миколаївський заклад загальної середньої освіти №34</title>
-  <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
-  <meta name="keywords" content="мета-теги, шаблон, html, css">
-  <meta name="robots" content="index,follow,noodp">
-  <meta name="googlebot" content="index,follow">
-  <meta name="google" content="nositelinkssearchbox">
+  <meta name="robots" content="noindex, follow">
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
   <link rel="stylesheet" href="../css/admin.min.css">
