@@ -55,11 +55,11 @@
     if(empty($errors)) {
       $request = addNews($caption, $subtitle, $excerpt, $caption_img_name);
       if ($request) {
-        //if ($img_name) {
+        if ($img_desc) {
           foreach($img_desc as $item) {
             move_uploaded_file($item['tmp_name'], '../img/news/' . $item['name']);
           }
-        //}
+        }
 
         if ($caption_img_name) {
           move_uploaded_file($caption_img['tmp_name'], '../img/news/' . $caption_img_name);
@@ -110,11 +110,11 @@
     if(empty($errors_edit)) {
       $request_edit = editNews($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $caption_img_name_edit);
       if ($request_edit) {
-        //if ($img_name_edit) {
-          foreach($img_desc_desc as $item) {
+        if ($img_desc_edit) {
+          foreach($img_desc_edit as $item) {
             move_uploaded_file($item['tmp_name'], '../img/news/' . $item['name']);
           }
-        //}
+        }
 
         if ($caption_img_name_edit) {
           move_uploaded_file($caption_img_edit['tmp_name'], '../img/news/' . $caption_img_name_edit);
@@ -213,9 +213,12 @@
         </div>
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
-          <textarea class="form-control" id="excerpt" rows="3" name="excerpt" style="margin-bottom: 10px;"></textarea>
+          <textarea class="form-control" id="excerpt" rows="6" name="excerpt" style="margin-bottom: 10px;"></textarea>
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#youtube">Додати відео YouTube</button>
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture">Додати URL-зображення</button>
+          <label for="img" class="btn btn-secondary btn-sm" style="margin-bottom: 0px;" id="imgLabel">
+            Завантажити свої зображення
+          </label>
           <button type="button" class="btn btn-secondary btn-sm" id="addH2">Додати підзаголовок</button>
           <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
@@ -223,7 +226,7 @@
           <label for="img">Завантажте головне зображення</label>
           <input type="file" class="form-control-file" id="caption-img" name="caption-img">
         </div>
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
           <label for="img">Завантажте інші зображення за потребою</label>
           <input type="file" class="form-control-file" id="img" name="img[]" multiple>
         </div>
@@ -240,9 +243,12 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Посилання:</label>
+                <label for="recipient-name" class="col-form-label">ID:</label>
                 <input type="text" class="form-control" id="youtubeLink">
               </div>
+              <img src="img/inst-1.png" alt="" width="100%">
+              <hr>
+              <img src="img/inst-2.png" alt="" width="100%">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" id="youtubeAdd">Додати</button>
@@ -291,9 +297,12 @@
         </div>
         <div class="form-group">
           <label for="excerpt">Текст новини</label>
-          <textarea class="form-control" id="excerpt_edit" rows="3" name="excerpt_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати" style="margin-bottom: 10px;"></textarea>
+          <textarea class="form-control" id="excerpt_edit" rows="6" name="excerpt_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати" style="margin-bottom: 10px;"></textarea>
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#youtube_edit">Додати відео YouTube</button>
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture_edit">Додати URL-зображення</button>
+          <label for="img_edit" class="btn btn-secondary btn-sm" style="margin-bottom: 0px;" id="imgLabel_edit">
+            Завантажити свої зображення
+          </label>
           <button type="button" class="btn btn-secondary btn-sm" id="addH2_edit">Додати підзаголовок</button>
           <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
@@ -301,8 +310,8 @@
           <label for="img">Завантажте головне зображення, якщо хочете змінити його</label>
           <input type="file" class="form-control-file" id="caption-img_edit" name="caption-img_edit">
         </div>
-        <div class="form-group">
-          <label for="img">Завантажте додаткові зображення, якщо хочете змінити їх</label>
+        <div class="form-group" style="display: none;">
+          <label for="img_edit">Завантажте додаткові зображення, якщо хочете змінити їх</label>
           <input type="file" class="form-control-file" id="img_edit" name="img_edit[]" multiple>
         </div>
         <div class="form-group">
@@ -320,9 +329,12 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Посилання:</label>
+                <label for="recipient-name" class="col-form-label">ID:</label>
                 <input type="text" class="form-control" id="youtubeLink_edit">
               </div>
+              <img src="img/inst-1.png" alt="" width="100%">
+              <hr>
+              <img src="img/inst-2.png" alt="" width="100%">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" id="youtubeAdd_edit">Додати</button>
@@ -378,7 +390,7 @@
 
       $("#youtubeAdd").click(function() {
         var link = $("#youtubeLink").val();
-        var iframe = "<iframe width=\"100%\" height=\"315\" src=\"" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+        var iframe = "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
         $('#excerpt').val($.trim($('#excerpt').val() + '\n' + iframe));
       });
 
@@ -397,7 +409,7 @@
 
       $("#youtubeAdd_edit").click(function() {
         var link = $("#youtubeLink_edit").val();
-        var iframe = "<iframe width=\"100%\" height=\"315\" src=\"" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+        var iframe = "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
         $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + iframe));
       });
 
@@ -422,6 +434,8 @@
           var fileLink = "<img src=\"../img/news/" + fileName + "\" alt=\"\">";
           $('#excerpt').val($.trim($('#excerpt').val() + '\n' + fileLink));
         }
+
+        $('#imgLabel').text("Ви вибрали " + fileLength + " зображення");
       });
 
       $("#img_edit").change(function(e){
@@ -432,6 +446,8 @@
           var fileLink = "<img src=\"../img/news/" + fileName + "\" alt=\"\">";
           $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + fileLink));
         }
+
+        $('#imgLabel_edit').text("Ви вибрали " + fileLength + " зображення");
       });
     });
   </script>
