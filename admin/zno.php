@@ -1,6 +1,11 @@
 <?php 
   require_once "../includes/config.php";
 
+  $expansions = [
+    'image/jpeg' => '.jpg',
+    'image/gif' => '.gif',
+    'image/png' => '.png'
+  ];
 
   /* addZno */
 
@@ -9,10 +14,13 @@
   if(isset($_POST['submit'])){
     $caption = $_POST['caption'];
     $subtitle = $_POST['subtitle'];
-    $excerpt = $_POST['excerpt'];
+    $excerpt = str_ireplace("'", "\'", nl2br($_POST['excerpt']));
     
-    $img_name = false;
+    $caption_img_name = false;
+    $caption_img = $_FILES['caption-img'];
+
     $img = $_FILES['img'];
+    $img_desc = reArrayFiles($img);
 
     if(trim($caption) == '') {
       $errors[] = 'Введіть назву новини!';
@@ -26,24 +34,25 @@
       $errors[] = 'Напишіть текст новини!';
     }
 
-    if ($img && !$img['error']) {
-      $expansions = [
-        'image/jpeg' => '.jpg',
-        'image/gif' => '.gif',
-        'image/png' => '.png'
-      ];
-      if (isset($expansions[$img['type']])) {
-        $img_name = md5_file($img['tmp_name']) . $expansions[$img['type']];
+    if ($caption_img && !$caption_img['error']) {
+      if (isset($expansions[$caption_img['type']])) {
+        $caption_img_name = $caption_img['name'];
       } else {
         $errors[] = 'Неверное разширение изображения!';
       }
     }
 
     if(empty($errors)) {
-      $request = addZno($caption, $subtitle, $excerpt, $img_name);
+      $request = addZno($caption, $subtitle, $excerpt, $caption_img_name);
       if ($request) {
-        if ($img_name) {
-          move_uploaded_file($img['tmp_name'], '../img/zno/' . $img_name);
+        if ($img_desc) {
+          foreach($img_desc as $item) {
+            move_uploaded_file($item['tmp_name'], '../img/zno/' . $item['name']);
+          }
+        }
+
+        if ($caption_img_name) {
+          move_uploaded_file($caption_img['tmp_name'], '../img/zno/' . $caption_img_name);
         }
       }
     } else {
@@ -60,33 +69,37 @@
     $id_edit = $_POST['id_edit'];
     $caption_edit = $_POST['caption_edit'];
     $subtitle_edit = $_POST['subtitle_edit'];
-    $excerpt_edit = $_POST['excerpt_edit'];
+    $excerpt_edit = str_ireplace("'", "\'", nl2br($_POST['excerpt_edit']));
     
-    $img_name_edit = false;
+    $caption_img_name_edit = false;
+    $caption_img_edit = $_FILES['caption-img_edit'];
+
     $img_edit = $_FILES['img_edit'];
+    $img_desc_edit = reArrayFiles($img_edit);
 
     if(trim($id_edit) == '') {
       $errors_edit[] = 'Введіть id!';
     }
 
-    if ($img_edit && !$img_edit['error']) {
-      $expansions = [
-        'image/jpeg' => '.jpg',
-        'image/gif' => '.gif',
-        'image/png' => '.png'
-      ];
-      if (isset($expansions[$img_edit['type']])) {
-        $img_name_edit = md5_file($img_edit['tmp_name']) . $expansions[$img_edit['type']];
+    if ($caption_img_edit && !$caption_img_edit['error']) {
+      if (isset($expansions[$caption_img_edit['type']])) {
+        $caption_img_name_edit = $caption_img_edit['name'];
       } else {
         $errors_edit[] = 'Неверное разширение изображения!';
       }
     }
 
     if(empty($errors_edit)) {
-      $request_edit = editZno($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $img_name_edit);
+      $request_edit = editZno($id_edit, $caption_edit, $subtitle_edit, $excerpt_edit, $caption_img_name_edit);
       if ($request_edit) {
-        if ($img_name_edit) {
-          move_uploaded_file($img_edit['tmp_name'], '../img/zno/' . $img_name_edit);
+        if ($img_desc_edit) {
+          foreach($img_desc_edit as $item) {
+            move_uploaded_file($item['tmp_name'], '../img/zno/' . $item['name']);
+          }
+        }
+
+        if ($caption_img_name_edit) {
+          move_uploaded_file($caption_img_edit['tmp_name'], '../img/zno/' . $caption_img_name);
         }
       }
     } else {
@@ -153,7 +166,7 @@
 </head>
 <body>
   <div class="page">
-    <h2 class="page__title">ЗНО - Адмін панель</h2>
+    <h2 class="page__title"><a href="../information/zno/index.php" target="_blank">ЗНО</a> - Адмін панель</h2>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link" href="index.php">Новини</a>
@@ -170,7 +183,7 @@
     </ul>
     <div class="admin">
       <h3>Додати статтю ЗНО</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data" multipart="">
         <div class="form-group">
           <label for="caption">Назва статті</label>
           <input type="text" class="form-control" id="caption" name="caption">
@@ -181,19 +194,76 @@
         </div>
         <div class="form-group">
           <label for="excerpt">Текст статті</label>
-          <textarea class="form-control" id="excerpt" rows="3" name="excerpt"></textarea>
-          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту.</small>
+          <textarea class="form-control" id="excerpt" rows="6" name="excerpt" style="margin-bottom: 10px;"></textarea>
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#youtube">Додати відео YouTube</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture">Додати URL-зображення</button>
+          <label for="img" class="btn btn-secondary btn-sm" style="margin-bottom: 0px;" id="imgLabel">
+            Завантажити свої зображення
+          </label>
+          <button type="button" class="btn btn-secondary btn-sm" id="addH2">Додати підзаголовок</button>
+          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
         <div class="form-group">
-          <label for="img">Завантажте зображення</label>
-          <input type="file" class="form-control-file" id="img" name="img">
+          <label for="img">Завантажте головне зображення</label>
+          <input type="file" class="form-control-file" id="caption-img" name="caption-img">
+        </div>
+        <div class="form-group" style="display: none;">
+          <label for="img">Завантажте інші зображення за потребою</label>
+          <input type="file" class="form-control-file" id="img" name="img[]" multiple>
         </div>
         <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
       </form>
+      <div class="modal" tabindex="-1" role="dialog" id="youtube" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Вставьте посилання на відео YouTube</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">ID:</label>
+                <input type="text" class="form-control" id="youtubeLink">
+              </div>
+              <img src="img/inst-1.png" alt="" width="100%">
+              <hr>
+              <img src="img/inst-2.png" alt="" width="100%">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="youtubeAdd">Додати</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" tabindex="-1" role="dialog" id="picture" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Вставьте зображення</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Посилання:</label>
+                <input type="text" class="form-control" id="pictureLink">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="pictureAdd">Додати</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="admin">
       <h3>Редагувати статтю ЗНО</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data" multipart="">
         <div class="form-group">
           <label for="id">ID статті, яку треба редагувати</label>
           <input type="text" class="form-control" id="id" name="id_edit">
@@ -208,17 +278,74 @@
         </div>
         <div class="form-group">
           <label for="excerpt">Текст статті</label>
-          <textarea class="form-control" id="excerpt" rows="3" name="excerpt_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати"></textarea>
-          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту.</small>
+          <textarea class="form-control" id="excerpt" rows="6" name="excerpt_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати" style="margin-bottom: 10px;"></textarea>
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#youtube_edit">Додати відео YouTube</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#picture_edit">Додати URL-зображення</button>
+          <label for="img_edit" class="btn btn-secondary btn-sm" style="margin-bottom: 0px;" id="imgLabel_edit">
+            Завантажити свої зображення
+          </label>
+          <button type="button" class="btn btn-secondary btn-sm" id="addH2_edit">Додати підзаголовок</button>
+          <small id="excerptText" class="form-text text-muted">Ви можете користуватись html тегами для редактування тексту. Також тут ви можете додати додаткову інформацію, таку як зображення або відео YouTube.</small>
         </div>
         <div class="form-group">
-          <label for="img">Завантажте зображення, якщо хочете змінити його</label>
-          <input type="file" class="form-control-file" id="img" name="img_edit">
+          <label for="img">Завантажте головне зображення, якщо хочете змінити його</label>
+          <input type="file" class="form-control-file" id="caption-img_edit" name="caption-img_edit">
+        </div>
+        <div class="form-group" style="display: none;">
+          <label for="img_edit">Завантажте додаткові зображення, якщо хочете змінити їх</label>
+          <input type="file" class="form-control-file" id="img_edit" name="img_edit[]" multiple>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
         </div>
       </form>
+      <div class="modal" tabindex="-1" role="dialog" id="youtube_edit" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Вставьте посилання на відео YouTube</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">ID:</label>
+                <input type="text" class="form-control" id="youtubeLink_edit">
+              </div>
+              <img src="img/inst-1.png" alt="" width="100%">
+              <hr>
+              <img src="img/inst-2.png" alt="" width="100%">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="youtubeAdd_edit">Додати</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal" tabindex="-1" role="dialog" id="picture_edit" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Вставьте зображення</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Посилання:</label>
+                <input type="text" class="form-control" id="pictureLink_edit">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="pictureAdd_edit">Додати</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="admin">
       <h3>Видалити статтю ЗНО</h3>
@@ -237,5 +364,73 @@
   <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="../js/main.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      
+      /* ADD */
+
+      $("#youtubeAdd").click(function() {
+        var link = $("#youtubeLink").val();
+        var iframe = "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+        $('#excerpt').val($.trim($('#excerpt').val() + '\n' + iframe));
+      });
+
+      $("#pictureAdd").click(function() {
+        var link = $("#pictureLink").val();
+        var img = "<img src=\"" + link + "\" alt=\"\">";
+        $('#excerpt').val($.trim($('#excerpt').val() + '\n' + img));
+      });
+
+      $("#addH2").click(function() {
+        var text = "<h2>Підзаголовок</h2>";
+        $('#excerpt').val($.trim($('#excerpt').val() + '\n' + text));
+      });
+
+      /* EDIT */
+
+      $("#youtubeAdd_edit").click(function() {
+        var link = $("#youtubeLink_edit").val();
+        var iframe = "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + iframe));
+      });
+
+      $("#pictureAdd_edit").click(function() {
+        var link = $("#pictureLink_edit").val();
+        var img = "<img src=\"" + link + "\" alt=\"\">";
+        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + img));
+      });
+
+      $("#addH2_edit").click(function() {
+        var text = "<h2>Підзаголовок</h2>";
+        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + text));
+      });
+
+      /* ADD PICTURE */
+
+      $("#img").change(function(e){
+        var fileLength = e.target.files.length;
+
+        for (var i = 0; i < fileLength; i++) {
+          var fileName = e.target.files[i].name;
+          var fileLink = "<img src=\"../img/zno/" + fileName + "\" alt=\"\">";
+          $('#excerpt').val($.trim($('#excerpt').val() + '\n' + fileLink));
+        }
+
+        $('#imgLabel').text("Ви вибрали " + fileLength + " зображення");
+      });
+
+      $("#img_edit").change(function(e){
+        var fileLength = e.target.files.length;
+
+        for (var i = 0; i < fileLength; i++) {
+          var fileName = e.target.files[i].name;
+          var fileLink = "<img src=\"../img/zno/" + fileName + "\" alt=\"\">";
+          $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + fileLink));
+        }
+
+        $('#imgLabel_edit').text("Ви вибрали " + fileLength + " зображення");
+      });
+    });
+  </script>
 </body>
 </html>

@@ -78,7 +78,7 @@
     $id_edit = $_POST['id_edit'];
     $caption_edit = $_POST['caption_edit'];
     $subtitle_edit = $_POST['subtitle_edit'];
-    $excerpt_edit = $_POST['excerpt_edit'];
+    $excerpt_edit = str_ireplace("'", "\'", nl2br($_POST['excerpt_edit']));
 
     //$caption_img_name_edit = false;
     $caption_img_edit = $_FILES['caption-img_edit'];

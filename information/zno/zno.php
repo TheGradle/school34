@@ -46,10 +46,10 @@
           <?=$article['caption'] ?>
           <span><?=$article['date'] ?></span>
         </h2>
-        <?php if (!$article['img'] == null)
+        <?php if (!$article['caption-img'] == null)
         { ?>
           <div class="zno-img wow fadeInUp animation">
-            <img src="../../img/zno/<?=$article['img'] ?>" alt="">
+            <img src="../../img/zno/<?=$article['caption-img'] ?>" alt="">
           </div>
         <?php } ?>
         <div class="zno-text wow fadeIn animation">

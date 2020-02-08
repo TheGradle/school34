@@ -188,14 +188,14 @@ function delReport($id) {
     return $result;
 }
 
-function addZno($caption, $subtitle, $excerpt, $img_name) {
+function addZno($caption, $subtitle, $excerpt, $caption_img_name) {
     $link = getConnection();
    
     $caption = prepareSqlString($link, $caption);
     $subtitle = prepareSqlString($link, $subtitle);
-    $img_name = prepareSqlString($link, $img_name);
+    $caption_img_name = prepareSqlString($link, $caption_img_name);
 
-    $sql = "INSERT INTO `zno` (`caption`, `subtitle`, `excerpt`, `img`) VALUES ('$caption', '$subtitle', '$excerpt', '$img_name')";
+    $sql = "INSERT INTO `zno` (`caption`, `subtitle`, `excerpt`, `caption-img`) VALUES ('$caption', '$subtitle', '$excerpt', '$caption_img_name')";
 
     $result = execQuery($sql, $link);
     
