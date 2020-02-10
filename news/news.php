@@ -4,9 +4,7 @@
   $news = mysqli_query($connection, "SELECT * FROM `news` WHERE `id` = " . (int) $_GET['id']);
 
   if (mysqli_num_rows($news) <= 0) {
-    ?>
-      404
-    <?php
+    require_once "../templates/errors/404.php";
     exit();
   }
 

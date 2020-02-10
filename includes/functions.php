@@ -264,11 +264,87 @@ function addEmail($address) {
     $sql = "INSERT INTO `emails` (`address`) VALUES ('$address')";
 
     $result = execQuery($sql, $link);
+
+    ini_set("SMTP", "aspmx.l.google.com");
+    ini_set("sendmail_from", "school34@gmail.com");
+
+    $message = '<html>
+                    <head>
+                      <title>Test</title>
+                      <style>
+                        html,
+                        body {
+                          font-family: e-Ukraine;
+                          width: 100%;
+                        }
+
+                        header {
+                          width: 100%;
+                          height: 500px;
+                          font-size: 235px;
+                          background: #fd333b;
+                          color: #fff;
+                          text-align: center;
+                          line-height: 600px;
+                        }
+
+                        a {
+                          width: 100%;
+                          height: 100px;
+                          background: #151111;
+                          text-align: center;
+                          display: block;
+                          line-height: 100px;
+                          color: #fff !important;
+                          text-decoration: none;
+                          font-size: 26px;
+                        }
+
+                        a:hover {
+                          text-decoration: underline;
+                        }
+
+                        @media screen and (max-width: 600px) {
+                          header {
+                            font-size: 200px;
+                            height: 450px;
+                          }
+                          a {
+                            font-size: 20px;
+                            height: 80px;
+                            line-height: 80px;
+                          }
+                        }
+                        @media screen and (max-width: 418px) {
+                          header {
+                            font-size: 170px;
+                          }
+                        }
+                        @media screen and (max-width: 381px) {
+                          a {
+                            font-size: 20px;
+                            height: 100px;
+                            line-height: 48px;
+                          }
+                        }
+                      </style>
+                    </head>
+                    <body>
+                        <header>404</header>
+                        <a href="http://dlkfgnkeoj98ryhe.000webhostapp.com">Повернутись на головну сторінку</a>
+                    </body>
+                </html>';
+
+    $headers = "From: school34@gmail.com\r\n".
+               "MIME-Version: 1.0" . "\r\n" .
+               "Content-type: text/html; charset=UTF-8" . "\r\n"; 
+
+    mail("$address", "Ще трохи... 😉", $message, $headers);
     
     return $result;
 }
 
-function firstEmail($address) {
+/*function firstEmail($address) {
     $link = getConnection();
    
     $address = prepareSqlString($link, $address);
@@ -278,4 +354,4 @@ function firstEmail($address) {
     $result = execQuery($sql, $link);
     
     return $result;
-}
+}*/

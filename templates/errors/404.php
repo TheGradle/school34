@@ -1,3 +1,6 @@
+<?php 
+  require_once "http://dlkfgnkeoj98ryhe.000webhostapp.com/includes/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +65,7 @@
     }
   </style>
   <?php
-    require_once "../head.php";
+    require_once "http://dlkfgnkeoj98ryhe.000webhostapp.com/templates/head.php";
   ?>
 </head>
 <body>
