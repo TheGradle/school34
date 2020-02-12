@@ -2,7 +2,7 @@
   require_once "includes/config.php";
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
   <meta charset="utf-8">
   <title>Про нас - Миколаївський заклад загальної середньої освіти №34</title>

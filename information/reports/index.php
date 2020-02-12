@@ -5,7 +5,7 @@
   require_once "../../includes/pagination.php";
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
   <meta charset="utf-8">
   <title>Звіти - Інформація - Миколаївський заклад загальної середньої освіти №34</title>

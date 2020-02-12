@@ -19,9 +19,17 @@
       $errors[] = "#2";
     }
   }
+
+  $search = $_GET['search'];
+
+  if (isset($search)){
+    $result = mysqli_query($db, "SELECT * FROM `news` WHERE `excerpt` LIKE '$search' OR `caption` LIKE '$search' OR `subtitle` LIKE '$search'");
+  } else {
+    $result = mysqli_query($db, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
+  }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
   <meta charset="utf-8">
   <title>Новини - Миколаївський заклад загальної середньої освіти №34</title>
@@ -44,7 +52,6 @@
       <div class="news">
         <div class="news-list wow fadeIn animation" data-wow-delay=".7s">
           <?php 
-            $result = mysqli_query($db, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
             $pagination = mysqli_fetch_array($result);
             do { ?>
             <div class="wow news-list-item fadeIn animation">

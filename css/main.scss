@@ -198,7 +198,13 @@ header {
         line-height: 32px;
       }
       @media (max-width: 585px) {
-        display: none;
+        font-size: 22px;
+        line-height: 25px;
+        margin-left: 15px;
+      }
+      @media (max-width: 520px) {
+        font-size: 18px;
+        line-height: 22px;
       }
       a {
         text-decoration: none;
@@ -411,6 +417,7 @@ header {
         bottom: unset;
         right: unset;
         box-shadow: unset;
+        animation: unset;
       }
     }
     &-img {

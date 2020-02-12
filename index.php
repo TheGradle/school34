@@ -2,7 +2,7 @@
   require_once "includes/config.php";
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
   <meta charset="utf-8">
   <title>Головна - Миколаївський заклад загальної середньої освіти №34</title>
@@ -44,7 +44,7 @@
     <div class="wrap">
       <h2 class="page__title wow fadeInUp animation">
         Свіжі новини
-        <span class="page__title_fire"><img src="img/fire.png"></span>
+        <span class="page__title_fire"><img src="img/fire.png" alt=""></span>
         <span class="page__title_right"><a href="news/index.php"><img src="img/right-arrow.svg" alt=""></a></span>
       </h2>
       <?php
@@ -95,7 +95,7 @@
         <li class="contacts-list__item">adamchukFront@gmail.com</li>
       </ul>
       <div class="contacts__map wow fadeIn animation">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.9353728340275!2d31.982857615608236!3d46.96295977914717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c5c967115d0785%3A0x56c84114743f47a5!2z0J3QuNC60L7Qu9Cw0LXQstGB0LrQsNGPINC-0LHRidC10L7QsdGA0LDQt9C-0LLQsNGC0LXQu9GM0L3QsNGPINGI0LrQvtC70LAgSS1JSUkg0YHRgtGD0L_QtdC90LXQuSDihJYzNA!5e0!3m2!1sru!2sua!4v1576348962600!5m2!1sru!2sua" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.9353728340275!2d31.982857615608236!3d46.96295977914717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c5c967115d0785%3A0x56c84114743f47a5!2z0J3QuNC60L7Qu9Cw0LXQstGB0LrQsNGPINC-0LHRidC10L7QsdGA0LDQt9C-0LLQsNGC0LXQu9GM0L3QsNGPINGI0LrQvtC70LAgSS1JSUkg0YHRgtGD0L_QtdC90LXQuSDihJYzNA!5e0!3m2!1sru!2sua!4v1576348962600!5m2!1sru!2sua" width="450" height="450" style="border: 0; width: 100%;" allowfullscreen=""></iframe>
       </div>
     </div>
   </div>

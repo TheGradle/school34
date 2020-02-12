@@ -211,7 +211,15 @@ header {
 }
 @media (max-width: 585px) {
   .header-logo__title {
-    display: none;
+    font-size: 22px;
+    line-height: 25px;
+    margin-left: 15px;
+  }
+}
+@media (max-width: 520px) {
+  .header-logo__title {
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 .header-logo__title a {
@@ -452,6 +460,7 @@ header {
     bottom: unset;
     right: unset;
     box-shadow: unset;
+    animation: unset;
   }
 }
 .news-item-img {

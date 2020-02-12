@@ -12,7 +12,7 @@
   $article = mysqli_fetch_assoc($zno);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
   <meta charset="utf-8">
   <title><?=$article['caption'] ?> - Миколаївський заклад загальної середньої освіти №34</title>
@@ -58,7 +58,7 @@
             <h3 class="share__title">Поширити:</h3>
             <ul class="share-list">
               <li class="share-list-item"><a href="tg://msg_url?url=<?=$current_url ?>"><i class="fab fa-telegram-plane"></i></a></li>
-              <li class="share-list-item"><a href="https://vk.com/share.php?url=<?=$current_url ?>" target="_blank"><i class="fab fa-vk"></i></li>
+              <li class="share-list-item"><a href="https://vk.com/share.php?url=<?=$current_url ?>" target="_blank"><i class="fab fa-vk"></i></a></li>
             </ul>
           </div>
         </div>

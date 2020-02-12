@@ -2,7 +2,7 @@
   require_once "http://dlkfgnkeoj98ryhe.000webhostapp.com/includes/config.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <title>Помилка 404 - Миколаївський заклад загальної середньої освіти №34</title>
