@@ -76,34 +76,6 @@ body {
   color: #fff;
 }
 
-@-webkit-keyframes shadow {
-  from {
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-  }
-
-  to {
-    -webkit-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-    box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-  }
-}
-
-@keyframes shadow {
-  from {
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-  }
-
-  to {
-    -webkit-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-    box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-  }
-}
-
 #disqus_thread {
   max-width: 620px;
   width: 100%;
@@ -389,6 +361,10 @@ header {
     width: 300px;
     border-radius: 10px;
     position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
     @media (max-width: 1245px) {
       width: 260px;
     }
@@ -401,21 +377,19 @@ header {
       margin-bottom: 50px;
     }
     &:hover {
-      bottom: 10px;
-      right: 15px;
-      animation: shadow 0.25s;
-      -webkit-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-      box-shadow: 14px 14px 0px 0px rgba(0,0,0,0.75);
-      &:after {
-        background: black;
-        @media (max-width: 768px) {
-          background: unset;
-        }
-      }
+      box-shadow:
+      1px 1px #151111,
+      2px 2px #151111,
+      3px 3px #151111,
+      4px 4px #151111,
+      5px 5px #151111,
+      6px 6px #151111,
+      7px 7px #151111,
+      8px 8px #151111,
+      9px 9px #151111;
+      -webkit-transform: translateX(-7px);
+      transform: translateX(-7px);
       @media (max-width: 768px) {
-        bottom: unset;
-        right: unset;
         box-shadow: unset;
         animation: unset;
       }
@@ -466,7 +440,8 @@ header {
         color: #959595;
       }
       &__date {
-        
+        position: absolute;
+        bottom: 10px;
       }
     }
   }

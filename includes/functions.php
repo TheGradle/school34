@@ -268,72 +268,45 @@ function addEmail($address) {
     ini_set("SMTP", "aspmx.l.google.com");
     ini_set("sendmail_from", "school34@gmail.com");
 
-    $message = '<html>
-                    <head>
-                      <title>Test</title>
-                      <style>
-                        html,
-                        body {
-                          font-family: e-Ukraine;
-                          width: 100%;
-                        }
-
-                        header {
-                          width: 100%;
-                          height: 500px;
-                          font-size: 235px;
-                          background: #fd333b;
-                          color: #fff;
-                          text-align: center;
-                          line-height: 600px;
-                        }
-
-                        a {
-                          width: 100%;
-                          height: 100px;
-                          background: #151111;
-                          text-align: center;
-                          display: block;
-                          line-height: 100px;
-                          color: #fff !important;
-                          text-decoration: none;
-                          font-size: 26px;
-                        }
-
-                        a:hover {
-                          text-decoration: underline;
-                        }
-
-                        @media screen and (max-width: 600px) {
-                          header {
-                            font-size: 200px;
-                            height: 450px;
-                          }
-                          a {
-                            font-size: 20px;
-                            height: 80px;
-                            line-height: 80px;
-                          }
-                        }
-                        @media screen and (max-width: 418px) {
-                          header {
-                            font-size: 170px;
-                          }
-                        }
-                        @media screen and (max-width: 381px) {
-                          a {
-                            font-size: 20px;
-                            height: 100px;
-                            line-height: 48px;
-                          }
-                        }
-                      </style>
-                    </head>
-                    <body>
-                        <header>404</header>
-                        <a href="http://dlkfgnkeoj98ryhe.000webhostapp.com">Повернутись на головну сторінку</a>
-                    </body>
-                </html>';
+    $site_url = "http://" . $_SERVER['HTTP_HOST'];
+    $message = "<html>
+                <head>
+                  <title>Hello email</title>
+                  <style>
+                    html,
+                    body {
+                      font-family: e-Ukraine;
+                      width: 100%;
+                      height: 100%;
+                    }
+                    .logo {
+                      padding-left: 10px;
+                      display: flex;
+                    }
+                    .logo__title {
+                      margin-top: 10px;
+                      margin-left: 25px;
+                      font-size: 26px;
+                      line-height: 32px;
+                      font-family: \'e-Ukraine NAME\';
+                    }
+                    .logo__title a {
+                      text-decoration: none;
+                      color: #000;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class=\"box\">
+                    <header>
+                      <div class=\"logo\">
+                        <a href=\"http://dlkfgnkeoj98ryhe.000webhostapp.com\"><img src=\"http://dlkfgnkeoj98ryhe.000webhostapp.com/img/logo.png\" alt=\"\" class=\"header-logo__img\"></a>
+                        <p class=\"header-logo__title\"><a href=\"http://dlkfgnkeoj98ryhe.000webhostapp.com\">Заклад загальної<br>середньої освіти №&nbsp;34</a></p>
+                      </div>
+                    </header>
+                  </div>
+                </body>
+                </html>";
 
     $headers = "From: school34@gmail.com\r\n".
                "MIME-Version: 1.0" . "\r\n" .
@@ -343,15 +316,3 @@ function addEmail($address) {
     
     return $result;
 }
-
-/*function firstEmail($address) {
-    $link = getConnection();
-   
-    $address = prepareSqlString($link, $address);
-
-    $sql = "INSERT INTO `emails` (`address`) VALUES ('$address')";
-
-    $result = execQuery($sql, $link);
-    
-    return $result;
-}*/
