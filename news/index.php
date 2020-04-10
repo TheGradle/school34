@@ -20,10 +20,16 @@
     }
   }
 
+  $search_check = false;
   $search = $_GET['search'];
 
   if (isset($search)){
-    $result = mysqli_query($db, "SELECT * FROM `news` WHERE `excerpt` LIKE '$search' OR `caption` LIKE '$search' OR `subtitle` LIKE '$search'");
+    $search_check = true;
+    
+    $search = substr($search, 0, 64);
+    $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
+
+    $result = mysqli_query($db, "SELECT * FROM `news` WHERE `excerpt` LIKE '%$search%' OR `caption` LIKE '%$search%' OR `subtitle` LIKE '%$search%'");
   } else {
     $result = mysqli_query($db, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
   }
@@ -48,7 +54,15 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title wow fadeInUp animation">Новини</h2>
+      <h2 class="page__title wow fadeInUp animation">
+        <?php
+          if ($search_check == true) {
+            echo "Результати пошуку:<span>Знайдено новин зі словом $search: $result->num_rows</span>";
+          } else {
+            echo "Новини";
+          }
+        ?>
+      </h2>
       <div class="news">
         <div class="news-list wow fadeIn animation" data-wow-delay=".7s">
           <?php 
@@ -69,7 +83,7 @@
         <div class="news-help wow fadeInRight animation">
           <div class="news-help-search">
             <form>
-              <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input" placeholder="Пошук">
+              <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input" placeholder="Пошук новин">
             </form>
           </div>
           <div class="news-help-subscribe">
@@ -82,11 +96,19 @@
           </div>
         </div>
         <div class="pagination pagination_mobile">
-          <?php pagination_render($str_pag, $page); ?>
+          <?php 
+            if ($search_check == false) {
+              pagination_render($str_pag, $page);
+            }
+          ?>
         </div>
       </div>
       <div class="pagination">
-        <?php pagination_render($str_pag, $page); ?>
+        <?php 
+          if ($search_check == false) {
+            pagination_render($str_pag, $page);
+          }
+        ?>
       </div>
     </div>
   </div>

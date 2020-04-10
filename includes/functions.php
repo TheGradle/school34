@@ -63,7 +63,13 @@ function pagination_render($str_pag, $page) {
     $prev_page = $page - 1;
     $next_page = $page + 1;
 
-    echo "<div class='pagination__item'><a href=index.php?page=1>1</a></div>";
+    $i = $_GET['page'];
+
+    if ($i == 1) {
+      echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=1>1</a></div>";
+    } else {
+      echo "<div class='pagination__item'><a href=index.php?page=1>1</a></div>";
+    }
     if ($page - 1 > 2) {
       echo "<div class='pagination__item'>...</div>";
     }
@@ -71,7 +77,11 @@ function pagination_render($str_pag, $page) {
       echo "<div class='pagination__item'><a href=index.php?page=" . $prev_page . ">" . $prev_page . "</a></div>";
     }
     if ($page != 1 && $page != $str_pag) {
-      echo "<div class='pagination__item'><a href=index.php?page=$page>$page</a></div>";
+      if ($page == $i) {
+          echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=$page>$page</a></div>";
+      } else {
+        echo "<div class='pagination__item'><a href=index.php?page=$page>$page</a></div>";
+      }
     }
     if ($page != $str_pag && $page != $str_pag - 1) {
       echo "<div class='pagination__item'><a href=index.php?page=" . $next_page . ">" . $next_page . "</a></div>";
@@ -79,7 +89,11 @@ function pagination_render($str_pag, $page) {
     if ($str_pag - $page > 2) {
       echo "<div class='pagination__item'>...</div>";
     }
-    echo "<div class='pagination__item'><a href=index.php?page=$str_pag>$str_pag</a></div>";
+    if ($i == $str_pag) {
+      echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=$str_pag>$str_pag</a></div>";
+    } else {
+      echo "<div class='pagination__item'><a href=index.php?page=$str_pag>$str_pag</a></div>";
+    }
   } else {
     for ($i = 1; $i <= $str_pag; $i++){
       if ($str_pag != 1) {
@@ -92,6 +106,19 @@ function pagination_render($str_pag, $page) {
     }
   }
 }
+
+/*function search($search) {
+    $link = getConnection();
+
+    $search = prepareSqlString($link, $caption);
+    $search = substr($search, 0, 64);
+    $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
+
+    $good = trim(preg_replace("/\s(\S{1,2})\s/", " ", ereg_replace(" +", "  "," $search ")));
+    $good = ereg_eplace(" +", " ", $good);
+
+    $query = "SELECT id FROM table WHERE field LIKE '%". str_replace(" ", "%' OR field LIKE '%", $good). "%'";
+}*/
 
 function addNews($caption, $subtitle, $excerpt, $caption_img_name) {
     $link = getConnection();
