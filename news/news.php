@@ -47,13 +47,9 @@
         </div>
         <div class="news-text wow fadeIn animation">
           <p class="news-text__excerpt"><?=$article['excerpt'] ?></p>
-          <div class="share">
-            <h3 class="share__title">Поширити:</h3>
-            <ul class="share-list">
-              <li class="share-list-item"><a href="tg://msg_url?url=<?=$current_url ?>"><i class="fab fa-telegram-plane"></i></a></li>
-              <li class="share-list-item"><a href="https://vk.com/share.php?url=<?=$current_url ?>" target="_blank"><i class="fab fa-vk"></i></a></li>
-            </ul>
-          </div>
+          <?php
+            require_once "../templates/share.php";
+          ?>
         </div>
       </div>
       <div class="page"><div id="disqus_thread"></div></div>

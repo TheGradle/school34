@@ -3,25 +3,30 @@
 
   $errors = [];
 
-  $caption = htmlentities(mysqli_real_escape_string($connection, $_POST['caption']));
-  $subtitle = htmlentities(mysqli_real_escape_string($connection, $_POST['subtitle']));
-  $excerpt = htmlentities(mysqli_real_escape_string($connection, $_POST['excerpt']));
+  $expansions = [
+    'image/jpeg' => '.jpg',
+    'image/gif' => '.gif',
+    'image/png' => '.png'
+  ];
 
-  if(isset($_POST['submit'])){
-    if(trim($caption) == '') {
-      $errors[] = 'Введіть назву новини!';
+  $date = htmlentities(mysqli_real_escape_string($connection, $_POST['date']));
+  $img = htmlentities(mysqli_real_escape_string($connection, $_POST['img']));
+
+  if(isset($_POST['submit'])) {
+    if(trim($date) == '') {
+      $errors[] = 'Введіть дату!';
     }
 
-    if(trim($subtitle) == '') {
-      $errors[] = 'Опишіть коротку про новину!';
-    }
-
-    if(trim($excerpt) == '') {
-      $errors[] = 'Напишіть текст ноивини!';
+    if ($img && !$img['error']) {
+      if (isset($expansions[$img['type']])) {
+        $caption_img_name = $img['name'];
+      } else {
+        $errors[] = 'Неверное разширение изображения!';
+      }
     }
 
     if(empty($errors)) {
-      $request = mysqli_query($connection, "INSERT INTO `news` (`caption`, `subtitle`, `excerpt`) VALUES ('$caption', '$subtitle', '$excerpt')");
+      $request = mysqli_query($connection, "INSERT INTO `photos` (`date`, `dir_imgs`) VALUES ('$date', '$dir_imgs')");
     } else {
       echo array_shift($errors);
     }
@@ -80,26 +85,32 @@
     </ul>
     <div class="admin">
       <h3>Додати фото</h3>
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data" multipart="">
         <div class="form-group">
           <label for="img">Завантажте зображення</label>
-          <input type="file" class="form-control-file" id="img">
+          <input type="file" class="form-control-file" id="img" name="img[]" multiple>
+        </div>
+        <div class="form-group">
+          <label for="img">Введіть дату:</label>
+          <input type="date" class="form-control" id="date">
         </div>
         <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
       </form>
     </div>
-    <div class="admin">
-      <h3>Видалити фото</h3>
-      <form action="" method="POST">
-        <div class="form-group">
-          <label for="id">ID фото, якого треба видалити</label>
-          <input type="text" class="form-control" id="id" name="id">
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit">Видалити</button>
-        </div>
-      </form>
-    </div>
+    <!--
+      <div class="admin">
+        <h3>Видалити фото</h3>
+        <form action="" method="POST">
+          <div class="form-group">
+            <label for="id">ID фото, якого треба видалити</label>
+            <input type="text" class="form-control" id="id" name="id">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg" name="submit">Видалити</button>
+          </div>
+        </form>
+      </div>
+    -->
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

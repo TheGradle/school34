@@ -82,54 +82,11 @@
           </div>
         </div>
         <div class="pagination pagination_mobile">
-          <?php 
-            for ($i = 1; $i <= $str_pag; $i++){
-              if ($str_pag != 1) {
-                if ($page == $i) {
-                  echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
-                } else {
-                  echo "<div class='pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
-                }
-              }
-            }
-          ?>
+          <?php pagination_render($str_pag, $page); ?>
         </div>
       </div>
       <div class="pagination">
-        <?php 
-          if ($str_pag >= 6) {
-            $prev_page = $page - 1;
-            $next_page = $page + 1;
-
-            echo "<div class='pagination__item'><a href=index.php?page=1>1</a></div>";
-            if ($page - 1 > 2) {
-              echo "<div class='pagination__item'>...</div>";
-            }
-            if ($prev_page != 0 && $prev_page != 1) {
-              echo "<div class='pagination__item'><a href=index.php?page=" . $prev_page . ">" . $prev_page . "</a></div>";
-            }
-            if ($page != 1 && $page != $str_pag) {
-              echo "<div class='pagination__item'><a href=index.php?page=$page>$page</a></div>";
-            }
-            if ($page != $str_pag && $page != $str_pag - 1) {
-              echo "<div class='pagination__item'><a href=index.php?page=" . $next_page . ">" . $next_page . "</a></div>";
-            }
-            if ($str_pag - $page > 2) {
-              echo "<div class='pagination__item'>...</div>";
-            }
-            echo "<div class='pagination__item'><a href=index.php?page=$str_pag>$str_pag</a></div>";
-          } else {
-            for ($i = 1; $i <= $str_pag; $i++){
-              if ($str_pag != 1) {
-                if ($page == $i) {
-                  echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
-                } else {
-                  echo "<div class='pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
-                }
-              }
-            }
-          }
-        ?>
+        <?php pagination_render($str_pag, $page); ?>
       </div>
     </div>
   </div>
