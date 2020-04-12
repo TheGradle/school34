@@ -15,7 +15,7 @@
 <html lang="uk">
 <head>
   <meta charset="utf-8">
-  <title><?=$article['caption'] ?> - Миколаївський заклад загальної середньої освіти №34</title>
+  <title><?=$article['caption'] ?> - Миколаївський заклад загальної середньої освіти № 34</title>
   <meta name="description" content="<?=$article['subtitle'] ?>">
   <meta property="og:title" content="<?=$article['caption'] ?>">
   <meta property="og:url" content="<?=$current_url ?>">

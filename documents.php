@@ -5,7 +5,7 @@
 <html lang="uk">
 <head>
   <meta charset="utf-8">
-  <title>Документи - Миколаївський заклад загальної середньої освіти №34</title>
+  <title>Документи - Миколаївський заклад загальної середньої освіти № 34</title>
   <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
   <link rel="stylesheet" href="css/animate.min.css">
   <link rel="stylesheet" href="css/reset.min.css">
