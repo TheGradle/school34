@@ -57,7 +57,7 @@
       <h2 class="page__title wow fadeInUp animation">
         <?php
           if ($search_check == true) {
-            echo "Результати пошуку:<span>Знайдено новин зі словом $search: $result->num_rows</span>";
+            echo "Результати пошуку:<span class='page__title_subtitle'>Знайдено новин зі словом $search: <span>$result->num_rows</span></span>";
           } else {
             echo "Новини";
           }

@@ -120,6 +120,7 @@ body {
   position: relative;
   top: 7px;
   right: 10px;
+  display: unset;
 }
 @media (max-width: 768px) {
   .page__title_fire img {
@@ -141,10 +142,18 @@ body {
     display: none;
   }
 }
-.page__title span {
+.page__title_subtitle {
   display: block;
   color: #808080;
   font-size: 18px;
+}
+.page__title_subtitle span {
+  color: #000;
+}
+@media (max-width: 425px) {
+  .page__title_subtitle {
+    font-size: 14px;
+  }
 }
 
 header {

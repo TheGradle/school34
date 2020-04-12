@@ -113,6 +113,7 @@ body {
       position: relative;
       top: 7px;
       right: 10px;
+      display: unset;
       @media (max-width: 768px) {
         img {
           width: 42px;
@@ -132,10 +133,16 @@ body {
         }
       }
     }
-    span {
+    &_subtitle {
       display: block;
       color: #808080;
       font-size: 18px;
+      span {
+        color: #000;
+      }
+      @media (max-width: 425px) {
+        font-size: 14px;
+      }
     }
   }
 }
