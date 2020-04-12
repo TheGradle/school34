@@ -707,7 +707,8 @@ header {
 @media (max-width: 965px) {
   .footer-contacts-social {
     justify-content: space-around;
-    width: 100%;
+    width: 60%;
+    margin: 25px auto 0;
   }
 }
 .footer-contacts-social__item {

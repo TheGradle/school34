@@ -1,7 +1,7 @@
 <div class="wrap">
   <div class="footer-about">
     <a href="<?=$site_url ?>" class="footer-about__logo"><img src="<?=$site_url ?>/img/logo-gray.png" alt=""></a>
-    <p class="footer-about__copyright">© <?=date('Y') ?> "Миколаївський заклад загальної середньої освіти № 34". Всі права захищені</p>
+    <p class="footer-about__copyright">© <?=date('Y') ?> "Миколаївський заклад загальної середньої освіти №&nbsp;34". Всі права захищені</p>
   </div>
   <div class="footer-links">
     <h2 class="footer__caption">Корисні посилання</h2>
