@@ -107,33 +107,31 @@ function pagination_render($str_pag, $page) {
   }
 }
 
-function dateUa($time, $type) {
-    if ($type == 'month') {
-        if ($time == '01') {
-            return 'січня';
-        } elseif ($time == '02') {
-            return 'лютого';
-        } elseif ($time == '03') {
-            return 'березня';
-        } elseif ($time == '04') {
-            return 'квітня';
-        } elseif ($time == '05') {
-            return 'травня';
-        } elseif ($time == '06') {
-            return 'червня';
-        } elseif ($time == '07') {
-            return 'липня';
-        } elseif ($time == '08') {
-            return 'серпня';
-        } elseif ($time == '09') {
-            return 'вересня';
-        } elseif ($time == '10') {
-            return 'жовтня';
-        } elseif ($time == '11') {
-            return 'листопада';
-        } elseif ($time == '12') {
-            return 'грудня';
-        }
+function dateUa($month) {
+    if ($month == '01') {
+        return 'січня';
+    } elseif ($month == '02') {
+        return 'лютого';
+    } elseif ($month == '03') {
+        return 'березня';
+    } elseif ($month == '04') {
+        return 'квітня';
+    } elseif ($month == '05') {
+        return 'травня';
+    } elseif ($month == '06') {
+        return 'червня';
+    } elseif ($month == '07') {
+        return 'липня';
+    } elseif ($month == '08') {
+        return 'серпня';
+    } elseif ($month == '09') {
+        return 'вересня';
+    } elseif ($month == '10') {
+        return 'жовтня';
+    } elseif ($month == '11') {
+        return 'листопада';
+    } elseif ($month == '12') {
+        return 'грудня';
     }
 }
 
@@ -145,7 +143,7 @@ function friendlyDate($date) {
     $day = substr($date, 8, 3);
     $time = substr($date, 10, 6);
 
-    $friendlyDate = $day . " " . dateUa($month, 'month') . " " . $year . ", " . $time;
+    $friendlyDate = $day . " " . dateUa($month) . " " . $year . ", " . $time;
 
     echo $friendlyDate;
 }

@@ -18,7 +18,12 @@
         <li class="header-list__item"><a href="<?=$site_url ?>/documents.php">Документи</a></li>
         <li class="header-list__item"><a href="<?=$site_url ?>/gallery.php">Галерея</a></li>
       </ul>
-      <span class="header__toggle">☰</span>
+      <div class="header-toggle">
+        <span class="header-toggle__line header-toggle__line_first"></span>
+        <span class="header-toggle__line header-toggle__line_second"></span>
+        <span class="header-toggle__line header-toggle__line_third"></span>
+        <span class="header-toggle__line header-toggle__line_fourth"></span>
+      </div>
     </nav>
   </div>
   <ul class="header-list_mobile">
