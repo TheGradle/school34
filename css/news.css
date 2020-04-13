@@ -49,6 +49,8 @@
   flex-basis: 60%;
   margin-left: 30px;
   position: relative;
+  font-size: 14px;
+  color: #959595;
 }
 @media (max-width: 768px) {
   .news-list-item-text {
@@ -72,8 +74,6 @@
 }
 .news-list-item-text__excerpt {
   padding-bottom: 30px;
-  font-size: 14px;
-  color: #959595;
 }
 .news-list-item-text__date {
   position: absolute;

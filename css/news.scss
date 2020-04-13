@@ -42,6 +42,8 @@
         flex-basis: 60%;
         margin-left: 30px;
         position: relative;
+        font-size: 14px;
+        color: #959595;
         @media (max-width: 768px) {
           flex-basis: 100%;
           margin-left: 0;
@@ -62,8 +64,6 @@
         }
         &__excerpt {
           padding-bottom: 30px;
-          font-size: 14px;
-          color: #959595;
         }
         &__date {
           position: absolute;
