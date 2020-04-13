@@ -23,7 +23,7 @@
   $search_check = false;
   $search = $_GET['search'];
 
-  if (isset($search)){
+  if (isset($search) && !empty($search) && !ctype_space($search)){
     $search_check = true;
     
     $search = substr($search, 0, 64);
@@ -75,7 +75,7 @@
               <div class="news-list-item-text">
                 <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>
                 <p class="news-list-item-text__excerpt"><?=$pagination['subtitle'] ?></p>
-                <p class="news-list-item-text__date"><?=$pagination['date'] ?></p>
+                <p class="news-list-item-text__date"><?=friendlyDate($pagination['date']) ?></p>
               </div>
             </div>
           <?php } while ($pagination = mysqli_fetch_array($result)); ?>
@@ -83,7 +83,7 @@
         <div class="news-help wow fadeInRight animation">
           <div class="news-help-search">
             <form>
-              <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input" placeholder="Пошук новин">
+              <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input" placeholder="Пошук новин" value="<?=$search ?>">
             </form>
           </div>
           <div class="news-help-subscribe">

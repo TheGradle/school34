@@ -35,7 +35,7 @@
             <div class="list-item wow fadeIn animation">
               <h3 class="list-item__caption"><a href="<?=$pagination['link'] ?>" target="_blank"><?=$pagination['caption'] ?></a></h3>
               <p class="list-item__subtitle"><?=$pagination['subtitle'] ?></p>
-              <p class="list-item__date"><?=$pagination['date'] ?></p>
+              <p class="list-item__date"><?=friendlyDate($pagination['date']) ?></p>
             </div>
           <?php } while ($pagination = mysqli_fetch_array($result)); ?>
         </div>

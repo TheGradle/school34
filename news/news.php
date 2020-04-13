@@ -40,7 +40,7 @@
         </div>
         <h2 class="news__title wow fadeIn animation">
           <?=$article['caption'] ?>
-          <span><?=$article['date'] ?></span>
+          <span><?=friendlyDate($article['date']) ?></span>
         </h2>
         <div class="news-img wow fadeInUp animation" style="background: #cecece;">
           <img src="../img/news/<?=$article['caption-img'] ?>" alt="">

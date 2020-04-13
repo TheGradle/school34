@@ -107,18 +107,48 @@ function pagination_render($str_pag, $page) {
   }
 }
 
-/*function search($search) {
-    $link = getConnection();
+function dateUa($time, $type) {
+    if ($type == 'month') {
+        if ($time == '01') {
+            return 'січня';
+        } elseif ($time == '02') {
+            return 'лютого';
+        } elseif ($time == '03') {
+            return 'березня';
+        } elseif ($time == '04') {
+            return 'квітня';
+        } elseif ($time == '05') {
+            return 'травня';
+        } elseif ($time == '06') {
+            return 'червня';
+        } elseif ($time == '07') {
+            return 'липня';
+        } elseif ($time == '08') {
+            return 'серпня';
+        } elseif ($time == '09') {
+            return 'вересня';
+        } elseif ($time == '10') {
+            return 'жовтня';
+        } elseif ($time == '11') {
+            return 'листопада';
+        } elseif ($time == '12') {
+            return 'грудня';
+        }
+    }
+}
 
-    $search = prepareSqlString($link, $caption);
-    $search = substr($search, 0, 64);
-    $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
+function friendlyDate($date) {
+    $friendlyDate = "";
+    
+    $year = substr($date, 0, 4);
+    $month = substr($date, 5, 2);
+    $day = substr($date, 8, 3);
+    $time = substr($date, 10, 6);
 
-    $good = trim(preg_replace("/\s(\S{1,2})\s/", " ", ereg_replace(" +", "  "," $search ")));
-    $good = ereg_eplace(" +", " ", $good);
+    $friendlyDate = $day . " " . dateUa($month, 'month') . " " . $year . ", " . $time;
 
-    $query = "SELECT id FROM table WHERE field LIKE '%". str_replace(" ", "%' OR field LIKE '%", $good). "%'";
-}*/
+    echo $friendlyDate;
+}
 
 function addNews($caption, $subtitle, $excerpt, $caption_img_name) {
     $link = getConnection();

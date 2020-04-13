@@ -44,7 +44,7 @@
         </div>
         <h2 class="zno__title wow fadeIn animation">
           <?=$article['caption'] ?>
-          <span><?=$article['date'] ?></span>
+          <span><?=friendlyDate($article['date']) ?></span>
         </h2>
         <?php if (!$article['caption-img'] == null)
         { ?>
