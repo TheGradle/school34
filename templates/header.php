@@ -1,3 +1,13 @@
+<div class="header-mobile">
+  <ul class="header-mobile-list">
+    <li class="header-mobile-list__item"><a href="<?=$site_url ?>/about.php">Про нас</a></li>
+    <li class="header-mobile-list__item"><a href="<?=$site_url ?>/news/index.php">Новини</a></li>
+    <li class="header-mobile-list__item"><a href="<?=$site_url ?>/information/reports/index.php">Звіти</a></li>
+    <li class="header-mobile-list__item"><a href="<?=$site_url ?>/information/zno/index.php">ЗНО</a></li>
+    <li class="header-mobile-list__item"><a href="<?=$site_url ?>/documents.php">Документи</a></li>
+    <li class="header-mobile-list__item"><a href="<?=$site_url ?>/gallery.php">Галерея</a></li>
+  </ul>
+</div>
 <header>
   <div class="wrap">
     <nav class="header">
@@ -26,12 +36,4 @@
       </div>
     </nav>
   </div>
-  <ul class="header-list_mobile">
-    <li class="header-list__item"><a href="<?=$site_url ?>/about.php">Про нас</a></li>
-    <li class="header-list__item"><a href="<?=$site_url ?>/news/index.php">Новини</a></li>
-    <li class="header-list__item"><a href="<?=$site_url ?>/information/reports/index.php">Звіти</a></li>
-    <li class="header-list__item"><a href="<?=$site_url ?>/information/zno/index.php">ЗНО</a></li>
-    <li class="header-list__item"><a href="<?=$site_url ?>/documents.php">Документи</a></li>
-    <li class="header-list__item"><a href="<?=$site_url ?>/gallery.php">Галерея</a></li>
-  </ul>
 </header>
