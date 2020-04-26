@@ -79,25 +79,10 @@
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/main.min.js"></script>
+  <script src="js/gallery.min.js"></script>
   <script src="js/wow.min.js"></script>
   <script>
     new WOW().init();
-
-    $('.gallery-block-img__item').click(function(e) {
-      $('.block-preview-photo__img').attr("src", "");
-
-      var src = e.target.src;
-      
-      $('.block-preview-photo__img').attr("src", src);
-
-      $('.block-preview').fadeIn();
-    });
-
-    $('.block-preview-photo').click(function(e) {
-      if(this === e.target) {
-        $('.block-preview').fadeOut();
-      }
-    });
   </script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>

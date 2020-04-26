@@ -1,8 +1,11 @@
 <?php 
   require_once "../../includes/config.php";
 
-  $target = "reports";
+  $target = "reports"; // pagination for reports
   require_once "../../includes/pagination.php";
+
+  $reports = mysqli_query($db, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count" );
+  $article = mysqli_fetch_array($reports);
 ?>
 <!DOCTYPE html>
 <html lang="uk">
@@ -25,19 +28,15 @@
   <div class="page">
     <div class="wrap">
       <h2 class="page__title wow fadeInUp animation">Звіти</h2>
-      <?php
-        $result = mysqli_query($db, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count" );
-        $pagination = mysqli_fetch_array($result);
-      ?>
       <div class="list-box">
         <div class="list wow fadeIn" data-wow-delay=".7s">
           <?php do { ?>
             <div class="list-item wow fadeIn animation">
-              <h3 class="list-item__caption"><a href="<?=$pagination['link'] ?>" target="_blank"><?=$pagination['caption'] ?></a></h3>
-              <p class="list-item__subtitle"><?=$pagination['subtitle'] ?></p>
-              <p class="list-item__date"><?=friendlyDate($pagination['date']) ?></p>
+              <h3 class="list-item__caption"><a href="<?=$article['link'] ?>" target="_blank"><?=$article['caption'] ?></a></h3>
+              <p class="list-item__subtitle"><?=$article['subtitle'] ?></p>
+              <p class="list-item__date"><?=friendlyDate($article['date']) ?></p>
             </div>
-          <?php } while ($pagination = mysqli_fetch_array($result)); ?>
+          <?php } while ($article = mysqli_fetch_array($reports)); ?>
         </div>
         <div class="help wow fadeInRight animation">
           <div class="help-search">
@@ -55,11 +54,15 @@
           </div>
         </div>
         <div class="pagination pagination_mobile">
-          <?php pagination_render($str_pag, $page); ?>
+          <?php 
+            pagination_render($str_pag, $page); 
+          ?>
         </div>
       </div>
       <div class="pagination">
-        <?php pagination_render($str_pag, $page); ?>
+        <?php 
+          pagination_render($str_pag, $page);
+        ?>
       </div>
     </div>
   </div>

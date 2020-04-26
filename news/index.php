@@ -4,8 +4,12 @@
   ini_set("display_errors", 1);
   error_reporting(E_ERROR | E_WARNING | E_PARSE);
   
-  $target = "news";
+  $target = "news"; // pagination for news
   require_once "../includes/pagination.php";
+
+  $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
+
+  /* EMAIL */
 
   if(isset($_POST['submit'])) {
     $errors = [];
@@ -20,6 +24,8 @@
     }
   }
 
+  /* SEARCH */
+
   $search_check = false;
   $search = $_GET['search'];
 
@@ -29,9 +35,7 @@
     $search = substr($search, 0, 64);
     $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
 
-    $result = mysqli_query($db, "SELECT * FROM `news` WHERE `excerpt` LIKE '%$search%' OR `caption` LIKE '%$search%' OR `subtitle` LIKE '%$search%'");
-  } else {
-    $result = mysqli_query($db, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
+    $news = mysqli_query($connection, "SELECT * FROM `news` WHERE `excerpt` LIKE `%$search%` OR `caption` LIKE `%$search%` OR `subtitle` LIKE `%$search%`");
   }
 ?>
 <!DOCTYPE html>
@@ -57,7 +61,7 @@
       <h2 class="page__title wow fadeInUp animation">
         <?php
           if ($search_check == true) {
-            echo "Результати пошуку:<span class='page__title_subtitle'>Знайдено новин зі словом $search: <span>$result->num_rows</span></span>";
+            echo "Результати пошуку:<span class='page__title_subtitle'>Знайдено новин зі словом $search: <span>$news->num_rows</span></span>";
           } else {
             echo "Новини";
           }
@@ -66,19 +70,19 @@
       <div class="news">
         <div class="news-list wow fadeIn animation" data-wow-delay=".7s">
           <?php 
-            $pagination = mysqli_fetch_array($result);
+            $article = mysqli_fetch_array($news);
             do { ?>
             <div class="wow news-list-item fadeIn animation">
               <div class="news-list-item-img">
-                <a href="news.php?id=<?=$pagination['id'] ?>"><img src="../img/news/<?=$pagination['caption-img'] ?>" alt=""></a>
+                <a href="news.php?id=<?=$article['id'] ?>"><img src="../img/news/<?=$article['caption-img'] ?>" alt=""></a>
               </div>
               <div class="news-list-item-text">
-                <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$pagination['id'] ?>"><?=$pagination['caption'] ?></a></h3>
-                <p class="news-list-item-text__excerpt"><?=$pagination['subtitle'] ?></p>
-                <p class="news-list-item-text__date"><?=friendlyDate($pagination['date']) ?></p>
+                <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$article['id'] ?>"><?=$article['caption'] ?></a></h3>
+                <p class="news-list-item-text__excerpt"><?=$article['subtitle'] ?></p>
+                <p class="news-list-item-text__date"><?=friendlyDate($article['date']) ?></p>
               </div>
             </div>
-          <?php } while ($pagination = mysqli_fetch_array($result)); ?>
+          <?php } while ($article = mysqli_fetch_array($news)); ?>
         </div>
         <div class="news-help wow fadeInRight animation">
           <div class="news-help-search">

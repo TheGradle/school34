@@ -36,7 +36,6 @@
       <div class="news">
         <div class="news-back">
           <a href="index.php"><img src="../img/right-arrow.svg" alt=""></a>
-          <p><a href="index.php">Назад</a></p>
         </div>
         <h2 class="news__title wow fadeIn animation">
           <?=$article['caption'] ?>
@@ -53,20 +52,7 @@
         </div>
       </div>
       <div class="page"><div id="disqus_thread"></div></div>
-      <script>
-
-      var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-      };
-
-      (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = 'https://school34-mk.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-      </script>
+      <script src="../js/disqus.min.js"></script>
       <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
     </div>
   </div>

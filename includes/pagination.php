@@ -1,7 +1,5 @@
 <?php
 
-$db = $connection;
-
 if (isset($_GET['page'])){
   $page = $_GET['page'];
 } else {
@@ -11,7 +9,7 @@ if (isset($_GET['page'])){
 $count = 20;
 $start = ($page * $count) - $count;
 
-$res = mysqli_query($db, "SELECT COUNT(*) FROM `$target`");
+$res = mysqli_query($connection, "SELECT COUNT(*) FROM `$target`");
 $row = mysqli_fetch_row($res);
 $total = $row[0];
 

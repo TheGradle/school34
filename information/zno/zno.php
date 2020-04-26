@@ -4,9 +4,8 @@
   $zno = mysqli_query($connection, "SELECT * FROM `zno` WHERE `id` = " . (int) $_GET['id']);
 
   if (mysqli_num_rows($zno) <= 0) {
-    ?>
-      <!-- html ошибки -->
-    <?php
+    require_once "../templates/errors/404.php";
+    exit();
   }
 
   $article = mysqli_fetch_assoc($zno);
@@ -34,13 +33,9 @@
   ?>
   <div class="page">
     <div class="wrap">  
-      <?php
-        
-      ?>
       <div class="zno">
         <div class="zno-back">
           <a href="index.php"><img src="../../img/right-arrow.svg" alt=""></a>
-          <p><a href="index.php">Назад</a></p>
         </div>
         <h2 class="zno__title wow fadeIn animation">
           <?=$article['caption'] ?>
@@ -60,20 +55,7 @@
         </div>
       </div>
       <div class="page"><div id="disqus_thread"></div></div>
-      <script>
-
-      var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-      };
-
-      (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = 'https://school34-mk.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-      </script>
+      <script src="../../js/disqus.min.js"></script>
       <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
     </div>
   </div>

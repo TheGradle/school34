@@ -1,5 +1,7 @@
 <?php 
   require_once "includes/config.php";
+
+  $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT 4");
 ?>
 <!DOCTYPE html>
 <html lang="uk">
@@ -47,20 +49,17 @@
         <span class="page__title_fire"><img src="img/fire.png" alt=""></span>
         <span class="page__title_right"><a href="news/index.php"><img src="img/right-arrow.svg" alt=""></a></span>
       </h2>
-      <?php
-        $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT 4");
-      ?>
       <div class="news wow fadeInUp animation">
-        <?php while ($cat = mysqli_fetch_assoc($news))
+        <?php while ($article = mysqli_fetch_assoc($news))
         { ?>
           <div class="news-item">
             <div class="news-item-img">
-              <a href="news/news.php?id=<?=$cat['id'] ?>"><img src="img/news/<?=$cat['caption-img'] ?>" alt=""></a>
+              <a href="news/news.php?id=<?=$article['id'] ?>"><img src="img/news/<?=$article['caption-img'] ?>" alt=""></a>
             </div>
             <div class="news-item-text">
-              <h3 class="news-item-text__caption"><a href="news/news.php?id=<?=$cat['id'] ?>"><?=$cat['caption'] ?></a></h3>
-              <p class="news-item-text__excerpt"><?=$cat['subtitle'] ?></p>
-              <p class="news-item-text__date"><?=$cat['date'] ?></p>
+              <h3 class="news-item-text__caption"><a href="news/news.php?id=<?=$article['id'] ?>"><?=$article['caption'] ?></a></h3>
+              <p class="news-item-text__excerpt"><?=$article['subtitle'] ?></p>
+              <p class="news-item-text__date"><?=$article['date'] ?></p>
             </div>
           </div>
         <?php } ?>
