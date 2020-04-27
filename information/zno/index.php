@@ -4,7 +4,7 @@
   $target = "zno"; // pagination for zno
   require_once "../../includes/pagination.php";
 
-  $zno = mysqli_query($db, "SELECT * FROM `zno` ORDER BY `zno`.`id` DESC LIMIT $start, $count");
+  $zno = mysqli_query($connection, "SELECT * FROM `zno` ORDER BY `zno`.`id` DESC LIMIT $start, $count");
   $article = mysqli_fetch_array($zno);
 ?>
 <!DOCTYPE html>

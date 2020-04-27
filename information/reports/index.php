@@ -4,7 +4,7 @@
   $target = "reports"; // pagination for reports
   require_once "../../includes/pagination.php";
 
-  $reports = mysqli_query($db, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count" );
+  $reports = mysqli_query($connection, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count" );
   $article = mysqli_fetch_array($reports);
 ?>
 <!DOCTYPE html>

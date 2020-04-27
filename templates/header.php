@@ -1,5 +1,6 @@
 <div class="header-mobile">
   <ul class="header-mobile-list">
+    <li class="header-mobile-list__item"><a href="<?=$site_url ?>">Головна</a></li>
     <li class="header-mobile-list__item"><a href="<?=$site_url ?>/about.php">Про нас</a></li>
     <li class="header-mobile-list__item"><a href="<?=$site_url ?>/news/index.php">Новини</a></li>
     <li class="header-mobile-list__item"><a href="<?=$site_url ?>/information/reports/index.php">Звіти</a></li>

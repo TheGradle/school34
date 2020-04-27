@@ -35,7 +35,7 @@
     $search = substr($search, 0, 64);
     $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
 
-    $news = mysqli_query($connection, "SELECT * FROM `news` WHERE `excerpt` LIKE `%$search%` OR `caption` LIKE `%$search%` OR `subtitle` LIKE `%$search%`");
+    $news = mysqli_query($connection, "SELECT * FROM `news` WHERE `excerpt` LIKE '%$search%' OR `caption` LIKE '%$search%' OR `subtitle` LIKE '%$search%'");
   }
 ?>
 <!DOCTYPE html>
