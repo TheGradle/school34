@@ -1,6 +1,9 @@
 <?php 
   require_once "../../includes/config.php";
 
+  ini_set("display_errors", 1);
+  error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
   $target = "reports"; // pagination for reports
   require_once "../../includes/pagination.php";
 
