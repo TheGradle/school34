@@ -8,6 +8,7 @@
   require_once "../includes/pagination.php";
 
   $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
+  $article = mysqli_fetch_array($news);
 
   /* EMAIL */
 
@@ -28,6 +29,12 @@
 
   $search_check = false;
   $search = $_GET['search'];
+
+  function display($search_check) {
+    if ($search_check && $reports->num_rows == 0) {
+      echo "style=\"opacity: 0;\"";
+    } 
+  }
 
   if (isset($search) && !empty($search) && !ctype_space($search)){
     $search_check = true;

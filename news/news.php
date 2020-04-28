@@ -21,7 +21,7 @@
   <meta property="og:image" content="../img/news/<?=$article['img'] ?>">
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
-  <link rel="stylesheet" href="../css/current-news.min.css">
+  <link rel="stylesheet" href="../css/article.min.css">
   <link rel="stylesheet" href="../css/animate.min.css">
   <?php
     require_once "../templates/head.php";
@@ -33,19 +33,19 @@
   ?>
   <div class="page">
     <div class="wrap">  
-      <div class="news">
-        <div class="news-back">
+      <div class="article">
+        <div class="article-back">
           <a href="index.php"><img src="../img/right-arrow.svg" alt=""></a>
         </div>
-        <h2 class="news__title wow fadeIn animation">
+        <h2 class="article__title wow fadeIn animation">
           <?=$article['caption'] ?>
           <span><?=friendlyDate($article['date']) ?></span>
         </h2>
-        <div class="news-img wow fadeInUp animation" style="background: #cecece;">
+        <div class="article-img wow fadeInUp animation" style="background: #cecece;">
           <img src="../img/news/<?=$article['caption-img'] ?>" alt="">
         </div>
-        <div class="news-text wow fadeIn animation">
-          <p class="news-text__excerpt"><?=$article['excerpt'] ?></p>
+        <div class="article-text wow fadeIn animation">
+          <p class="article-text__excerpt"><?=$article['excerpt'] ?></p>
           <?php
             require_once "../templates/share.php";
           ?>

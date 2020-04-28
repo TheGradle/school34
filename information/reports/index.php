@@ -5,7 +5,26 @@
   require_once "../../includes/pagination.php";
 
   $reports = mysqli_query($connection, "SELECT * FROM `reports` ORDER BY `reports`.`id` DESC LIMIT $start, $count" );
-  $article = mysqli_fetch_array($reports);
+
+  /* SEARCH */
+
+  $search_check = false;
+  $search = $_GET['search'];
+
+  /*function display($search_check) {
+    if ($search_check && $reports->num_rows == 0) {
+      echo "style=\"opacity: 0;\"";
+    } 
+  }*/
+
+  if (isset($search) && !empty($search) && !ctype_space($search)){
+    $search_check = true;
+    
+    $search = substr($search, 0, 64);
+    $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
+
+    $reports = mysqli_query($connection, "SELECT * FROM `reports` WHERE `caption` LIKE '%$search%' OR `subtitle` LIKE '%$search%'");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="uk">
@@ -27,10 +46,20 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title wow fadeInUp animation">Звіти</h2>
+      <h2 class="page__title wow fadeInUp animation">
+        <?php
+          if ($search_check == true) {
+            echo "Результати пошуку:<span class='page__title_subtitle'>Знайдено звітів зі словом $search: <span>$reports->num_rows</span></span>";
+          } else {
+            echo "Звіти";
+          }
+        ?>
+      </h2>
       <div class="list-box">
         <div class="list wow fadeIn" data-wow-delay=".7s">
-          <?php do { ?>
+          <?php 
+            $article = mysqli_fetch_array($reports);
+            do { ?>
             <div class="list-item wow fadeIn animation">
               <h3 class="list-item__caption"><a href="<?=$article['link'] ?>" target="_blank"><?=$article['caption'] ?></a></h3>
               <p class="list-item__subtitle"><?=$article['subtitle'] ?></p>
@@ -41,7 +70,7 @@
         <div class="help wow fadeInRight animation">
           <div class="help-search">
             <form>
-              <span class="help-search__icon"><img src="../../img/search.svg" alt=""></span><input type="text" name="search" class="help-search__input" placeholder="Пошук">
+              <span class="help-search__icon"><img src="../../img/search.svg" alt=""></span><input type="text" name="search" class="help-search__input" placeholder="Пошук" value="<?=$search ?>">
             </form>
           </div>
           <div class="help-subscribe">
@@ -55,13 +84,17 @@
         </div>
         <div class="pagination pagination_mobile">
           <?php 
-            pagination_render($str_pag, $page); 
+            if ($search_check == false) {
+              pagination_render($str_pag, $page);
+            }
           ?>
         </div>
       </div>
       <div class="pagination">
         <?php 
-          pagination_render($str_pag, $page);
+          if ($search_check == false) {
+            pagination_render($str_pag, $page);
+          }
         ?>
       </div>
     </div>
