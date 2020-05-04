@@ -135,7 +135,7 @@ function dateUa($month) {
     }
 }
 
-function friendlyDate($date) {
+function friendlyDate($date, $type = "datetime") {
     $friendlyDate = "";
     
     $year = substr($date, 0, 4);
@@ -143,9 +143,17 @@ function friendlyDate($date) {
     $day = substr($date, 8, 3);
     $time = substr($date, 10, 6);
 
-    $friendlyDate = $day . " " . dateUa($month) . " " . $year . ", " . $time;
+    if ($type == "datetime") {
+        $friendlyDate = $day . " " . dateUa($month) . " " . $year . ", " . $time;
+    } elseif ($type == "date") {
+        $friendlyDate = $day . " " . dateUa($month) . " " . $year;
+    }
 
-    echo $friendlyDate;
+    if ($friendlyDate == ",") {
+        $friendlyDate = "";
+    }
+
+    return $friendlyDate;
 }
 
 function addNews($caption, $subtitle, $excerpt, $caption_img_name) {

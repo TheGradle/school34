@@ -16,9 +16,9 @@
   <div class="footer-contacts">
     <h2 class="footer__caption">Контакти</h2>
     <ul class="footer-contacts-list">
-      <li class="footer-contacts-list__item"><a href=""></a>(0512) 47-89-25</li>
-      <li class="footer-contacts-list__item"><a href=""></a>54017  м. Миколаїв, вул. Лягіна, 28</li>
-      <li class="footer-contacts-list__item"><a href=""></a>adamchukFront@gmail.com</li>
+      <li class="footer-contacts-list__item"><a href=""></a><?=$number1?></li>
+      <li class="footer-contacts-list__item"><a href=""></a><?=$address?></li>
+      <li class="footer-contacts-list__item"><a href=""></a><?=$email?></li>
     </ul>
     <ul class="footer-contacts-social">
       <li class="footer-contacts-social__item"><a href="https://www.facebook.com/groups/34school/" target="_blank"><i class="fab fa-facebook"></i></a></li> 

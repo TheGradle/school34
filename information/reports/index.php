@@ -70,7 +70,7 @@
             </div>
           <?php } while ($article = mysqli_fetch_array($reports)); ?>
         </div>
-        <div class="help wow fadeInRight animation">
+        <div class="help wow fadeIn animation" data-wow-duration="2s">
           <div class="help-search">
             <form>
               <span class="help-search__icon"><img src="../../img/search.svg" alt=""></span><input type="text" name="search" class="help-search__input" placeholder="Пошук" value="<?=$search ?>">

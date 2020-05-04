@@ -1,73 +1,78 @@
 <?php 
   require_once "../includes/config.php";
 
-
-  /* addReport */
-
   $errors = [];
 
-  if(isset($_POST['submit'])){
-    $caption = $_POST['caption'];
-    $subtitle = $_POST['subtitle'];
-    $link = $_POST['link'];
+  /* DATA from BD */
 
-    if(trim($caption) == '') {
-      $errors[] = 'Введіть назву звіту!';
+  $row = mysqli_query($connection, "SELECT * FROM `contacts` WHERE 1");
+  while ($data = mysqli_fetch_assoc($row)) {
+    $number1 = $data['number1'];
+    $number2 = $data['number2'];
+    $number3 = $data['number3'];
+    $address = $data['address'];
+    $email = $data['email'];
+  }
+
+  /* EditNumbers */
+
+  if(isset($_POST['editNumbers'])) {
+    $number1 = $_POST['number1'];
+    $number2 = $_POST['number2'];
+    $number3 = $_POST['number3'];
+
+    if(trim($number1) == '') {
+      $errors[] = 'Введіть телефон директора/секретаря!';
     }
-
-    if(trim($subtitle) == '') {
-      $errors[] = 'Опишіть коротко про звіт!';
+    if(trim($number2) == '') {
+      $errors[] = 'Введіть телефон заступника директора з навчально-виховної роботи!';
     }
-
-    if(trim($link) == '') {
-      $errors[] = 'Вставте посилання на звіт!';
+    if(trim($number3) == '') {
+      $errors[] = 'Введіть телефон заступника директора з виховної роботи!';
     }
 
     if(empty($errors)) {
-      $request = addReport($caption, $subtitle, $link);
+      $sql = "UPDATE `contacts` SET `number1` = '$number1', `number2` = '$number2', `number3` = '$number3' WHERE 1";
+      $result = execQuery($sql, $link);
+      header('Location: ' . $current_url);
     } else {
       echo array_shift($errors);
     }
   }
 
-  
-  /* editReport */
+  /* EditAddress */
 
-  $errors_edit = [];
+  if(isset($_POST['editAddress'])) {
+    $address = $_POST['address'];
 
-  if(isset($_POST['submit_edit'])){
-    $id_edit = $_POST['id_edit'];
-    $caption_edit = $_POST['caption_edit'];
-    $subtitle_edit = $_POST['subtitle_edit'];
-    $link_edit = $_POST['link_edit'];
-
-    if(trim($id_edit) == '') {
-      $errors_edit[] = 'Введіть id!';
+    if(trim($address) == '') {
+      $errors[] = 'Введіть адресу!';
     }
 
-    if(empty($errors_edit)) {
-      $request_edit = editReport($id_edit, $caption_edit, $subtitle_edit, $link_edit);
+    if(empty($errors)) {
+      $sql = "UPDATE `contacts` SET `address` = '$address' WHERE 1";
+      $result = execQuery($sql, $link);
+      header('Location: ' . $current_url);
     } else {
-      echo array_shift($errors_edit);
+      echo array_shift($errors);
     }
   }
 
-  
-  /* delReport */
+  /* EditEmail */
 
-  $errors_del = [];
+  if(isset($_POST['editEmail'])) {
+    $email = $_POST['email'];
 
-  if(isset($_POST['submit_del'])){
-    $id_del = $_POST['id_del'];
-
-    if(trim($id_del) == '') {
-      $errors_edit[] = 'Введіть id!';
+    if(trim($email) == '') {
+      $errors[] = 'Введіть email!';
     }
 
-    if(empty($errors_del)) {
-      $request_del = delReport($id_del);
+    if(empty($errors)) {
+      $sql = "UPDATE `contacts` SET `email` = '$email' WHERE 1";
+      $result = execQuery($sql, $link);
+      header('Location: ' . $current_url);
     } else {
-      echo array_shift($errors_del);
+      echo array_shift($errors);
     }
   }
 ?>
@@ -77,7 +82,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Звіти - Адмін панель - Миколаївський заклад загальної середньої освіти №34</title>
+  <title>Контакти - Адмін панель - Миколаївський заклад загальної середньої освіти №34</title>
   <meta name="robots" content="noindex, follow">
   <link rel="stylesheet" href="../css/reset.min.css">
   <link rel="stylesheet" href="../css/main.min.css">
@@ -107,13 +112,13 @@
 </head>
 <body>
   <div class="page">
-    <h2 class="page__title"><a href="../information/reports/index.php" target="_blank">Звіти</a> - Адмін панель</h2>
+    <h2 class="page__title">Контакти - Адмін панель</h2>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link" href="index.php">Новини</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="reports.php">Звіти</a>
+        <a class="nav-link" href="reports.php">Звіти</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="zno.php">ЗНО</a>
@@ -128,61 +133,39 @@
         <a class="nav-link" href="documents.php">Документи</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="contacts.php">Контакти</a>
+        <a class="nav-link active" href="contacts.php">Контакти</a>
       </li>
     </ul>
     <div class="admin">
-      <h3>Додати звіт</h3>
+      <h3>Редагувати телефони</h3>
       <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-          <label for="caption">Назва звіту</label>
-          <input type="text" class="form-control" id="caption" name="caption">
+          <label for="caption">Телефон директора/секретаря</label>
+          <input type="text" class="form-control" name="number1" value="<?=$number1?>">
         </div>
         <div class="form-group">
-          <label for="subtitle">Коротко про звіт</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle">
+          <label for="caption">Телефон заступника директора з навчально-виховної роботи</label>
+          <input type="text" class="form-control" name="number2" value="<?=$number2?>">
         </div>
         <div class="form-group">
-          <label for="link">Посилання на звіт</label>
-          <input type="text" class="form-control" id="link" name="link">
+          <label for="caption">Телефон заступника директора з виховної роботи</label>
+          <input type="text" class="form-control" name="number3" value="<?=$number3?>">
         </div>
-        <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
+        <button type="submit" class="btn btn-primary btn-lg" name="editNumbers">Відправити</button>
       </form>
     </div>
     <div class="admin">
-      <h3>Редагувати звіт</h3>
+      <h3>Редагувати адресу</h3>
       <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="id">ID звіту, якого треба редагувати</label>
-          <input type="text" class="form-control" id="id" name="id_edit">
-        </div>
-        <div class="form-group">
-          <label for="caption">Назва звіту</label>
-          <input type="text" class="form-control" id="caption" name="caption_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
-        </div>
-        <div class="form-group">
-          <label for="subtitle">Коротко про звіт</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
-        </div>
-        <div class="form-group">
-          <label for="link">Посилання на звіт</label>
-          <input type="text" class="form-control" id="link" name="link_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
-        </div>
+        <input type="text" class="form-control" name="address" style="margin-bottom: 10px" value="<?=$address?>">
+        <button type="submit" class="btn btn-primary btn-lg" name="editAddress">Відправити</button>
       </form>
     </div>
     <div class="admin">
-      <h3>Видалити звіт</h3>
+      <h3>Редагувати email</h3>
       <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="id">ID звіту, якого треба видалити</label>
-          <input type="text" class="form-control" id="id" name="id_del">
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit_del">Видалити</button>
-        </div>
+        <input type="email" class="form-control" name="email" style="margin-bottom: 10px" value="<?=$email?>">
+        <button type="submit" class="btn btn-primary btn-lg" name="editEmail" style="margin-bottom: 10px">Відправити</button>
       </form>
     </div>
   </div>

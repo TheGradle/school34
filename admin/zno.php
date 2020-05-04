@@ -176,6 +176,15 @@
       <li class="nav-item">
         <a class="nav-link" href="gallery.php">Галерея</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about.php">Про нас</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="documents.php">Документи</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contacts.php">Контакти</a>
+      </li>
     </ul>
     <div class="admin">
       <h3>Додати статтю ЗНО</h3>

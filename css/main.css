@@ -33,7 +33,8 @@ body {
   margin: 0 auto; }
 
 .page {
-  flex: 1 0 auto; }
+  flex: 1 0 auto;
+  margin-bottom: 50px; }
 
 .overflow {
   overflow-x: hidden; }
@@ -70,7 +71,8 @@ body {
     .page {
       padding: 35px 10px 0 10px; } }
   .page_nop {
-    padding: 50px 0 0 0; }
+    padding: 0;
+    margin-bottom: 0; }
   .page__title {
     font-size: 56px;
     padding-bottom: 30px;
@@ -110,7 +112,8 @@ body {
     .page__title_subtitle {
       display: block;
       color: #808080;
-      font-size: 18px; }
+      font-size: 18px;
+      margin-top: 7px; }
       .page__title_subtitle span {
         color: #000; }
       @media (max-width: 425px) {
@@ -265,13 +268,19 @@ header {
     height: 100%;
     background: #fd333b;
     z-index: 11;
-    padding-top: 125px;
+    padding-top: 100px;
     font-family: 'e-Ukraine Regular'; }
+    @media (min-width: 768px) {
+      .header-mobile {
+        display: none !important; } }
     .header-mobile-list {
-      text-align: center; }
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      height: 80%;
+      justify-content: space-around; }
       .header-mobile-list__item {
-        padding-top: 50px;
-        font-size: 32px; }
+        font-size: 28px; }
         .header-mobile-list__item a {
           color: #fff;
           text-decoration: none; }
@@ -314,25 +323,30 @@ header {
       width: calc(100% / 3);
       margin: 0 auto;
       margin-top: 50px;
-      padding-left: 25px; }
+      padding-left: 25px;
+      font-family: 'e-Ukraine Bold';
+      line-height: 1.15; }
       @media (max-width: 1810px) {
         .slider-item h2 {
           font-size: 52px; } }
       @media (max-width: 965px) {
         .slider-item h2 {
           width: 100%;
+          height: 135px;
           text-align: left;
-          margin-top: 70px;
-          padding-right: 40px;
+          padding: 20px 40px;
+          margin-top: 0;
           position: absolute;
           z-index: 11;
-          color: #fff; } }
+          color: #000;
+          background: #fff;
+          font-size: 35px; } }
       @media (max-width: 615px) {
         .slider-item h2 {
-          font-size: 48px; } }
+          font-size: 30px; } }
       @media (max-width: 500px) {
         .slider-item h2 {
-          font-size: 38px; } }
+          font-size: 25px; } }
 
 .news {
   display: flex;
@@ -389,7 +403,9 @@ header {
           .news-item-img img {
             height: 300px; } }
     .news-item-text {
-      padding: 5px 10px 15px 10px; }
+      padding: 5px 10px 15px 10px;
+      font-size: 14px;
+      color: #959595; }
       .news-item-text__caption {
         font-size: 20px;
         margin-bottom: 15px;
@@ -401,9 +417,7 @@ header {
           color: #000;
           text-decoration: none; }
       .news-item-text__excerpt {
-        padding-bottom: 30px;
-        font-size: 14px;
-        color: #959595; }
+        padding-bottom: 30px; }
       .news-item-text__date {
         position: absolute;
         bottom: 10px; }
@@ -482,16 +496,17 @@ header {
 .contacts-list {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  padding: 0 10px 0 10px; }
+  align-items: center; }
   @media (max-width: 1315px) {
     .contacts-list {
       flex-direction: column;
       align-items: flex-start; }
       .contacts-list__item {
-        margin-bottom: 25px; } }
-.contacts__map {
+        margin-bottom: 25px; }
+        .contacts-list__item:last-child {
+          margin-bottom: 0; } }
+.contacts-map {
+  margin-top: 50px;
   margin-bottom: -4px; }
 
 .footer {
@@ -499,11 +514,13 @@ header {
   width: 100%;
   background: #151111;
   color: #fff;
-  margin-top: 50px;
   flex-shrink: 0; }
   @media (max-width: 965px) {
     .footer {
       padding: 50px 0 50px 0; } }
+  @media (max-width: 425px) {
+    .footer {
+      padding: 25px 0 25px 0; } }
   .footer_nom {
     margin-top: 0; }
   .footer > .wrap {
@@ -519,6 +536,12 @@ header {
       .footer-about {
         text-align: center;
         margin-bottom: 40px; } }
+    @media (max-width: 425px) {
+      .footer-about {
+        margin-bottom: 20px; } }
+    @media (max-width: 768px) {
+      .footer-about__logo {
+        display: none; } }
     .footer-about__logo img {
       width: 120px; }
     .footer-about__copyright {
@@ -527,6 +550,12 @@ header {
         .footer-about__copyright {
           width: 50%;
           margin: 15px auto; } }
+      @media (max-width: 768px) {
+        .footer-about__copyright {
+          width: 90%; } }
+  @media (max-width: 768px) {
+    .footer-links {
+      display: none; } }
   .footer-links, .footer-contacts {
     flex-basis: 23.1%; }
     @media (max-width: 965px) {

@@ -8,19 +8,18 @@
   require_once "../includes/pagination.php";
 
   $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
-  $article = mysqli_fetch_array($news);
 
-  /* EMAIL */
+  /* Email */
 
   if(isset($_POST['submit'])) {
     $errors = [];
 
-    $address = $_POST['address'];
+    $userEmail = $_POST['userEmail'];
 
-    if(trim($address) == '') {
+    if(trim($userEmail) == '') {
       $errors[] = '#1';
     }
-    if (!filter_var($address, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($userEmail, FILTER_VALIDATE_userEmail)) {
       $errors[] = "#2";
     }
   }
@@ -43,6 +42,14 @@
     $search = preg_replace("/[^\w\x7F-\xFF\s]/", " ", $search);
 
     $news = mysqli_query($connection, "SELECT * FROM `news` WHERE `excerpt` LIKE '%$search%' OR `caption` LIKE '%$search%' OR `subtitle` LIKE '%$search%'");
+  }
+
+  /* This is function to clear place of image */
+
+  function imgClear($search_check, $news){
+    if ($search_check && $news->num_rows == 0) {
+      echo "style='width: 0; height: 0;'";
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -67,8 +74,9 @@
     <div class="wrap">
       <h2 class="page__title wow fadeInUp animation">
         <?php
-          if ($search_check == true) {
+          if ($search_check) {
             echo "Результати пошуку:<span class='page__title_subtitle'>Знайдено новин зі словом $search: <span>$news->num_rows</span></span>";
+            $article = false;
           } else {
             echo "Новини";
           }
@@ -80,7 +88,7 @@
             $article = mysqli_fetch_array($news);
             do { ?>
             <div class="wow news-list-item fadeIn animation">
-              <div class="news-list-item-img">
+              <div class="news-list-item-img" <?=imgClear($search_check, $news)?>>
                 <a href="news.php?id=<?=$article['id'] ?>"><img src="../img/news/<?=$article['caption-img'] ?>" alt=""></a>
               </div>
               <div class="news-list-item-text">
@@ -91,7 +99,7 @@
             </div>
           <?php } while ($article = mysqli_fetch_array($news)); ?>
         </div>
-        <div class="news-help wow fadeInRight animation">
+        <div class="news-help wow fadeIn animation" data-wow-duration="2s">
           <div class="news-help-search">
             <form>
               <span class="news-help-search__icon"><img src="../img/search.svg" alt=""></span><input type="text" name="search" class="news-help-search__input" placeholder="Пошук новин" value="<?=$search ?>">
@@ -100,7 +108,7 @@
           <div class="news-help-subscribe">
             <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
             <form action="" method="POST" enctype="multipart/form-data">
-              <input type="email" name="address" placeholder="Ваш email" class="news-help-subscribe__input" value="<?=$address?>">
+              <input type="userEmail" name="userEmail" placeholder="Ваш email" class="news-help-subscribe__input" value="<?=$userEmail?>">
               <button type="sumbit" class="news-help-subscribe__button" name="submit">Підписатись</button>
             </form>
             <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
@@ -126,7 +134,7 @@
   <div class="news-help-subscribe_mobile news-help-subscribe wow fadeInUp animation">
     <h3 class="news-help-subscribe__title">Свіжі новини на Ваш email</h3>
     <form action="" method="POST" enctype="multipart/form-data">
-      <input type="email" name="address" placeholder="Ваш email" class="news-help-subscribe__input" value="<?=$address?>">
+      <input type="userEmail" name="userEmail" placeholder="Ваш userEmail" class="news-help-subscribe__input" value="<?=$userEmail?>">
       <button type="sumbit" class="news-help-subscribe__button" name="submit">Підписатись</button>
     </form>
     <p class="news-help-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
@@ -148,7 +156,7 @@
 <?php
 
 if(empty($errors)) {
-  addEmail($address);
+  addEmail($userEmail);
 } else {
   echo "<script>$(\".news-help-subscribe__input\").addClass(\"news-help-subscribe__input_error\")</script>";
 }
