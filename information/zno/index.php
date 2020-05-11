@@ -66,9 +66,9 @@
                 $article = mysqli_fetch_array($zno);
                 do { ?>
                 <div class="articles-list-item wow fadeIn animation">
-                  <h3 class="articles-list-item__caption"><a href="<?=$article['link'] ?>" target="_blank"><?=$article['caption'] ?></a></h3>
-                  <p class="articles-list-item__subtitle"><?=$article['subtitle'] ?></p>
-                  <p class="articles-list-item__date"><?=friendlyDate($article['date']) ?></p>
+                  <h3 class="articles-list-item__caption"><a href="zno.php?id=<?=$article['id']?>"><?=$article['caption']?></a></h3>
+                  <p class="articles-list-item__subtitle"><?=$article['subtitle']?></p>
+                  <p class="articles-list-item__date"><?=friendlyDate($article['date'])?></p>
                 </div>
               <?php } while ($article = mysqli_fetch_array($zno)); ?>
             </div>

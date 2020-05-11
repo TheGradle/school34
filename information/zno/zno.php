@@ -14,11 +14,11 @@
 <html lang="uk">
 <head>
   <meta charset="utf-8">
-  <title><?=$article['caption'] ?> - Миколаївський заклад загальної середньої освіти № 34</title>
-  <meta name="description" content="<?=$article['subtitle'] ?>">
-  <meta property="og:title" content="<?=$article['caption'] ?>">
-  <meta property="og:url" content="<?=$current_url ?>">
-  <meta property="og:image" content="../../img/zno/<?=$article['img'] ?>">
+  <title><?=$article['caption']?> - Миколаївський заклад загальної середньої освіти № 34</title>
+  <meta name="description" content="<?=$article['subtitle']?>">
+  <meta property="og:title" content="<?=$article['caption']?>">
+  <meta property="og:url" content="<?=$current_url?>">
+  <meta property="og:image" content="../../img/zno/<?=$article['img']?>">
   <link rel="stylesheet" href="../../css/main.min.css">
   <link rel="stylesheet" href="../../css/article.min.css">
   <?php
@@ -32,29 +32,36 @@
   <div class="page">
     <div class="wrap">  
       <div class="article">
-        <div class="article-back">
-          <a href="index.php"><img src="../../img/right-arrow.svg" alt=""></a>
-        </div>
-        <h2 class="article__title wow fadeIn animation">
-          <?=$article['caption'] ?>
-          <span><?=friendlyDate($article['date']) ?></span>
-        </h2>
-        <?php if (!$article['caption-img'] == null)
-        { ?>
-          <div class="article-img wow fadeInUp animation">
-            <img src="../../img/zno/<?=$article['caption-img'] ?>" alt="">
+        <div class="article__body">
+          <div class="article__header">
+            <div class="article-back wow fadeIn animation">
+              <a href="index.php"><img class="article-back__img" src="../../img/right-arrow.svg" alt=""></a>
+            </div>
+            <h2 class="article__title wow fadeIn animation">
+              <?=$article['caption']?>
+            </h2>
+            <p class="article__date wow fadeIn animation">
+              <?=friendlyDate($article['date'])?>
+            </p>
+            <?php if (!$article['caption-img'] == null) { ?>
+              <div class="article-img wow fadeInUp animation">
+                <img src="../../img/zno/<?=$article['caption-img'] ?>" alt="">
+              </div>
+            <?php } ?>
           </div>
-        <?php } ?>
-        <div class="article-text wow fadeIn animation">
-          <p class="article-text__excerpt"><?=$article['excerpt'] ?></p>
-          <?php
-            require_once "../../templates/share.php";
-          ?>
+          <div class="article__content wow fadeIn animation">
+            <p class="article__text"><?=$article['excerpt']?></p>
+            <?php
+              require_once "../../templates/share.php";
+            ?>
+          </div>
+          <div class="article__comments">
+            <div id="disqus_thread"></div>
+            <script src="../../js/disqus.min.js"></script>
+            <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
+          </div>
         </div>
       </div>
-      <div class="page"><div id="disqus_thread"></div></div>
-      <script src="../../js/disqus.min.js"></script>
-      <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
     </div>
   </div>
   <?php

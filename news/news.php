@@ -40,14 +40,14 @@
             <h2 class="article__title wow fadeIn animation">
               <?=$article['caption']?>
             </h2>
-            <p class="article__date  wow fadeIn animation">
+            <p class="article__date wow fadeIn animation">
               <?=friendlyDate($article['date'])?>
             </p>
             <div class="article-img wow fadeInUp animation" style="background: #cecece;">
               <img src="../img/news/<?=$article['caption-img']?>" alt="">
             </div>
           </div>
-          <div class="article__content">
+          <div class="article__content wow fadeIn animation">
             <p class="article__text"><?=$article['excerpt']?></p>
             <?php
               require_once "../templates/share.php";
