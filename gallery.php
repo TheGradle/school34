@@ -32,7 +32,7 @@
             <div class="gallery-block-img">
               <?php for ($i = 2; $i <= (count($files) - 1); $i++) { ?>
                 <div class="gallery-block-img__item">
-                  <img src="<?=$dir . $files[$i]?>" alt="" id="image">
+                  <img src="<?=$dir . $files[$i]?>" alt="">
                 </div>
               <?php } ?>
             </div>

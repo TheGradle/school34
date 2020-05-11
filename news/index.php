@@ -117,7 +117,7 @@
                 <div class="sidebar__section">
                   <div class="sidebar-subscribe">
                     <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="index.php" method="POST" enctype="multipart/form-data">
                       <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>">
                       <button type="sumbit" class="sidebar-subscribe__button" name="submit">Підписатись</button>
                     </form>
@@ -148,7 +148,7 @@
   <div class="sidebar-subscribe sidebar-subscribe_mobile wow fadeInUp animation">
     <div class="sidebar__section">
       <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="index.php" method="POST" enctype="multipart/form-data">
         <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>">
         <button type="sumbit" class="sidebar-subscribe__button" name="submit">Підписатись</button>
       </form>
