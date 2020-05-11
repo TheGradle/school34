@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  &__item {
+    margin-right: 20px;
+    font-size: 22px;
+  }
+
+  &__link {
+    color: #151111;
+    text-decoration: none;
+    transition: color .1s linear;
+    
+    &:hover {
+      color: #fd333b;
+    }
+
+    &_active {
+      color: #fd333b;
+    }
+  }
+
+  &_mobile {
+    display: none;
+    margin-bottom: 20px;
+    
+    @media (max-width: 1024px) {
+      display: flex;
+    }
+  }
+}

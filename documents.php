@@ -9,8 +9,6 @@
   <meta charset="utf-8">
   <title>Документи - Миколаївський заклад загальної середньої освіти № 34</title>
   <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
-  <link rel="stylesheet" href="css/animate.min.css">
-  <link rel="stylesheet" href="css/reset.min.css">
   <link rel="stylesheet" href="css/main.min.css">
   <link rel="stylesheet" href="css/documents.min.css">
   <?php
@@ -23,23 +21,23 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title wow fadeInUp animation">Документи</h2>
+      <h2 class="title wow fadeInUp animation">Документи</h2>
       <div class="documents">
-        <ul class="documents-list wow fadeIn animation" data-wow-delay=".7s">
-          <?php while ($data = mysqli_fetch_assoc($row)) { 
-              $data['text'] = "<li class=\"documents-list__item\">" . $data['text'] . "</li>";
-              echo $data['text'];
-            }
-          ?>
-        </ul>
+        <div class="documents__body">
+          <ul class="documents-list wow fadeIn animation" data-wow-delay=".7s">
+            <?php while ($data = mysqli_fetch_assoc($row)) { 
+                $data['text'] = "<li class=\"documents-list__item\">" . $data['text'] . "</li>";
+                echo $data['text'];
+              }
+            ?>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-  <div class="footer">
-    <?php
-      require_once "templates/footer.php";
-    ?>
-  </div>
+  <?php
+    require_once "templates/footer.php";
+  ?>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/main.min.js"></script>
   <script src="js/wow.min.js"></script>

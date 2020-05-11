@@ -1,0 +1,23 @@
+.documents {
+  &__body {
+    padding: 0 27px;
+  }
+}
+
+.documents-list {
+  list-style-type: decimal;
+  
+  &__item a {
+    color: #fd333b;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  /* &-sublist {
+    list-style-type: disc;
+    margin-left: 21px;
+  } */
+}

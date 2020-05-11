@@ -9,10 +9,8 @@
   <meta charset="utf-8">
   <title>Галерея - Миколаївський заклад загальної середньої освіти № 34</title>
   <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
-  <link rel="stylesheet" href="css/reset.min.css">
   <link rel="stylesheet" href="css/main.min.css">
   <link rel="stylesheet" href="css/gallery.min.css">
-  <link rel="stylesheet" href="css/animate.min.css">
   <?php
     require_once "templates/head.php";
   ?>
@@ -23,14 +21,14 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title wow fadeInUp animation">Галерея</h2>
+      <h2 class="title wow fadeInUp animation">Галерея</h2>
       <div class="gallery">
         <?php 
           while ($block = mysqli_fetch_assoc($gallery)) { 
           $dir = "img/gallery/" . $block['date'] . "/";
           $files = scandir($dir); ?>
           <div class="gallery-block wow fadeInUp animation">
-            <h3 class="gallery-block-date"><?=friendlyDate($block['date'], 'date')?></h3>
+            <h3 class="gallery-block__date"><?=friendlyDate($block['date'], 'date')?></h3>
             <div class="gallery-block-img">
               <?php for ($i = 2; $i <= (count($files) - 1); $i++) { ?>
                 <div class="gallery-block-img__item">
@@ -44,13 +42,13 @@
     </div>
   </div>
   <div class="block-preview">
-    <div class="block-preview-photo"><img src="" alt="" class="block-preview-photo__img"></div>
+    <div class="block-preview-photo">
+      <img src="" alt="" class="block-preview-photo__img">
+    </div>
   </div>
-  <div class="footer">
-    <?php
-      require_once "templates/footer.php";
-    ?>
-  </div>
+  <?php
+    require_once "templates/footer.php";
+  ?>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/main.min.js"></script>
   <script src="js/gallery.min.js"></script>

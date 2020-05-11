@@ -1,0 +1,23 @@
+.pagination {
+  display: flex;
+  justify-content: center; }
+  @media (max-width: 1024px) {
+    .pagination {
+      display: none; } }
+  .pagination__item {
+    margin-right: 20px;
+    font-size: 22px; }
+  .pagination__link {
+    color: #151111;
+    text-decoration: none;
+    transition: color .1s linear; }
+    .pagination__link:hover {
+      color: #fd333b; }
+    .pagination__link_active {
+      color: #fd333b; }
+  .pagination_mobile {
+    display: none;
+    margin-bottom: 20px; }
+    @media (max-width: 1024px) {
+      .pagination_mobile {
+        display: flex; } }

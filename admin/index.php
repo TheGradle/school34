@@ -180,7 +180,7 @@
 <body>
   <div class="alert alert-danger" role="alert" style="display: none;"><p id="danger"></p></div>
   <div class="page">
-    <h2 class="page__title"><a href="../news/index.php" target="_blank">Новини</a> - Адмін панель</h2>
+    <h2 class="title"><a href="../news/index.php" target="_blank">Новини</a> - Адмін панель</h2>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" href="index.php">Новини</a>

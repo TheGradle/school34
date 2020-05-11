@@ -1,12 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<meta name="keywords" content="мета-теги, шаблон, html, css">
-<meta name="robots" content="index,follow,noodp">
-<meta name="googlebot" content="index,follow">
-<meta name="google" content="nositelinkssearchbox">
-
-<meta name="google" content="notranslate"><!-- Подтверждает авторство страницы в Google Search Console -->
+<meta name="keywords" content="школа 34, зош 34, ззсо 34, николаев, миколаїв">
 
 <link rel="shortcut icon" href="<?=$site_url ?>/img/icons/favicon.ico" type="image/x-icon" />
 <link rel="apple-touch-icon" href="<?=$site_url ?>/img/icons/apple-touch-icon.png" />

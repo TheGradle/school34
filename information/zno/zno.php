@@ -19,10 +19,8 @@
   <meta property="og:title" content="<?=$article['caption'] ?>">
   <meta property="og:url" content="<?=$current_url ?>">
   <meta property="og:image" content="../../img/zno/<?=$article['img'] ?>">
-  <link rel="stylesheet" href="../../css/reset.min.css">
   <link rel="stylesheet" href="../../css/main.min.css">
   <link rel="stylesheet" href="../../css/article.min.css">
-  <link rel="stylesheet" href="../../css/animate.min.css">
   <?php
     require_once "../../templates/head.php";
   ?>
@@ -59,11 +57,9 @@
       <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
     </div>
   </div>
-  <div class="footer">
-    <?php
-      require_once "../../templates/footer.php";
-    ?>
-  </div>
+  <?php
+    require_once "../../templates/footer.php";
+  ?>
   <script src="../../js/wow.min.js"></script>
   <script>
     new WOW().init();

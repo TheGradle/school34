@@ -14,9 +14,7 @@
   <meta charset="utf-8">
   <title>Про нас - Миколаївський заклад загальної середньої освіти № 34</title>
   <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
-  <link rel="stylesheet" href="css/reset.min.css">
   <link rel="stylesheet" href="css/main.min.css">
-  <link rel="stylesheet" href="css/animate.min.css">
   <?php
     require_once "templates/head.php";
   ?>
@@ -27,9 +25,9 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="page__title wow fadeInUp animation">Про нас</h2>
+      <h2 class="title wow fadeInUp animation">Про нас</h2>
       <div class="about">
-        <div class="about-text wow fadeInUp animation">
+        <div class="about-text">
           <p class="about-text__name wow fadeInUp animation">- <?=$name?>, директор закладу</p>
           <p class="about-text__description wow fadeInUp animation"><?=$text?></p>
         </div>
@@ -49,11 +47,9 @@
       </div>
     </div>
   </div>
-  <div class="footer">
-    <?php
-      require_once "templates/footer.php";
-    ?>
-  </div>
+  <?php
+    require_once "templates/footer.php";
+  ?>
   <script src="js/wow.min.js"></script>
   <script>
     new WOW().init();

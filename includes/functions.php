@@ -66,41 +66,41 @@ function pagination_render($str_pag, $page) {
     $i = $_GET['page'];
 
     if ($i == 1) {
-      echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=1>1</a></div>";
+      echo "<div class='pagination__item'><a class='pagination__link pagination__link_active' href=index.php?page=1>1</a></div>";
     } else {
-      echo "<div class='pagination__item'><a href=index.php?page=1>1</a></div>";
+      echo "<div class='pagination__item'><a class='pagination__link' href=index.php?page=1>1</a></div>";
     }
     if ($page - 1 > 2) {
       echo "<div class='pagination__item'>...</div>";
     }
     if ($prev_page != 0 && $prev_page != 1) {
-      echo "<div class='pagination__item'><a href=index.php?page=" . $prev_page . ">" . $prev_page . "</a></div>";
+      echo "<div class='pagination__item'><a class='pagination__link' href=index.php?page=$prev_page>$prev_page</a></div>";
     }
     if ($page != 1 && $page != $str_pag) {
       if ($page == $i) {
-          echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=$page>$page</a></div>";
+          echo "<div class='pagination__item'><a class='pagination__link pagination__link_active' href=index.php?page=$page>$page</a></div>";
       } else {
-        echo "<div class='pagination__item'><a href=index.php?page=$page>$page</a></div>";
+        echo "<div class='pagination__item'><a class='pagination__link' href=index.php?page=$page>$page</a></div>";
       }
     }
     if ($page != $str_pag && $page != $str_pag - 1) {
-      echo "<div class='pagination__item'><a href=index.php?page=" . $next_page . ">" . $next_page . "</a></div>";
+      echo "<div class='pagination__item'><a class='pagination__link' href=index.php?page=$next_page>$next_page</a></div>";
     }
     if ($str_pag - $page > 2) {
       echo "<div class='pagination__item'>...</div>";
     }
     if ($i == $str_pag) {
-      echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=$str_pag>$str_pag</a></div>";
+      echo "<div class='pagination__item'><a class='pagination__link pagination__link_active' href=index.php?page=$str_pag>$str_pag</a></div>";
     } else {
-      echo "<div class='pagination__item'><a href=index.php?page=$str_pag>$str_pag</a></div>";
+      echo "<div class='pagination__item'><a class='pagination__link' href=index.php?page=$str_pag>$str_pag</a></div>";
     }
   } else {
     for ($i = 1; $i <= $str_pag; $i++){
       if ($str_pag != 1) {
         if ($page == $i) {
-          echo "<div class='pagination__item pagination__item_active'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+          echo "<div class='pagination__item'><a class='pagination__link pagination__link_active' href=index.php?page=$i>$i</a></div>";
         } else {
-          echo "<div class='pagination__item'><a href=index.php?page=" . $i . ">" . $i . "</a></div>";
+          echo "<div class='pagination__item'><a class='pagination__link' href=index.php?page=$i>$i</a></div>";
         }
       }
     }
@@ -367,44 +367,68 @@ function addEmail($address) {
     ini_set("sendmail_from", "school34@gmail.com");
 
     $site_url = "http://" . $_SERVER['HTTP_HOST'];
-    $message = "<html>
-                <head>
-                  <title>Hello email</title>
-                  <style>
-                    html,
-                    body {
-                      font-family: e-Ukraine;
-                      width: 100%;
-                      height: 100%;
-                    }
-                    .logo {
-                      padding-left: 10px;
-                      display: flex;
-                    }
-                    .logo__title {
-                      margin-top: 10px;
-                      margin-left: 25px;
-                      font-size: 26px;
-                      line-height: 32px;
-                      font-family: \'e-Ukraine NAME\';
-                    }
-                    .logo__title a {
-                      text-decoration: none;
-                      color: #000;
-                    }
-                  </style>
-                </head>
-                <body>
-                  <div class=\"box\">
-                    <header>
-                      <div class=\"logo\">
-                        <a href=\"http://dlkfgnkeoj98ryhe.000webhostapp.com\"><img src=\"http://dlkfgnkeoj98ryhe.000webhostapp.com/img/logo.png\" alt=\"\" class=\"header-logo__img\"></a>
-                        <p class=\"header-logo__title\"><a href=\"http://dlkfgnkeoj98ryhe.000webhostapp.com\">Заклад загальної<br>середньої освіти №&nbsp;34</a></p>
-                      </div>
-                    </header>
-                  </div>
-                </body>
-                </html>";
+    $message = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+<html>
+<head>
+    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0;\">
+  <title>Hello email</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+        min-width: 100%;
+        width: 100%;
+        height: 100%;
+        background: #fd333b;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #000;
+    }
+
+    .bg {
+        width: 100%;
+        height: 100%;
+        background: #fd333b;
+    }
+  </style>
+</head>
+<body>
+  <div class=\"bg\">
+    <div class='container'>
+    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin: 20px 0; padding: 0; background: #fff; border-radius: 5px;\" width=\"100%\">
+    <tr>
+      <td style=\"padding: 40px 0;\">
+        <center>
+          <img src=\"https://dlkfgnkeoj98ryhe.000webhostapp.com/img/full-logo.jpg\" alt=\"\" border=\"0\" width=\"400\" height=\"100\">
+        </center>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <center>
+          <span style=\"font-size: 32px; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-weight: 700;\">Дякуємо!</span>
+        </center>
+      </td>
+    </tr>
+    <tr>
+      <td style=\"padding: 40px 90px;\">
+        <center>
+          <span style=\"font-size: 16px; font-family: 'Open Sans', Arial, Helvetica, sans-serif;\">Ви підписалися на розсилку від Миколаївського закладу загальної середньої освіти № 34. Раз на тиждень вам будуть приходити останні новини.</span>
+        </center>
+      </td>
+    </tr>
+  </table>
+  </div>
+  </div>
+</body>
+</html>";
 
     $headers = "From: school34@gmail.com\r\n".
                "MIME-Version: 1.0" . "\r\n" .

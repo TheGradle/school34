@@ -10,8 +10,12 @@ define('IMG_DIR', 'img/');
 require 'db.php';
 require 'functions.php';
 
+ini_set("display_errors", 1);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 $current_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $site_url = "http://" . $_SERVER['HTTP_HOST'];
+
 
 /* CONTACTS DATA from BD */
 
