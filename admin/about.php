@@ -91,7 +91,7 @@
       $result = execQuery($sql, $link);
       if ($result) {
         if ($img_name) {
-          move_uploaded_file($img['tmp_name'], '../img/' . $img_name);
+          move_uploaded_file($img['tmp_name'], '../img/pages/about/' . $img_name);
           header('Location: ' . $current_url);
         }
       }

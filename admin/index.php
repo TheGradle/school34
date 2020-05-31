@@ -56,12 +56,12 @@
       if ($request) {
         if ($img_desc) {
           foreach($img_desc as $item) {
-            move_uploaded_file($item['tmp_name'], '../img/news/' . $item['name']);
+            move_uploaded_file($item['tmp_name'], '../img/pages/news/' . $item['name']);
           }
         }
 
         if ($caption_img_name) {
-          move_uploaded_file($caption_img['tmp_name'], '../img/news/' . $caption_img_name);
+          move_uploaded_file($caption_img['tmp_name'], '../img/pages/news/' . $caption_img_name);
         }
       }
     } else {
@@ -111,12 +111,12 @@
       if ($request_edit) {
         if ($img_desc_edit) {
           foreach($img_desc_edit as $item) {
-            move_uploaded_file($item['tmp_name'], '../img/news/' . $item['name']);
+            move_uploaded_file($item['tmp_name'], '../img/pages/news/' . $item['name']);
           }
         }
 
         if ($caption_img_name_edit) {
-          move_uploaded_file($caption_img_edit['tmp_name'], '../img/news/' . $caption_img_name_edit);
+          move_uploaded_file($caption_img_edit['tmp_name'], '../img/pages/news/' . $caption_img_name_edit);
         }
       }
     } else {

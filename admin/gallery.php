@@ -40,7 +40,7 @@
 
       if ($request) {
         if ($img_desc) {
-          $dir = "../img/gallery/$date/";
+          $dir = "../img/pages/gallery/$date/";
           $count = 0;
 
           if (!file_exists($dir)) {
@@ -75,7 +75,7 @@
     }
 
     if(empty($errors)) {
-      $dir = "../img/gallery/$date/";
+      $dir = "../img/pages/gallery/$date/";
       $files = scandir($dir);
       $id += 2; 
       unlink($dir . $files[$id]);
@@ -95,7 +95,7 @@
     }
 
     if(empty($errors)) {
-      rmdir("../img/gallery/$date");
+      rmdir("../img/pages/gallery/$date");
       $request = mysqli_query($connection, "DELETE FROM `photos` WHERE `date` = '$date'");
       header('Location: ' . $current_url);
     } else {
