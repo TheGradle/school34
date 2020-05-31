@@ -6,21 +6,6 @@
 
   $news = mysqli_query($connection, "SELECT * FROM `news` ORDER BY `news`.`id` DESC LIMIT $start, $count");
 
-  /* Email */
-
-  if(isset($_POST['submit'])) {
-    $errors = [];
-
-    $userEmail = $_POST['userEmail'];
-
-    if(trim($userEmail) == '') {
-      $errors[] = '#1';
-    }
-    if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
-      $errors[] = "#2";
-    }
-  }
-
   /* SEARCH */
 
   $search_check = false;
@@ -55,10 +40,10 @@
   <meta charset="utf-8">
   <title>Новини - Миколаївський заклад загальної середньої освіти № 34</title>
   <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
-  <link rel="stylesheet" href="../css/main.min.css">
-  <link rel="stylesheet" href="../css/news.min.css">
-  <link rel="stylesheet" href="../css/sidebar.min.css">
-  <link rel="stylesheet" href="../css/pagination.min.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+  <link rel="stylesheet" href="/css/news.min.css">
+  <link rel="stylesheet" href="/css/sidebar.min.css">
+  <link rel="stylesheet" href="/css/pagination.min.css">
   <?php
     require_once "../templates/head.php";
   ?>
@@ -75,7 +60,8 @@
             echo "Результати пошуку:<p class='subtitle'>Знайдено новин зі словом $search: <span>$news->num_rows</span></p>";
             $article = false;
           } else {
-            echo "Новини";
+            echo "Новини ";
+            echo "<span class='title__emoji'><img src='/img/icons/emoji/newspaper.png' alt=''></span>";
           }
         ?>
       </h2>
@@ -88,7 +74,7 @@
               do { ?>
                 <div class="news-list-item wow fadeIn animation">
                   <div class="news-list-item-img" <?=imgClear($search_check, $news)?>>
-                    <a href="news.php?id=<?=$article['id']?>"><img src="../img/news/<?=$article['caption-img']?>" alt=""></a>
+                    <a href="news.php?id=<?=$article['id']?>"><img src="/img/pages/news/<?=$article['caption-img']?>" alt=""></a>
                   </div>
                   <div class="news__inner">
                     <div class="news-list-item-text">
@@ -108,7 +94,7 @@
                   <div class="sidebar-search">
                     <form>
                       <div class="sidebar-search-icon">
-                        <img class="sidebar-search-icon__img" src="../img/search.svg" alt="">
+                        <img class="sidebar-search-icon__img" src="/img/icons/search.svg" alt="">
                       </div>
                       <input type="text" name="search" class="sidebar-search__input" placeholder="Пошук новин" value="<?=$search?>">
                     </form>
@@ -117,9 +103,10 @@
                 <div class="sidebar__section">
                   <div class="sidebar-subscribe">
                     <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
-                    <form action="index.php" method="POST" enctype="multipart/form-data">
-                      <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>">
-                      <button type="sumbit" class="sidebar-subscribe__button" name="submit">Підписатись</button>
+                    <form method="POST">
+                      <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" id="email">
+                      <p id="valid" class="sidebar-subscribe__error"></p>
+                      <a onclick="addEmail()" class="sidebar-subscribe__button" name="submit">Підписатись</a>
                     </form>
                     <p class="sidebar-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
                   </div>
@@ -148,9 +135,10 @@
   <div class="sidebar-subscribe sidebar-subscribe_mobile wow fadeInUp animation">
     <div class="sidebar__section">
       <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
-      <form action="index.php" method="POST" enctype="multipart/form-data">
-        <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>">
-        <button type="sumbit" class="sidebar-subscribe__button" name="submit">Підписатись</button>
+      <form method="POST">
+        <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" id="email_mobile">
+        <p id="valid" class="sidebar-subscribe__error"></p>
+        <a onclick="addEmail()" class="sidebar-subscribe__button" name="submit">Підписатись</a>
       </form>
       <p class="sidebar-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
     </div>
@@ -158,19 +146,13 @@
   <?php
     require_once "../templates/footer.php";
   ?>
-  <script src="../js/wow.min.js"></script>
+  <script src="/js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="../js/main.min.js"></script>
+  <script src="/js/json.min.js"></script>
+  <script src="/js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>
-<?php
-
-if(empty($errors)) {
-  addEmail($userEmail);
-} else {
-  echo "<script>$(\".sidebar-subscribe__input\").addClass(\"sidebar-subscribe__input_error\")</script>";
-}

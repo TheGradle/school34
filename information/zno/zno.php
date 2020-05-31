@@ -18,9 +18,9 @@
   <meta name="description" content="<?=$article['subtitle']?>">
   <meta property="og:title" content="<?=$article['caption']?>">
   <meta property="og:url" content="<?=$current_url?>">
-  <meta property="og:image" content="../../img/zno/<?=$article['img']?>">
-  <link rel="stylesheet" href="../../css/main.min.css">
-  <link rel="stylesheet" href="../../css/article.min.css">
+  <meta property="og:image" content="/img/zno/<?=$article['img']?>">
+  <link rel="stylesheet" href="/css/main.min.css">
+  <link rel="stylesheet" href="/css/article.min.css">
   <?php
     require_once "../../templates/head.php";
   ?>
@@ -35,7 +35,7 @@
         <div class="article__body">
           <div class="article__header">
             <div class="article-back wow fadeIn animation">
-              <a href="index.php"><img class="article-back__img" src="../../img/right-arrow.svg" alt=""></a>
+              <a href="index.php"><img class="article-back__img" src="/img/icons/arrow.svg" alt=""></a>
             </div>
             <h2 class="article__title wow fadeIn animation">
               <?=$article['caption']?>
@@ -45,7 +45,7 @@
             </p>
             <?php if (!$article['caption-img'] == null) { ?>
               <div class="article-img wow fadeInUp animation">
-                <img src="../../img/zno/<?=$article['caption-img'] ?>" alt="">
+                <img src="/img/pages/zno/<?=$article['caption-img'] ?>" alt="">
               </div>
             <?php } ?>
           </div>
@@ -57,7 +57,7 @@
           </div>
           <div class="article__comments">
             <div id="disqus_thread"></div>
-            <script src="../../js/disqus.min.js"></script>
+            <script src="/js/disqus.min.js"></script>
             <noscript>Будь ласка увімкніть JavaScript щоб побачити <a href="https://disqus.com/?ref_noscript">коментарі.</a></noscript>
           </div>
         </div>
@@ -67,12 +67,12 @@
   <?php
     require_once "../../templates/footer.php";
   ?>
-  <script src="../../js/wow.min.js"></script>
+  <script src="/js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="../../js/main.min.js"></script>
+  <script src="/js/main.min.js"></script>
   <script id="dsq-count-scr" src="//school34-mk.disqus.com/count.js" async></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>

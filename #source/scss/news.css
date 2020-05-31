@@ -10,6 +10,10 @@
 .news__right {
   flex-basis: 30%;
   margin-left: 50px; }
+  @media (max-width: 1024px) {
+    .news__right {
+      order: -1;
+      margin-left: 0; } }
 .news__inner {
   flex-basis: 60%;
   margin-left: 30px;

@@ -6,7 +6,7 @@ function getConnection() {
     return $db;
 }
 
-function getAssocResult($sql) {
+/*function getAssocResult($sql) {
     $db = getConnection();
     $result = mysqli_query($db, $sql);
     $array_result = array();
@@ -27,7 +27,7 @@ function executeQuery($sql, $db = null) {
     echo mysqli_error($db);
     mysqli_close($db);
     return $result;
-}
+}*/
 
 function prepareSqlString($link, $value) {
     return mysqli_real_escape_string(
@@ -50,11 +50,12 @@ function reArrayFiles($file) {
     $file_count = count($file['name']);
     $file_key = array_keys($file);
    
-    for($i=0;$i<$file_count;$i++) {
+    for($i = 0; $i < $file_count; $i++) {
         foreach($file_key as $val) {
             $file_ary[$i][$val] = $file[$val][$i];
         }
     }
+
     return $file_ary;
 }
 
@@ -354,87 +355,67 @@ function delZno($id) {
     return $result;
 }
 
-function addEmail($address) {
-    $link = getConnection();
-   
-    $address = prepareSqlString($link, $address);
+function generateRandomString($length = 30) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
 
-    $sql = "INSERT INTO `emails` (`address`) VALUES ('$address')";
+    return $randomString;
+}
+
+function existingEmail($address) {
+    $link = getConnection();
+
+    $sql = "SELECT `address` FROM `emails` WHERE EXISTS (SELECT `address` FROM `emails` WHERE `address` = '$address')";
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
+function addEmail($data) {
+    $link = getConnection();
+
+    $address = $data['email'];
+
+    $address = prepareSqlString($link, $address);
+    $check = existingEmail($address);
+
+    if ($check->num_rows == 0) {
+        $token = generateRandomString();
+
+        $sql = "INSERT INTO `emails` (`address`, `token`) VALUES ('$address', '$token')";
+
+        $result = execQuery($sql, $link);
+
+        ini_set("SMTP", "aspmx.l.google.com");
+        ini_set("sendmail_from", "school34@gmail.com");
+
+        $site_url = "http://" . $_SERVER['HTTP_HOST'];
+        $message = file_get_contents($site_url . '/templates/email.php');
+
+        $headers = "From: school34@gmail.com\r\n".
+                   "MIME-Version: 1.0" . "\r\n" .
+                   "Content-type: text/html; charset=UTF-8" . "\r\n"; 
+
+        mail("$address", "Підтвердіть email розсилку! 😉", $message, $headers);
+    }
+
+    return $result;
+}
+
+function confirmEmail($token) {
+    $link = getConnection();
+
+    $token = prepareSqlString($link, $token);
+
+    $sql = "UPDATE `emails` SET `verified` = '1', `token` = null WHERE `token` = '$token'";
 
     $result = execQuery($sql, $link);
 
-    ini_set("SMTP", "aspmx.l.google.com");
-    ini_set("sendmail_from", "school34@gmail.com");
-
-    $site_url = "http://" . $_SERVER['HTTP_HOST'];
-    $message = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
-<html>
-<head>
-    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0;\">
-  <title>Hello email</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-        min-width: 100%;
-        width: 100%;
-        height: 100%;
-        background: #fd333b;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      color: #000;
-    }
-
-    .bg {
-        width: 100%;
-        height: 100%;
-        background: #fd333b;
-    }
-  </style>
-</head>
-<body>
-  <div class=\"bg\">
-    <div class='container'>
-    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin: 20px 0; padding: 0; background: #fff; border-radius: 5px;\" width=\"100%\">
-    <tr>
-      <td style=\"padding: 40px 0;\">
-        <center>
-          <img src=\"https://dlkfgnkeoj98ryhe.000webhostapp.com/img/full-logo.jpg\" alt=\"\" border=\"0\" width=\"400\" height=\"100\">
-        </center>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <center>
-          <span style=\"font-size: 32px; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-weight: 700;\">Дякуємо!</span>
-        </center>
-      </td>
-    </tr>
-    <tr>
-      <td style=\"padding: 40px 90px;\">
-        <center>
-          <span style=\"font-size: 16px; font-family: 'Open Sans', Arial, Helvetica, sans-serif;\">Ви підписалися на розсилку від Миколаївського закладу загальної середньої освіти № 34. Раз на тиждень вам будуть приходити останні новини.</span>
-        </center>
-      </td>
-    </tr>
-  </table>
-  </div>
-  </div>
-</body>
-</html>";
-
-    $headers = "From: school34@gmail.com\r\n".
-               "MIME-Version: 1.0" . "\r\n" .
-               "Content-type: text/html; charset=UTF-8" . "\r\n"; 
-
-    mail("$address", "Ще трохи... 😉", $message, $headers);
-    
     return $result;
 }

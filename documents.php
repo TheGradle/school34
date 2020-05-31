@@ -21,7 +21,10 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="title wow fadeInUp animation">Документи</h2>
+      <h2 class="title wow fadeInUp animation">
+        Документи
+        <span class="title__emoji"><img src="img/icons/emoji/memo.png" alt=""></span>
+      </h2>
       <div class="documents">
         <div class="documents__body">
           <ul class="documents-list wow fadeIn animation" data-wow-delay=".7s">

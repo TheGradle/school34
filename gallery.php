@@ -21,11 +21,14 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="title wow fadeInUp animation">Галерея</h2>
+      <h2 class="title wow fadeInUp animation">
+        Галерея
+        <span class='title__emoji'><img src='img/icons/emoji/picture.png' alt=''></span>
+      </h2>
       <div class="gallery">
         <?php 
           while ($block = mysqli_fetch_assoc($gallery)) { 
-          $dir = "img/gallery/" . $block['date'] . "/";
+          $dir = "img/pages/gallery/" . $block['date'] . "/";
           $files = scandir($dir); ?>
           <div class="gallery-block wow fadeInUp animation">
             <h3 class="gallery-block__date"><?=friendlyDate($block['date'], 'date')?></h3>

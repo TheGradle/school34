@@ -35,7 +35,7 @@
         <div class="article__body">
           <div class="article__header">
             <div class="article-back wow fadeIn animation">
-              <a href="index.php"><img class="article-back__img" src="../img/right-arrow.svg" alt=""></a>
+              <a href="index.php"><img class="article-back__img" src="/img/icons/arrow.svg" alt=""></a>
             </div>
             <h2 class="article__title wow fadeIn animation">
               <?=$article['caption']?>
@@ -44,7 +44,7 @@
               <?=friendlyDate($article['date'])?>
             </p>
             <div class="article-img wow fadeInUp animation" style="background: #cecece;">
-              <img src="../img/news/<?=$article['caption-img']?>" alt="">
+              <img src="/img/pages/news/<?=$article['caption-img']?>" alt="">
             </div>
           </div>
           <div class="article__content wow fadeIn animation">

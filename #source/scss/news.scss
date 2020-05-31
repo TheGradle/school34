@@ -16,6 +16,10 @@
   &__right {
     flex-basis: 30%;
     margin-left: 50px;
+    @media (max-width: 1024px) {
+      order: -1;
+      margin-left: 0;
+    }
   }
 
   &__inner {

@@ -25,17 +25,23 @@
   ?>
   <div class="page">
     <div class="wrap">
-      <h2 class="title wow fadeInUp animation">Про нас</h2>
+      <h2 class="title wow fadeInUp animation">
+        Про нас
+        <span class='title__emoji'><img src='img/icons/emoji/monocle.png' alt=''></span>
+      </h2>
       <div class="about">
-        <div class="about-text">
-          <p class="about-text__name wow fadeInUp animation">- <?=$name?>, директор закладу</p>
-          <p class="about-text__description wow fadeInUp animation"><?=$text?></p>
+        <div class="about-text wow fadeInUp animation">
+          <p class="about-text__name">- <?=$name?>, директор закладу</p>
+          <p class="about-text__description"><?=$text?></p>
         </div>
         <div class="about-image wow slideInRight animation">
           <svg width="300" height="451" class="about-image__svg">
             <rect width="300" height="451" x="0" y="0" fill="#fd333b"></rect>
           </svg>
-          <img src="img/<?=$img?>" alt="" class="about-image__img">
+          <img src="img/pages/about/<?=$img?>" alt="" class="about-image__img">
+        </div>
+        <div class="about-image about-image_mobile wow fadeInUp animation">
+          <img src="img/pages/about/<?=$img?>" alt="" class="about-image__img">
         </div>
       </div>
       <div class="contacts">

@@ -34,19 +34,19 @@
     <div class="slider-item">
       <h2 class="slider-item__text">Дім, <br>в якому <br>добре&nbsp;всім</h2>
       <div class="slider-item-img">
-        <img class="slider-item-img__item" src="img/slide-1.jpg" alt="">
+        <img class="slider-item-img__item" src="img/pages/slider/slide-1.jpg" alt="">
       </div>
     </div>
     <div class="slider-item">
       <h2 class="slider-item__text">Нові друзі. <br>Нова картина. <br>Нове майбутьнє.</h2>
       <div class="slider-item-img">
-        <img class="slider-item-img__item" src="img/slide-2.jpg" alt="">
+        <img class="slider-item-img__item" src="img/pages/slider/slide-2.jpg" alt="">
       </div>
     </div>
     <div class="slider-item">
       <h2 class="slider-item__text">Твій кращий <br>час - тут</h2>
       <div class="slider-item-img">
-        <img class="slider-item-img__item" src="img/slide-3.jpg" alt="">
+        <img class="slider-item-img__item" src="img/pages/slider/slide-3.jpg" alt="">
       </div>
     </div>
   </div>
@@ -54,14 +54,14 @@
     <div class="wrap">
       <h2 class="title wow fadeInUp animation">
         Свіжі новини
-        <span class="title__fire"><img src="img/fire.png" alt=""></span>
-        <span class="title__right"><a href="news/index.php"><img src="img/right-arrow.svg" alt=""></a></span>
+        <span class="title__emoji"><img src="img/icons/emoji/fire.png" alt=""></span>
+        <span class="title__right"><a href="news/index.php"><img src="img/icons/arrow.svg" alt=""></a></span>
       </h2>
       <div class="news">
         <?php while ($article = mysqli_fetch_assoc($news)) { ?>
           <div class="news-item wow fadeInUp animation">
             <div class="news-item-img">
-              <a href="news/news.php?id=<?=$article['id']?>"><img class="news-item-img__item" src="img/news/<?=$article['caption-img']?>" alt=""></a>
+              <a href="news/news.php?id=<?=$article['id']?>"><img class="news-item-img__item" src="img/pages/news/<?=$article['caption-img']?>" alt=""></a>
             </div>
             <div class="news-item-text">
               <h3 class="news-item-text__title"><a href="news/news.php?id=<?=$article['id']?>"><?=$article['caption']?></a></h3>
@@ -85,7 +85,10 @@
           <svg width="300" height="451" class="about-image__svg">
             <rect width="300" height="451" x="0" y="0" fill="#fd333b"></rect>
           </svg>
-          <img src="img/<?=$img?>" alt="" class="about-image__img">
+          <img src="img/pages/about/<?=$img?>" alt="" class="about-image__img">
+        </div>
+        <div class="about-image about-image_mobile wow fadeInUp animation">
+          <img src="img/pages/about/<?=$img?>" alt="" class="about-image__img">
         </div>
       </div>
     </div>

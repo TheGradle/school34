@@ -1,12 +1,4 @@
 .sidebar {
-  &__body {
-    @media (max-width: 1024px) {
-      order: -1;
-      margin-left: 0;
-      display: none;
-    }
-  }
-  
   &__header {
     width: 100%;
     margin-bottom: 30px;
@@ -16,6 +8,15 @@
     padding: 40px;
     border-size: border-box;
     background: #f6f6fa;
+    transition: all 1s ease-out;
+
+    &_allowed {
+      background: #fd333b;
+    }
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
   }
 }
 
@@ -56,7 +57,23 @@
 
   &__title {
     font-size: 20px;
-    line-height: 24px;
+
+    &_allowed {
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      
+      &::before {
+        content: "";
+        background-image: url(/img/icons/checkmark.svg);
+        background-size: 65px 65px;
+        display: block;
+        margin: 0 auto 20px;
+        width: 65px;
+        height: 65px;
+        background-repeat: no-repeat;
+      }
+    }
   }
 
   &__input {
@@ -68,18 +85,12 @@
     font-size: 20px;
     border: none;
     border-bottom: 2px solid #000;
-    
-    &_error {
-      border-bottom: 2px solid #fd333b;
-      color: #fd333b;
-      &::-moz-placeholder {color: #fd333b;}
-      &::-webkit-input-placeholder { color: #fd333b; }
-      &::-ms-input-placeholder { color: #fd333b; }
-      &::placeholder { color: #fd333b; } 
-    }
   }
 
   &__button {
+    display: block;
+    text-align: center;
+    line-height: 50px;
     width: 100%;
     height: 50px;
     margin-top: 35px;
@@ -90,10 +101,15 @@
     font-size: 18px;
     cursor: pointer;
     transition: background .2s linear;
-    
+
     &:hover {
       background: #fd333b;
     }
+  }
+
+  &__error {
+    margin-top: 10px;
+    color: #ff0000;
   }
 
   &__notice {

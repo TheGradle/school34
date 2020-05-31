@@ -80,7 +80,7 @@
                   <div class="sidebar-search">
                     <form>
                       <div class="sidebar-search-icon">
-                        <img class="sidebar-search-icon__img" src="../../img/search.svg" alt="">
+                        <img class="sidebar-search-icon__img" src="/img/icons/search.svg" alt="">
                       </div>
                       <input type="text" name="search" class="sidebar-search__input" placeholder="Пошук статей" value="<?=$search?>">
                     </form>
@@ -89,9 +89,10 @@
                 <div class="sidebar__section">
                   <div class="sidebar-subscribe">
                     <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
-                    <form action="index.php" method="POST" enctype="multipart/form-data">
-                      <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>">
-                      <button type="sumbit" class="sidebar-subscribe__button" name="submit">Підписатись</button>
+                    <form method="POST">
+                      <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>" id="email">
+                      <p id="valid" class="sidebar-subscribe__error"></p>
+                      <a onclick="addEmail()" class="sidebar-subscribe__button" name="submit">Підписатись</a>
                     </form>
                     <p class="sidebar-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
                   </div>
@@ -120,9 +121,10 @@
   <div class="sidebar-subscribe sidebar-subscribe_mobile wow fadeInUp animation">
     <div class="sidebar__section">
       <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
-      <form action="index.php" method="POST" enctype="multipart/form-data">
-        <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>">
-        <button type="sumbit" class="sidebar-subscribe__button" name="submit">Підписатись</button>
+      <form method="POST">
+        <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>" id="email">
+        <p id="valid" class="sidebar-subscribe__error"></p>
+        <a onclick="addEmail()" class="sidebar-subscribe__button" name="submit">Підписатись</a>
       </form>
       <p class="sidebar-subscribe__notice">Натискаючи на кнопку ви погоджуєтесь з обробкою Ваших персональних даних</p>
     </div>
@@ -130,12 +132,13 @@
   <?php
     require_once "../../templates/footer.php";
   ?>
-  <script src="../../js/wow.min.js"></script>
+  <script src="/js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="../../js/main.min.js"></script>
+  <script src="/js/json.min.js"></script>
+  <script src="/js/main.min.js"></script>
   <script src="https://kit.fontawesome.com/4589ffe11e.js" crossorigin="anonymous"></script>
 </body>
 </html>

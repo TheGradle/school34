@@ -3,7 +3,7 @@
     <div class="footer__row">
       <div class="footer__column footer__column_more">
         <div class="footer-about">
-          <a href="<?=$site_url ?>" class="footer-about__link"><img class="footer-about__img" src="<?=$site_url ?>/img/logo-gray.png" alt=""></a>
+          <a href="/" class="footer-about__link"><img class="footer-about__img" src="/img/icons/logo/logo-gray.png" alt=""></a>
           <p class="footer-about__copyright">© <?=date('Y') ?> "Миколаївський заклад загальної середньої освіти №&nbsp;34". Всі права захищені</p>
         </div>
       </div>
@@ -11,11 +11,11 @@
         <div class="footer-links">
           <h2 class="footer__caption">Корисні посилання</h2>
           <ul class="footer-links-list">
-            <li class="footer-links-list__item"><a class="footer-links-list__link" href="<?=$site_url ?>/index.php">Головна</a></li>
-            <li class="footer-links-list__item"><a class="footer-links-list__link" href="<?=$site_url ?>/about.php">Про нас</a></li>
-            <li class="footer-links-list__item"><a class="footer-links-list__link" href="<?=$site_url ?>/news/index.php">Новини</a></li>
-            <li class="footer-links-list__item"><a class="footer-links-list__link" href="<?=$site_url ?>/documents.php">Документи</a></li>
-            <li class="footer-links-list__item"><a class="footer-links-list__link" href="<?=$site_url ?>/gallery.php">Галерея</a></li>
+            <li class="footer-links-list__item"><a class="footer-links-list__link" href="/">Головна</a></li>
+            <li class="footer-links-list__item"><a class="footer-links-list__link" href="/about.php">Про нас</a></li>
+            <li class="footer-links-list__item"><a class="footer-links-list__link" href="/news/index.php">Новини</a></li>
+            <li class="footer-links-list__item"><a class="footer-links-list__link" href="/documents.php">Документи</a></li>
+            <li class="footer-links-list__item"><a class="footer-links-list__link" href="/gallery.php">Галерея</a></li>
           </ul>
         </div>
       </div>
