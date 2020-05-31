@@ -139,7 +139,7 @@
 </head>
 <body>
   <div class="page">
-    <h2 class="title">Галерея - Адмін панель</h2>
+    <h2 class="title"><a href="/gallery.php" target="_blank">Галерея</a> - Адмін панель</h2>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link" href="index.php">Новини</a>

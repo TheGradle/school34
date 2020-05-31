@@ -112,7 +112,7 @@
 </head>
 <body>
   <div class="page">
-    <h2 class="page__title">Контакти - Адмін панель</h2>
+    <h2 class="title">Контакти - Адмін панель</h2>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link" href="index.php">Новини</a>
