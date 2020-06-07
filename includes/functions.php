@@ -150,7 +150,7 @@ function friendlyDate($date, $type = "datetime") {
         $friendlyDate = $day . " " . dateUa($month) . " " . $year;
     }
 
-    if ($friendlyDate == ",") {
+    if ($friendlyDate == "  , ") {
         $friendlyDate = "";
     }
 

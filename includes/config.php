@@ -26,4 +26,7 @@ while ($data = mysqli_fetch_assoc($row)) {
   $number3 = $data['number3'];
   $address = $data['address'];
   $email = $data['email'];
+  $facebook = $data['facebook'];
+  $telegram = $data['telegram'];
+  $youtube = $data['youtube'];
 }

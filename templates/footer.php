@@ -28,9 +28,9 @@
             <li class="footer-contacts-list__item"><a href=""></a><?=$email?></li>
           </ul>
           <ul class="footer-contacts-social">
-            <li class="footer-contacts-social__item"><a href="https://www.facebook.com/groups/34school/" target="_blank"><i class="fab fa-facebook"></i></a></li> 
-            <li class="footer-contacts-social__item"><a href="https://t.me/school34_mk" target="_blank"><i class="fab fa-telegram"></i></a></li>
-            <li class="footer-contacts-social__item"><a href="https://www.youtube.com/channel/UCxGG71By0J_gkssfmVjyepQ" target="_blank"><i class="fab fa-youtube"></i></a></li>
+            <li class="footer-contacts-social__item"><a href="<?=$facebook?>" target="_blank"><i class="fab fa-facebook"></i></a></li> 
+            <li class="footer-contacts-social__item"><a href="<?=$telegram?>" target="_blank"><i class="fab fa-telegram"></i></a></li>
+            <li class="footer-contacts-social__item"><a href="<?=$youtube?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
           </ul>
         </div>
       </div>

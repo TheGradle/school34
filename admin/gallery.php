@@ -54,8 +54,9 @@
             move_uploaded_file($item['tmp_name'], $dir . $count++ . $expansions[$item['type']]);
           }
         }
+
+        header('Location: ' . $current_url);
       }
-      header('Location: ' . $current_url);
     } else {
       echo array_shift($errors);
     }
@@ -179,6 +180,7 @@
     </div>
     <div class="admin">
       <h3>Видалити 1 фото</h3>
+      <a href="/img/pages/gallery/" target="_blank">Посилання на всі папки з фото</a>
       <form action="" method="POST">
         <div class="form-group">
           <label for="id">Номер фото, якого треба видалити:</label>

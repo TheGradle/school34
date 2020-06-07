@@ -78,7 +78,7 @@
                   </div>
                   <div class="news__inner">
                     <div class="news-list-item-text">
-                      <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$article['id'] ?>"><?=$article['caption']?></a></h3>
+                      <h3 class="news-list-item-text__caption"><a href="news.php?id=<?=$article['id']?>"><?=$article['caption']?></a></h3>
                       <p class="news-list-item-text__excerpt"><?=$article['subtitle']?></p>
                       <p class="news-list-item-text__date"><?=friendlyDate($article['date'])?></p>
                     </div>

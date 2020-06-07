@@ -12,6 +12,9 @@
     $number3 = $data['number3'];
     $address = $data['address'];
     $email = $data['email'];
+    $facebook = $data['facebook'];
+    $telegram = $data['telegram'];
+    $youtube = $data['youtube'];
   }
 
   /* EditNumbers */
@@ -69,6 +72,32 @@
 
     if(empty($errors)) {
       $sql = "UPDATE `contacts` SET `email` = '$email' WHERE 1";
+      $result = execQuery($sql, $link);
+      header('Location: ' . $current_url);
+    } else {
+      echo array_shift($errors);
+    }
+  }
+
+  /* EditSocial */
+
+  if(isset($_POST['editSocial'])) {
+    $facebook = $_POST['facebook'];
+    $telegram = $_POST['telegram'];
+    $youtube = $_POST['youtube'];
+
+    if(trim($facebook) == '') {
+      $errors[] = 'Введіть посилання на facebook!';
+    }
+    if(trim($telegram) == '') {
+      $errors[] = 'Введіть посилання на telegram!';
+    }
+    if(trim($youtube) == '') {
+      $errors[] = 'Введіть посилання на youtube!';
+    }
+
+    if(empty($errors)) {
+      $sql = "UPDATE `contacts` SET `facebook` = '$facebook', `telegram` = '$telegram', `youtube` = '$youtube' WHERE 1";
       $result = execQuery($sql, $link);
       header('Location: ' . $current_url);
     } else {
@@ -166,6 +195,24 @@
       <form action="" method="POST" enctype="multipart/form-data">
         <input type="email" class="form-control" name="email" style="margin-bottom: 10px" value="<?=$email?>">
         <button type="submit" class="btn btn-primary btn-lg" name="editEmail" style="margin-bottom: 10px">Відправити</button>
+      </form>
+    </div>
+    <div class="admin">
+      <h3>Редагувати посилання на соціальні мережі</h3>
+      <form action="" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="caption">Facebook</label>
+          <input type="text" class="form-control" name="facebook" value="<?=$facebook?>">
+        </div>
+        <div class="form-group">
+          <label for="caption">Telegram</label>
+          <input type="text" class="form-control" name="telegram" value="<?=$telegram?>">
+        </div>
+        <div class="form-group">
+          <label for="caption">YouTube</label>
+          <input type="text" class="form-control" name="youtube" value="<?=$youtube?>">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" name="editSocial">Відправити</button>
       </form>
     </div>
   </div>

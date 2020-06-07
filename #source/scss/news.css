@@ -1,7 +1,8 @@
 .news__body {
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap; }
+  flex-wrap: nowrap;
+  width: 100%; }
   @media (max-width: 1024px) {
     .news__body {
       flex-direction: column; } }

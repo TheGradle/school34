@@ -14,7 +14,7 @@
   if(isset($_POST['submit'])){
     $caption = $_POST['caption'];
     $subtitle = $_POST['subtitle'];
-    $excerpt = str_ireplace("'", "\'", nl2br($_POST['excerpt']));
+    $excerpt = str_ireplace("'", "\'", $_POST['excerpt']);
     
     $caption_img_name = false;
     $caption_img = $_FILES['caption-img'];
@@ -63,6 +63,8 @@
         if ($caption_img_name) {
           move_uploaded_file($caption_img['tmp_name'], '../img/pages/news/' . $caption_img_name);
         }
+
+        header('Location: ' . $current_url);
       }
     } else {
       echo array_shift($errors);
@@ -77,7 +79,7 @@
     $id_edit = $_POST['id_edit'];
     $caption_edit = $_POST['caption_edit'];
     $subtitle_edit = $_POST['subtitle_edit'];
-    $excerpt_edit = str_ireplace("'", "\'", nl2br($_POST['excerpt_edit']));
+    $excerpt_edit = str_ireplace("'", "\'", $_POST['excerpt_edit']);
 
     //$caption_img_name_edit = false;
     $caption_img_edit = $_FILES['caption-img_edit'];
@@ -118,6 +120,8 @@
         if ($caption_img_name_edit) {
           move_uploaded_file($caption_img_edit['tmp_name'], '../img/pages/news/' . $caption_img_name_edit);
         }
+
+        header('Location: ' . $current_url);
       }
     } else {
       echo array_shift($errors_edit);
@@ -138,6 +142,8 @@
 
     if(empty($errors_del)) {
       $request_del = delNews($id_del);
+
+      header('Location: ' . $current_url);
     } else {
       echo array_shift($errors_del);
     }
@@ -176,6 +182,41 @@
   <meta name="msapplication-navbutton-color" content="#fff">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="#fd333b">
+
+  <style>
+    .modal-body__text {
+      max-width: 620px;
+      width: 100%;
+      font-family: e-Ukraine;
+    }
+
+    .modal-body__text h2 {
+      font-size: 26px;
+      font-family: 'e-Ukraine NAME';
+      margin: 10px 0 8px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-body__text h2 {
+        font-size: 23px;
+      }
+    }
+    
+    @media (max-width: 450px) {
+      .modal-body__text h2 {
+        font-size: 20px;
+      }
+    }
+
+    .modal-body__text img {
+      width: 100%;
+      margin: 15px 0 15px 0;
+    }
+
+    .modal-body__text iframe {
+      margin: 15px 0 15px 0;
+    }
+  </style>
 </head>
 <body>
   <div class="alert alert-danger" role="alert" style="display: none;"><p id="danger"></p></div>
@@ -235,7 +276,27 @@
           <input type="file" class="form-control-file" id="img" name="img[]" multiple>
         </div>
         <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
+        <button type="button" class="btn btn-primary btn-lg modal-add" data-toggle="modal" data-target="#preview">Передперегляд</button>
       </form>
+      <div class="modal" tabindex="-1" role="dialog" id="preview" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="modal-body__text" id="modal-text-add"></p>
+              <p>Передперегляд своїх зображень не працює!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="modal" tabindex="-1" role="dialog" id="youtube" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -293,7 +354,7 @@
         </div>
         <div class="form-group">
           <label for="caption">Назва новини</label>
-          <input type="text" class="form-control" id="caption" name="caption_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
+          <input type="text" class="form-control" id="caption_edit" name="caption_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
         </div>
         <div class="form-group">
           <label for="subtitle">Коротко про новину</label>
@@ -320,8 +381,28 @@
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
+          <button type="button" class="btn btn-primary btn-lg modal-edit" data-toggle="modal" data-target="#preview_edit">Передперегляд</button>
         </div>
       </form>
+      <div class="modal" tabindex="-1" role="dialog" id="preview_edit" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title-edit"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="modal-body__text" id="modal-text-edit"></p>
+              <p>Передперегляд своїх зображень не працює!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="modal" tabindex="-1" role="dialog" id="youtube_edit" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -388,25 +469,32 @@
   <script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="../js/main.min.js"></script>
   <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
       
       /* ADD */
 
       $("#youtubeAdd").click(function() {
         var link = $("#youtubeLink").val();
         var iframe = "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
-        $('#excerpt').val($.trim($('#excerpt').val() + '\n' + iframe));
+        $('#excerpt').val($.trim($('#excerpt').val() + iframe));
       });
 
       $("#pictureAdd").click(function() {
         var link = $("#pictureLink").val();
         var img = "<img src=\"" + link + "\" alt=\"\">";
-        $('#excerpt').val($.trim($('#excerpt').val() + '\n' + img));
+        $('#excerpt').val($.trim($('#excerpt').val() + img));
       });
 
       $("#addH2").click(function() {
         var text = "<h2>Підзаголовок</h2>";
-        $('#excerpt').val($.trim($('#excerpt').val() + '\n' + text));
+        $('#excerpt').val($.trim($('#excerpt').val() + text));
+      });
+
+      $(".modal-add").click(function() {
+        var title = $("#caption").val();
+        var text = $("#excerpt").val();
+        $('#modal-title').html(title);
+        $('#modal-text-add').html(text);
       });
 
       /* EDIT */
@@ -414,21 +502,28 @@
       $("#youtubeAdd_edit").click(function() {
         var link = $("#youtubeLink_edit").val();
         var iframe = "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/" + link + "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
-        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + iframe));
+        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + iframe));
       });
 
       $("#pictureAdd_edit").click(function() {
         var link = $("#pictureLink_edit").val();
         var img = "<img src=\"" + link + "\" alt=\"\">";
-        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + img));
+        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + img));
       });
 
       $("#addH2_edit").click(function() {
         var text = "<h2>Підзаголовок</h2>";
-        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + text));
+        $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + text));
       });
 
-      /* ADD PICTURE */
+      $(".modal-edit").click(function() {
+        var title = $("#caption_edit").val();
+        var text = $("#excerpt_edit").val();
+        $('#modal-title-edit').html(title);
+        $('#modal-text-edit').html(text);
+      });
+
+      /* PICTURE */
 
       $("#img").change(function(e){
         var fileLength = e.target.files.length;
@@ -436,7 +531,7 @@
         for (var i = 0; i < fileLength; i++) {
           var fileName = e.target.files[i].name;
           var fileLink = "<img src=\"../img/news/" + fileName + "\" alt=\"\">";
-          $('#excerpt').val($.trim($('#excerpt').val() + '\n' + fileLink));
+          $('#excerpt').val($.trim($('#excerpt').val() + fileLink));
         }
 
         $('#imgLabel').text("Ви вибрали " + fileLength + " зображення");
@@ -448,7 +543,7 @@
         for (var i = 0; i < fileLength; i++) {
           var fileName = e.target.files[i].name;
           var fileLink = "<img src=\"../img/news/" + fileName + "\" alt=\"\">";
-          $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + '\n' + fileLink));
+          $('#excerpt_edit').val($.trim($('#excerpt_edit').val() + fileLink));
         }
 
         $('#imgLabel_edit').text("Ви вибрали " + fileLength + " зображення");

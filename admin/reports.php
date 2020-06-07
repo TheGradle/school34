@@ -2,6 +2,10 @@
   require_once "../includes/config.php";
 
 
+  /* DATA from BD */
+
+  $row = mysqli_query($connection, "SELECT * FROM `reports` WHERE 1");
+
   /* addReport */
 
   $errors = [];
@@ -25,6 +29,7 @@
 
     if(empty($errors)) {
       $request = addReport($caption, $subtitle, $link);
+      header('Location: ' . $current_url);
     } else {
       echo array_shift($errors);
     }
@@ -47,6 +52,7 @@
 
     if(empty($errors_edit)) {
       $request_edit = editReport($id_edit, $caption_edit, $subtitle_edit, $link_edit);
+      header('Location: ' . $current_url);
     } else {
       echo array_shift($errors_edit);
     }
@@ -66,6 +72,7 @@
 
     if(empty($errors_del)) {
       $request_del = delReport($id_del);
+      header('Location: ' . $current_url);
     } else {
       echo array_shift($errors_del);
     }
@@ -131,6 +138,14 @@
         <a class="nav-link" href="contacts.php">Контакти</a>
       </li>
     </ul>
+    <div class="admin">
+      <h3>Список звітів</h3>
+      <ol style="list-style: decimal; margin-left: 25px;">
+        <?php while ($data = mysqli_fetch_assoc($row)) { 
+          echo ("<li>" . "<a target='_blank' href='" . $data["link"] . "'>" . $data["caption"] . "</a> (ID:" . $data["id"] . ")</li>");
+        } ?>
+      </ol>
+    </div>
     <div class="admin">
       <h3>Додати звіт</h3>
       <form action="" method="POST" enctype="multipart/form-data">
