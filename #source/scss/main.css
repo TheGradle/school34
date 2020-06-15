@@ -82,6 +82,13 @@ body {
         .title__right img {
           display: none; } }
 
+.p__emoji {
+  position: relative;
+  top: 7px;
+  display: unset; }
+  .p__emoji img {
+    width: 30px; }
+
 .subtitle {
   color: #808080;
   font-size: 18px;
@@ -133,9 +140,6 @@ header {
         font-size: 19px; } }
     @media (max-width: 1000px) {
       .header-logo__title {
-        display: none; } }
-    @media (max-width: 768px) {
-      .header-logo__title {
         display: block;
         font-size: 26px; } }
     @media (max-width: 585px) {
@@ -153,7 +157,7 @@ header {
   justify-content: space-between;
   align-items: center;
   font-family: 'e-Ukraine Regular'; }
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     .header-list {
       display: none; } }
   .header-list__link {
@@ -204,7 +208,7 @@ header {
   z-index: 12;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent; }
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     .header-toggle {
       display: block; } }
   .header-toggle_active > .header-toggle__line_first, .header-toggle_active > .header-toggle__line_fourth {
@@ -240,7 +244,7 @@ header {
   z-index: 11;
   padding-top: 100px;
   font-family: 'e-Ukraine Regular'; }
-  @media (min-width: 768px) {
+  @media (min-width: 1001px) {
     .header-mobile {
       display: none !important; } }
 

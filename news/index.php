@@ -71,6 +71,10 @@
             <div class="news-list wow fadeIn animation" data-wow-delay=".7s">
             <?php 
               $article = mysqli_fetch_array($news);
+              if ($article == null) {
+                echo "<span class='p__emoji'><img src='/img/icons/emoji/disappointed.png' alt=''></span>";
+                echo " Нічого не знайдено";
+              }
               do { ?>
                 <div class="news-list-item wow fadeIn animation">
                   <div class="news-list-item-img" <?=imgClear($search_check, $news)?>>
@@ -132,8 +136,8 @@
       </div>
     </div>
   </div>
-  <div class="sidebar-subscribe sidebar-subscribe_mobile wow fadeInUp animation">
-    <div class="sidebar__section">
+  <div class="sidebar-subscribe wow fadeInUp animation">
+    <div class="sidebar__section sidebar__section_mobile">
       <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
       <form method="POST">
         <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" id="email_mobile">

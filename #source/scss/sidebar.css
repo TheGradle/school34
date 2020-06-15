@@ -8,6 +8,11 @@
   transition: all 1s ease-out; }
   .sidebar__section_allowed {
     background: #fd333b; }
+  .sidebar__section_mobile {
+    display: none; }
+    @media (max-width: 1024px) {
+      .sidebar__section_mobile {
+        display: block !important; } }
   @media (max-width: 1024px) {
     .sidebar__section {
       display: none; } }
@@ -32,11 +37,6 @@
     top: -4px;
     left: 23px; }
 
-.sidebar-subscribe_mobile {
-  display: none; }
-  @media (max-width: 1024px) {
-    .sidebar-subscribe_mobile {
-      display: block !important; } }
 .sidebar-subscribe__title {
   font-size: 20px; }
   .sidebar-subscribe__title_allowed {

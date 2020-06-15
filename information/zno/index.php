@@ -64,6 +64,10 @@
             <div class="articles-list wow fadeIn" data-wow-delay=".7s">
               <?php 
                 $article = mysqli_fetch_array($zno);
+                if ($article == null) {
+                  echo "<span class='p__emoji'><img src='/img/icons/emoji/disappointed.png' alt=''></span>";
+                  echo " Нічого не знайдено";
+                }
                 do { ?>
                 <div class="articles-list-item wow fadeIn animation">
                   <h3 class="articles-list-item__caption"><a href="zno.php?id=<?=$article['id']?>"><?=$article['caption']?></a></h3>
@@ -118,8 +122,8 @@
       </div>
     </div>
   </div>
-  <div class="sidebar-subscribe sidebar-subscribe_mobile wow fadeInUp animation">
-    <div class="sidebar__section">
+  <div class="sidebar-subscribe wow fadeInUp animation">
+    <div class="sidebar__section sidebar__section_mobile">
       <h3 class="sidebar-subscribe__title">Свіжі новини на Ваш email</h3>
       <form method="POST">
         <input type="email" name="userEmail" placeholder="Ваш email" class="sidebar-subscribe__input" value="<?=$userEmail?>" id="email">
