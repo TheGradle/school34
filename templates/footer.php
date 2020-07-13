@@ -14,7 +14,7 @@
             <li class="footer-links-list__item"><a class="footer-links-list__link" href="/">Головна</a></li>
             <li class="footer-links-list__item"><a class="footer-links-list__link" href="/about.php">Про нас</a></li>
             <li class="footer-links-list__item"><a class="footer-links-list__link" href="/news/index.php">Новини</a></li>
-            <li class="footer-links-list__item"><a class="footer-links-list__link" href="/documents.php">Документи</a></li>
+            <li class="footer-links-list__item"><a class="footer-links-list__link" href="/information/index.php">Інформація</a></li>
             <li class="footer-links-list__item"><a class="footer-links-list__link" href="/gallery.php">Галерея</a></li>
           </ul>
         </div>

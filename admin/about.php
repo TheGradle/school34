@@ -159,6 +159,9 @@
       <li class="nav-item">
         <a class="nav-link" href="contacts.php">Контакти</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="new_info.php">Розділи</a>
+      </li>
     </ul>
     <div class="admin">
       <h3>Редагувати текст "Про нас"</h3>

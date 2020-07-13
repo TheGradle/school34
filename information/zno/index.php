@@ -54,7 +54,8 @@
           if ($search_check == true) {
             echo "Результати пошуку:<p class='subtitle'>Знайдено статей ЗНО зі словом $search: <span>$zno->num_rows</span></p>";
           } else {
-            echo "ЗНО";
+            echo "ЗНО ";
+            echo "<span class='title__emoji'><img src='/img/icons/emoji/pen.png' alt=''></span>";
           }
         ?>
       </h2>

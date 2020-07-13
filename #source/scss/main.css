@@ -252,7 +252,7 @@ header {
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 60%;
   justify-content: space-around; }
   .header-mobile-list__link {
     font-size: 28px;

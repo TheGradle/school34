@@ -54,7 +54,8 @@
           if ($search_check == true) {
             echo "Результати пошуку:<p class='subtitle'>Знайдено звітів зі словом $search: <span>$reports->num_rows</span></p>";
           } else {
-            echo "Звіти";
+            echo "Звіти ";
+            echo "<span class='title__emoji'><img src='/img/icons/emoji/list.png' alt=''></span>";
           }
         ?>
       </h2>

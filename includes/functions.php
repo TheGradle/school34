@@ -355,6 +355,21 @@ function delZno($id) {
     return $result;
 }
 
+function addPart($caption, $caption_img_name) {
+    $link = getConnection();
+   
+    $caption = prepareSqlString($link, $caption);
+    $caption_img_name = prepareSqlString($link, $caption_img_name);
+
+    $sql = "INSERT INTO `info_pages` (`name`, `icon`) VALUES ($caption, $caption_img_name)";
+
+    
+
+    $result = execQuery($sql, $link);
+    
+    return $result;
+}
+
 function generateRandomString($length = 30) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);

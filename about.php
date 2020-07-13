@@ -27,7 +27,7 @@
     <div class="wrap">
       <h2 class="title wow fadeInUp animation">
         Про нас
-        <span class='title__emoji'><img src='img/icons/emoji/monocle.png' alt=''></span>
+        <span class='title__emoji'><img src='img/icons/emoji/hugging.png' alt=''></span>
       </h2>
       <div class="about">
         <div class="about-text wow fadeInUp animation">

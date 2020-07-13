@@ -14,7 +14,7 @@
   if(isset($_POST['submit'])){
     $caption = $_POST['caption'];
     $subtitle = $_POST['subtitle'];
-    $excerpt = str_ireplace("'", "\'", $_POST['excerpt']);
+    $excerpt = str_ireplace("'", "\'", nl2br($_POST['excerpt']));
     
     $caption_img_name = false;
     $caption_img = $_FILES['caption-img'];
@@ -79,7 +79,7 @@
     $id_edit = $_POST['id_edit'];
     $caption_edit = $_POST['caption_edit'];
     $subtitle_edit = $_POST['subtitle_edit'];
-    $excerpt_edit = str_ireplace("'", "\'", $_POST['excerpt_edit']);
+    $excerpt_edit = str_ireplace("'", "\'", nl2br($_POST['excerpt_edit']));
 
     //$caption_img_name_edit = false;
     $caption_img_edit = $_FILES['caption-img_edit'];
@@ -243,6 +243,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="contacts.php">Контакти</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="new_info.php">Розділи</a>
       </li>
     </ul>
     <div class="admin">
@@ -471,6 +474,15 @@
   <script>
     $(document).ready(function() {
       
+      function nl2br (str, is_xhtml) {
+        if (typeof str === 'undefined' || str === null) {
+          return '';
+        }
+
+        var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+        return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+      }
+
       /* ADD */
 
       $("#youtubeAdd").click(function() {
@@ -492,7 +504,7 @@
 
       $(".modal-add").click(function() {
         var title = $("#caption").val();
-        var text = $("#excerpt").val();
+        var text = nl2br($("#excerpt").val());
         $('#modal-title').html(title);
         $('#modal-text-add').html(text);
       });
@@ -518,7 +530,7 @@
 
       $(".modal-edit").click(function() {
         var title = $("#caption_edit").val();
-        var text = $("#excerpt_edit").val();
+        var text = nl2br($("#excerpt_edit").val());
         $('#modal-title-edit').html(title);
         $('#modal-text-edit').html(text);
       });
