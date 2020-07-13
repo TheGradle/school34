@@ -30,7 +30,7 @@
           <ul class="documents-list wow fadeIn animation" data-wow-delay=".7s">
             <?php while ($data = mysqli_fetch_assoc($row)) { 
               if ($data["type"] == 0) {
-                echo ("<li>" . $data["text"] . "</li>");
+                echo ("<li class='documents-list__item'>" . $data["text"] . "</li>");
 
                 $parent = $data["id"];
 
@@ -38,7 +38,7 @@
                   $subrow = mysqli_query($connection, "SELECT * FROM `documents` WHERE `link` = " . $parent);
                   echo "<ul class='documents-list documents-list-sublist wow fadeIn animation' style='margin-left: 25px'>";
                   while ($subdata = mysqli_fetch_assoc($subrow)) {
-                    echo "<li>" . $subdata["text"] . "</li>";
+                    echo "<li class='documents-list__item'>" . $subdata["text"] . "</li>";
                   }
                   echo "</ul>";
                 }
