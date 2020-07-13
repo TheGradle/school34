@@ -25,6 +25,27 @@
     }
   }
 
+  /* Add subdocument */
+
+  if(isset($_POST['addPartDoc'])) {
+    $parent_id = $_POST['id_addPart'];
+    $document = $_POST['document_add'];
+
+    if(trim($document) == '') {
+      $errors[] = 'Поле пусте!';
+    }
+
+    if(empty($errors)) {
+      $sql1 = "INSERT INTO `documents` (`text`, `type`, `link`) VALUES ('$document', '1', '$parent_id')";
+      $sql2 = "UPDATE `documents` SET `linked` = '1' WHERE `id` = '$parent_id'";
+      $result = execQuery($sql1, $link);
+      $result = execQuery($sql2, $link);
+      header('Location: ' . $current_url);
+    } else {
+      echo array_shift($errors);
+    }
+  }
+
   /* Edit document */
 
   if(isset($_POST['editDoc'])) {
@@ -102,7 +123,7 @@
 </head>
 <body>
   <div class="page">
-    <h2 class="title"><a href="../documents.php" target="_blank">Документи</a> - Адмін панель</h2>
+    <h2 class="title"><a href="/information/documents/index.php" target="_blank">Документи</a> - Адмін панель</h2>
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link" href="index.php">Новини</a>
@@ -134,9 +155,91 @@
       <div>
         <ol style="list-style: decimal; margin-left: 25px;">
           <?php while ($data = mysqli_fetch_assoc($row)) { 
-            echo ("<li>" . $data["text"] . " <span>(ID: " . $data["id"] . ")</span></li>");
+            if ($data["type"] == 0) {
+              echo ("<li>" . $data["text"] . " <span>(ID: " . $data["id"] . ")</span> <a href='' class='deleteDocument' id='" . $data["id"] ."' data-toggle='modal' data-target='#delDoc' style='color: red'>Видалити</a> <a href='' class='editDocument' id='" . $data["id"] ."' data-toggle='modal' data-target='#editDoc'>Редагувати</a> <a href='' class='addPartDocument' id='" . $data["id"] ."' data-toggle='modal' data-target='#addPartDoc' style='color: green'>Додати піддокумент</a></li>");
+
+              $parent = $data["id"];
+
+              if ($data["linked"] == 1) {
+                $subrow = mysqli_query($connection, "SELECT * FROM `documents` WHERE `link` = " . $parent);
+                echo "<ol style='list-style: decimal; margin-left: 25px;'>";
+                while ($subdata = mysqli_fetch_assoc($subrow)) {
+                  echo "<li>" . $subdata["text"] . " <span>(ID: " . $subdata["id"] . ")</span> <a href='' class='deleteDocument' id='" . $subdata["id"] ."' data-toggle='modal' data-target='#delDoc' style='color: red'>Видалити</a> <a href='' class='editDocument' id='" . $subdata["id"] ."' data-toggle='modal' data-target='#editDoc'>Редагувати</a></li>";
+                }
+                echo "</ol>";
+              }
+            }
           } ?>
         </ol>
+      </div>
+    </div>
+    <div class="modal fade" id="delDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ви впевнені?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="documents.php" method="POST">
+            <div class="modal-body">
+              Ви впевнені, що хочете видалити документ ID - <input style="width: 70px;" type="text" class="modal-body__id" name="id_del"></input>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+              <button type="submit" class="btn btn-primary" name="delDoc">Видалити</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="editDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Редагування документу</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="documents.php" method="POST">
+            <div class="modal-body">
+              ID - <input style="width: 70px;" type="text" class="modal-body__id" name="id_edit"></input>
+              <br>Редагований документ:
+              <br><input type="text" class="modal-body__document_edit" name="document_edit" style="width: 100%">
+              <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <a href="http://htmlbook.ru/html/a">a</a></small>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+              <button type="submit" class="btn btn-primary" name="editDoc">Редагувати</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="addPartDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Додати піддокумент</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="documents.php" method="POST">
+            <div class="modal-body">
+              ID - <input style="width: 70px;" type="text" class="modal-body__id" name="id_addPart"></input>
+              <br>Введіть піддокумент:
+              <br><input type="text" class="modal-body__document_add" name="document_add" style="width: 100%">
+              <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <a href="http://htmlbook.ru/html/a">a</a></small>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+              <button type="submit" class="btn btn-primary" name="addPartDoc">Додати</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <div class="admin">
@@ -147,35 +250,31 @@
         <button type="submit" class="btn btn-primary btn-lg" name="addDoc">Відправити</button>
       </form>
     </div>
-    <div class="admin">
-      <h3>Редагувати документ/відомість</h3>
-      <form action="" method="POST" enctype="multipart/form-data" multipart="">
-        <div class="form-group">
-          <label for="ID_edit">ID документу/відомісті</label>
-          <input type="text" class="form-control" name="id_edit" id="id_edit">
-        </div>
-        <div class="form-group">
-          <label for="editedDocument">Редагована документ/відомість</label>
-          <input type="text" class="form-control" name="document_edit" id="editedDocument">
-          <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <a href="http://htmlbook.ru/html/a">a</a></small>
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg" name="editDoc">Відправити</button>
-      </form>
-    </div>
-    <div class="admin">
-      <h3>Видалити документ/відомість</h3>
-      <form action="" method="POST" enctype="multipart/form-data" multipart="">
-        <div class="form-group">
-          <label for="id_del">ID документа/відомісті</label>
-          <input type="text" class="form-control" name="id_del" id="id_del">
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg" name="delDoc" style="margin-bottom: 10px;">Відправити</button>
-      </form>
-    </div>
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $('.deleteDocument').click(function(e) {
+        var id = e.target.id;
+        
+        $('.modal-body__id').val(id);
+      });
+
+      $('.editDocument').click(function(e) {
+        var id = e.target.id;
+        
+        $('.modal-body__id').val(id);
+      });
+
+      $('.addPartDocument').click(function(e) {
+        var id = e.target.id;
+        
+        $('.modal-body__id').val(id);
+      });
+    });
+  </script>
   <script src="../js/main.min.js"></script>
 </body>
 </html>

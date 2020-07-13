@@ -1,6 +1,6 @@
 <?php
   require_once "../includes/config.php";
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -24,22 +24,22 @@
         <span class="title__emoji"><img src="/img/icons/emoji/monocle.png" alt=""></span>
         <p class='subtitle'>Все, що Вам потрібно - тут</p>
       </h2>
-      <div class="information wow fadeInUp animation">
+      <div class="information">
         <div class="information__body">
           <a href="documents/index.php">
-            <div class="information-item">
+            <div class="information-item wow fadeInUp animation">
               <img src="../img/icons/emoji/memo.png" alt="" class="information-item__img">
               <p class="information-item__title">Документи</p>
             </div>
           </a>
           <a href="reports/index.php">
-            <div class="information-item">
+            <div class="information-item wow fadeInUp animation">
               <img src="../img/icons/emoji/list.png" alt="" class="information-item__img">
               <p class="information-item__title">Звіти</p>
             </div>
           </a>
           <a href="zno/index.php">
-            <div class="information-item">
+            <div class="information-item wow fadeInUp animation">
               <img src="../img/icons/emoji/pen.png" alt="" class="information-item__img">
               <p class="information-item__title">ЗНО</p>
             </div>

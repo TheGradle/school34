@@ -40,7 +40,7 @@
 
   $errors_edit = [];
 
-  if(isset($_POST['submit_edit'])){
+  if(isset($_POST['editReport'])){
     $id_edit = $_POST['id_edit'];
     $caption_edit = $_POST['caption_edit'];
     $subtitle_edit = $_POST['subtitle_edit'];
@@ -63,7 +63,7 @@
 
   $errors_del = [];
 
-  if(isset($_POST['submit_del'])){
+  if(isset($_POST['delReport'])){
     $id_del = $_POST['id_del'];
 
     if(trim($id_del) == '') {
@@ -145,9 +145,63 @@
       <h3>Список звітів</h3>
       <ol style="list-style: decimal; margin-left: 25px;">
         <?php while ($data = mysqli_fetch_assoc($row)) { 
-          echo ("<li>" . "<a target='_blank' href='" . $data["link"] . "'>" . $data["caption"] . "</a> (ID:" . $data["id"] . ")</li>");
+          echo ("<li>" . "<a target='_blank' href='" . $data["link"] . "'>" . $data["caption"] . "</a> (ID: " . $data["id"] . ") <a href='' class='deleteReport' id='" . $data["id"] ."' data-toggle='modal' data-target='#delReport' style='color: red'>Видалити</a> <a href='' class='editReport' id='" . $data["id"] ."' data-toggle='modal' data-target='#editReport'>Редагувати</a></li>");
         } ?>
       </ol>
+    </div>
+    <div class="modal fade" id="delReport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ви впевнені?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="reports.php" method="POST">
+            <div class="modal-body">
+              Ви впевнені, що хочете видалити звіт ID - <input style="width: 70px;" type="text" class="modal-body__id" name="id_del"></input>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+              <button type="submit" class="btn btn-primary" name="delReport">Видалити</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="editReport" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Редагування звіту</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="reports.php" method="POST">
+            <div class="modal-body">
+              ID - <input style="width: 70px;" type="text" class="modal-body__id" name="id_edit"></input>
+              <div class="form-group">
+                <label for="caption">Назва звіту</label>
+                <input type="text" class="form-control" id="caption" name="caption_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
+              </div>
+              <div class="form-group">
+                <label for="subtitle">Коротко про звіт</label>
+                <input type="text" class="form-control" id="subtitle" name="subtitle_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
+              </div>
+              <div class="form-group">
+                <label for="link">Посилання на звіт</label>
+                <input type="text" class="form-control" id="link" name="link_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
+              <button type="submit" class="btn btn-primary" name="editReport">Редагувати</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
     <div class="admin">
       <h3>Додати звіт</h3>
@@ -167,46 +221,25 @@
         <button type="submit" class="btn btn-primary btn-lg" name="submit">Відправити</button>
       </form>
     </div>
-    <div class="admin">
-      <h3>Редагувати звіт</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="id">ID звіту, якого треба редагувати</label>
-          <input type="text" class="form-control" id="id" name="id_edit">
-        </div>
-        <div class="form-group">
-          <label for="caption">Назва звіту</label>
-          <input type="text" class="form-control" id="caption" name="caption_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
-        </div>
-        <div class="form-group">
-          <label for="subtitle">Коротко про звіт</label>
-          <input type="text" class="form-control" id="subtitle" name="subtitle_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
-        </div>
-        <div class="form-group">
-          <label for="link">Посилання на звіт</label>
-          <input type="text" class="form-control" id="link" name="link_edit" placeholder="Оставьте це поле пустим, якщо не хочете нічого змінювати">
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit_edit">Редагувати</button>
-        </div>
-      </form>
-    </div>
-    <div class="admin">
-      <h3>Видалити звіт</h3>
-      <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="id">ID звіту, якого треба видалити</label>
-          <input type="text" class="form-control" id="id" name="id_del">
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-lg" name="submit_del">Видалити</button>
-        </div>
-      </form>
-    </div>
   </div>
   <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $('.deleteReport').click(function(e) {
+        var id = e.target.id;
+        
+        $('.modal-body__id').val(id);
+      });
+
+      $('.editReport').click(function(e) {
+        var id = e.target.id;
+        
+        $('.modal-body__id').val(id);
+      });
+    });
+  </script>
   <script src="../js/main.min.js"></script>
 </body>
 </html>
