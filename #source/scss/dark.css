@@ -36,6 +36,7 @@ a {
 .header-toggle__line {
   background: #fff; }
 
-.slider-item__text {
+.slider-item__text,
+.header-mobile {
   background: #373737;
   color: #fff; }
