@@ -1,0 +1,51 @@
+body {
+  background: #373737;
+  color: #fff;
+}
+
+.header-list__link,
+.slider-item__text,
+.pagination__link,
+.gallery-block__date,
+a {
+	color: #fff;
+}
+
+.news-list-item,
+.articles-list-item {
+	border-bottom: 1px solid #111 !important;
+
+	&:last-child {
+		border-bottom: none !important;
+	}
+}
+
+.sidebar-search__input {
+	border: 1px solid #676767 !important;
+}
+
+.sidebar__section,
+.sidebar-subscribe__input {
+	background: #424242 !important;
+	color: #fff;
+}
+
+.header-list-dropdown:hover a {
+  background-color: #111;
+}
+
+.theme-button,
+.title__right svg,
+.sidebar-search-icon svg,
+.article-back svg {
+	fill: #fff;
+}
+
+.header-toggle__line {
+	background: #fff;
+}
+
+.slider-item__text {
+	background: #373737;
+	color: #fff;
+}

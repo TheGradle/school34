@@ -15,6 +15,7 @@
   <title>Про нас - Миколаївський заклад загальної середньої освіти № 34</title>
   <meta name="description" content="Загальноосвітня школа № 34 - це другий дім для учнів та працівників школи. Ми завжди раді всім хто хоче, буде, або вже навчається в нашій школі.">
   <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="/css/<?=$_SESSION["theme"]?>" id="theme-link">
   <?php
     require_once "templates/head.php";
   ?>

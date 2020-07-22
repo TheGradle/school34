@@ -57,6 +57,12 @@ body {
   color: #fff;
 }
 
+.theme-button__svg {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
 /* BLOCK PAGE */
 
 .page {
@@ -109,7 +115,7 @@ body {
     position: absolute;
     right: 0;
     
-    img {
+    svg {
       width: 50px;
       position: relative;
       top: 7px;
@@ -278,6 +284,17 @@ header {
       background-color: #f1f1f1;
     }
   }
+}
+
+.header-theme {
+  margin-right: 20px;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  left: 25px;
 }
 
 .header-toggle {

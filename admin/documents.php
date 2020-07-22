@@ -207,8 +207,8 @@
             <div class="modal-body">
               ID - <input style="width: 70px;" type="text" class="modal-body__id" name="id_edit"></input>
               <br>Редагований документ:
-              <br><input type="text" class="modal-body__document_edit" name="document_edit" style="width: 100%">
-              <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <a href="http://htmlbook.ru/html/a">a</a></small>
+              <br><input type="text" class="modal-body__document" name="document_edit" style="width: 100%" id="input">
+              <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <button type="button" id="addLink" style="background: none; border: none; color: #0056b3;">a</button></small>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
@@ -231,8 +231,8 @@
             <div class="modal-body">
               ID - <input style="width: 70px;" type="text" class="modal-body__id" name="id_addPart"></input>
               <br>Введіть піддокумент:
-              <br><input type="text" class="modal-body__document_add" name="document_add" style="width: 100%">
-              <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <a href="http://htmlbook.ru/html/a">a</a></small>
+              <br><input type="text" class="modal-body__document" name="document_add" style="width: 100%" id="input">
+              <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <button type="button" id="addLink" style="background: none; border: none; color: #0056b3;">a</button></small>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрити</button>
@@ -245,8 +245,8 @@
     <div class="admin">
       <h3>Додати документ/відомість</h3>
       <form action="" method="POST" enctype="multipart/form-data" multipart="">
-        <input type="text" class="form-control" name="document">
-        <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <a href="http://htmlbook.ru/html/a">a</a></small>
+        <input type="text" class="form-control" name="document" id="input">
+        <small id="excerptText" class="form-text text-muted" style="margin-bottom: 10px;">Щоб додати посилання використовуйте тег <button type="button" id="addLink" style="background: none; border: none; color: #0056b3;">a</button></small>
         <button type="submit" class="btn btn-primary btn-lg" name="addDoc">Відправити</button>
       </form>
     </div>
@@ -272,6 +272,11 @@
         var id = e.target.id;
         
         $('.modal-body__id').val(id);
+      });
+
+      $("#addLink").click(function() {
+        var text = '<a href="ПОСИЛАННЯ">ТЕКСТ</a>';
+        $('#input').val(text);
       });
     });
   </script>

@@ -38,6 +38,7 @@
     padding: 0 25px 0 65px;
     font-size: 18px;
     box-sizing: border-box;
+    background: transparent;
   }
 }
 
@@ -45,7 +46,7 @@
   position: relative;
   display: inline;
 
-  &__img {
+  svg {
     width: 27px;
     height: auto;
     position: absolute;

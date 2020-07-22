@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION["theme"])) {
+	$_SESSION["theme"] = "light.min.css";
+}
+
 define('HOST', 'localhost');
 define('USER', 'mysql');
 define('PASS', 'mysql');

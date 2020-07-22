@@ -1,0 +1,8 @@
+body {
+  background: #fff;
+  color: #000; }
+
+.title__right svg,
+.sidebar-search-icon svg,
+.article-back svg {
+  fill: #1e201d; }

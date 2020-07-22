@@ -13,7 +13,19 @@
   border: 2px solid #151111;
   border-radius: 10px;
   text-align: center;
-  cursor: pointer; }
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  .information-item:hover {
+    box-shadow: 1px 1px #151111, 2px 2px #151111, 3px 3px #151111, 4px 4px #151111, 5px 5px #151111, 6px 6px #151111, 7px 7px #151111, 8px 8px #151111, 9px 9px #151111;
+    -webkit-transform: translateX(-7px);
+    transform: translateX(-7px); }
+    @media (max-width: 768px) {
+      .information-item:hover {
+        box-shadow: unset;
+        transform: unset; } }
   @media (max-width: 527px) {
     .information-item {
       margin-right: 0; } }

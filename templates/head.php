@@ -1,3 +1,13 @@
+<?php 
+
+if ($_SESSION["theme"] == "light.min.css") {
+	$theme = "#fd333b";
+} else {
+	$theme = "#373737";
+}
+
+?>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -15,8 +25,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/favicon/apple-touch-icon-180x180.png" />
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="msapplication-TileImage" content="/img/icons/favicon/mstile-144x144.png">
-<meta name="theme-color" content="#fd333b">
+<meta name="theme-color" content="<?=$theme?>">
 <meta name="msapplication-navbutton-color" content="#fff">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#fd333b">
+<meta name="apple-mobile-web-app-status-bar-style" content="<?=$theme?>">
 <meta name="telegram:channel" content="@school34_mk">

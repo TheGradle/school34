@@ -59,14 +59,14 @@
 
 .article-back {
   display: flex; }
-  .article-back__img {
+  .article-back svg {
     width: 50px;
     transform: rotate(180deg); }
     @media (max-width: 1024px) {
-      .article-back__img {
+      .article-back svg {
         width: 40px; } }
     @media (max-width: 369px) {
-      .article-back__img {
+      .article-back svg {
         width: 35px; } }
 
 .article-img {

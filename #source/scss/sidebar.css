@@ -25,12 +25,13 @@
   outline: none;
   padding: 0 25px 0 65px;
   font-size: 18px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background: transparent; }
 
 .sidebar-search-icon {
   position: relative;
   display: inline; }
-  .sidebar-search-icon__img {
+  .sidebar-search-icon svg {
     width: 27px;
     height: auto;
     position: absolute;
